@@ -42,43 +42,21 @@ const benefits: Benefit[] = [
   },
 ];
 
-// 👇 pomoćna komponenta za ikone sa <title>
-function IconWithTitle({
-  Icon,
-  className,
-  title,
-}: {
-  Icon: LucideIcon;
-  className: string;
-  title: string;
-}) {
-  return (
-    <Icon className={className} aria-hidden="true">
-      <title>{title}</title>
-    </Icon>
-  );
-}
-
 export default function Benefits() {
   return (
-    <section
-      className="bg-gray-50 py-12"
-      aria-label="Prednosti MajstorDex usluge"
-    >
+    <section className="bg-gray-50 py-12" aria-label="Prednosti MajstorDex usluge">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-2xl font-bold mb-8 text-center">Zašto MajstorDex?</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {benefits.map(({ icon, iconColor, title, desc }) => (
+          {benefits.map(({ icon: Icon, iconColor, title, desc }) => (
             <div
               key={title}
               className="bg-white rounded-xl p-6 shadow text-center hover:shadow-md transition"
             >
               <div className="flex justify-center mb-4">
-                <IconWithTitle
-                  Icon={icon}
-                  className={`w-8 h-8 ${iconColor}`}
-                  title={title}
-                />
+                <Icon className={`w-8 h-8 ${iconColor}`} aria-hidden="true">
+                  <title>{title}</title>
+                </Icon>
               </div>
               <h3 className="text-lg font-semibold mb-2">{title}</h3>
               <p className="text-sm text-gray-600">{desc}</p>
