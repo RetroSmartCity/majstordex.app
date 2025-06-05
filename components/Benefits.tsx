@@ -57,11 +57,9 @@ export default function Benefits() {
               className="bg-white rounded-xl p-6 shadow text-center hover:shadow-md transition"
             >
               <div className="flex justify-center mb-4">
-                <Icon
-                  className={`w-8 h-8 ${iconColor}`}
-                  aria-hidden="true"
-                  title={title}
-                />
+                <Icon className={`w-8 h-8 ${iconColor}`} aria-hidden="true">
+                  <title>{title}</title>
+                </Icon>
               </div>
               <h3 className="text-lg font-semibold mb-2">{title}</h3>
               <p className="text-sm text-gray-600">{desc}</p>
