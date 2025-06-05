@@ -57,7 +57,9 @@ export default function Benefits() {
               className="bg-white rounded-xl p-6 shadow text-center hover:shadow-md transition"
             >
               <div className="flex justify-center mb-4">
+                {/* SVG mora da ima <title> kao children, ne kao prop */}
                 <Icon className={`w-8 h-8 ${iconColor}`} aria-hidden="true">
+                  {/** @ts-ignore */}
                   <title>{title}</title>
                 </Icon>
               </div>
