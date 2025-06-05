@@ -2,20 +2,10 @@
 
 import Head from "next/head";
 import Link from "next/link";
-import Footer from "@/components/Footer";
 
-
-type Props = {
-  isNaseljePage?: boolean;
-  naselje?: string;
-};
-
-export default function ZamenaOsiguracaIUticnica({
-  isNaseljePage = false,
-  naselje = "",
-}: Props) {
+export default function ZamenaOsiguracaIUticnica() {
   return (
-    <>
+    <>   
       <Head>
         <title>Zamena osigurača i utičnica | MajstorDex</title>
         <meta
@@ -33,11 +23,6 @@ export default function ZamenaOsiguracaIUticnica({
           <span className="text-gray-800 font-semibold">Zamena osigurača i utičnica</span>
         </nav>
 
-        <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
-          {isNaseljePage
-            ? `Zamena osigurača i utičnica u naselju ${naselje}`
-            : "Zamena osigurača i utičnica"}
-        </h1>
 
         <section className="mb-12 text-lg leading-relaxed">
           <p>

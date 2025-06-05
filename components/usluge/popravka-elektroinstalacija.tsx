@@ -2,18 +2,8 @@
 
 import Head from "next/head";
 import Link from "next/link";
-import Footer from "@/components/Footer";
 
-
-type Props = {
-  isNaseljePage?: boolean;
-  naselje?: string;
-};
-
-export default function PopravkaElektroinstalacija({
-  isNaseljePage = false,
-  naselje = "",
-}: Props) {
+export default function PopravkaElektroinstalacija() {
   return (
     <>
       <Head>
@@ -33,12 +23,6 @@ export default function PopravkaElektroinstalacija({
           <span>›</span>
           <span className="text-gray-800 font-semibold">Popravka elektroinstalacija</span>
         </nav>
-
-        <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
-          {isNaseljePage
-            ? `Popravka elektroinstalacija u naselju ${naselje}`
-            : "Popravka elektroinstalacija"}
-        </h1>
 
         <section className="mb-12 text-lg leading-relaxed">
           <p>

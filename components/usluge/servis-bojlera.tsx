@@ -3,15 +3,7 @@
 import Head from "next/head";
 import Link from "next/link";
 
-type Props = {
-  isNaseljePage?: boolean;
-  naselje?: string;
-};
-
-export default function ServisBojlera({
-  isNaseljePage = false,
-  naselje = "",
-}: Props) {
+export default function ServisBojlera() {
   return (
     <>
       <Head>
@@ -36,12 +28,6 @@ export default function ServisBojlera({
           <span className="text-gray-800 font-semibold">Servis bojlera</span>
         </nav>
 
-        {/* Naslov */}
-        <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
-          {isNaseljePage
-            ? `Servis bojlera u naselju ${naselje}`
-            : "Servis bojlera"}
-        </h1>
 
         {/* SEO Opis usluge */}
         <section className="mb-12 text-lg leading-relaxed">

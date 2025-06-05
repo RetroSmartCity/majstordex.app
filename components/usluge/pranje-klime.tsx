@@ -2,18 +2,8 @@
 
 import Head from "next/head";
 import Link from "next/link";
-import Footer from "@/components/Footer";
 
-
-type Props = {
-  isNaseljePage?: boolean;
-  naselje?: string;
-};
-
-export default function PranjeKlime({
-  isNaseljePage = false,
-  naselje = "",
-}: Props) {
+export default function PranjeKlime() {
   return (
     <>
       <Head>
@@ -35,11 +25,6 @@ export default function PranjeKlime({
         </nav>
 
         {/* Naslov */}
-        <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
-          {isNaseljePage
-            ? `Pranje i dezinfekcija klime u naselju ${naselje}`
-            : "Pranje i dezinfekcija klime"}
-        </h1>
 
         {/* Opis usluge */}
         <section className="mb-12 text-lg leading-relaxed">

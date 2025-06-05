@@ -2,18 +2,8 @@
 
 import Head from "next/head";
 import Link from "next/link";
-import Header from "@/components/Footer";
-import Footer from "@/components/Footer";
 
-type Props = {
-  isNaseljePage?: boolean;
-  naselje?: string;
-};
-
-export default function PopravkaTaPeci({
-  isNaseljePage = false,
-  naselje = "",
-}: Props) {
+export default function PopravkaTaPeci() {
   return (
     <>
       <Head>
@@ -37,13 +27,6 @@ export default function PopravkaTaPeci({
           <span>›</span>
           <span className="text-gray-800 font-semibold">Popravka TA peći</span>
         </nav>
-
-        {/* Naslov */}
-        <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
-          {isNaseljePage
-            ? `Popravka TA peći u naselju ${naselje}`
-            : "Popravka TA peći"}
-        </h1>
 
         {/* Opis usluge */}
         <section className="mb-12 text-lg leading-relaxed">
@@ -83,10 +66,6 @@ export default function PopravkaTaPeci({
           </ul>
         </section>
       </main>
-
-      <footer className="bg-gray-100 border-t py-6 text-center text-sm text-gray-500">
-        © 2025 MajstorDex – Sve elektro usluge na jednom mestu. Dostupni 24/7.
-      </footer>
     </>
   );
 }

@@ -1,14 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
-import Footer from "@/components/Footer";
 
-
-type Props = {
-  isNaseljePage?: boolean;
-  naselje?: string;
-};
-
-export default function HitneIntervencije({ isNaseljePage = false, naselje = "" }: Props) {
+export default function HitneIntervencije() {
   return (
     <>
       <Head>
@@ -28,18 +21,30 @@ export default function HitneIntervencije({ isNaseljePage = false, naselje = "" 
           <span className="text-gray-800 font-semibold">Hitne intervencije</span>
         </nav>
 
-        <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
-          {isNaseljePage
-            ? `Hitne elektro intervencije u naselju ${naselje}`
-            : "Hitne elektro intervencije 0-24"}
-        </h1>
-
         <section className="mb-12 text-lg leading-relaxed">
           <p>
             Hitne elektro intervencije u Beogradu zahtevaju brzu reakciju, pouzdanost i
             profesionalan pristup...
           </p>
-          {/* Ostatak teksta ostaje isti */}
+                   <p className="mt-4">
+            Specijalizovani smo za sve vrste elektro kvarova:
+          </p>
+          <ul className="list-disc list-inside mt-2">
+            <li>Rešavanje kratkih spojeva i prekida napajanja</li>
+            <li>Detekcija i zamena oštećenih kablova</li>
+            <li>Ugradnja i zamena osigurača i automatskih sklopki</li>
+            <li>Zamena starih i dotrajalih elektroinstalacija</li>
+            <li>Popravka razvodnih kutija, prekidača i utičnica</li>
+          </ul>
+          <p className="mt-4">
+            Bilo da se radi o stanu, kući, lokalu ili poslovnom prostoru...
+          </p>
+          <p className="mt-4">
+            Radimo na teritoriji celog Beograda, uključujući Voždovac, Novi Beograd...
+          </p>
+          <p className="mt-4">
+            Kontaktirajte nas odmah ukoliko sumnjate na kvar...
+          </p>
         </section>
 
         <section className="bg-yellow-50 rounded-xl p-6 shadow-md">

@@ -1,10 +1,9 @@
 import { useRouter } from "next/router";
-import Head from "next/head";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import type { ComponentType } from "react";
 import { uslugeMap } from "@/components/uslugeMap";
-
+import SEO from "@/components/SEO"; // ✅ Dodato
 
 const usluge = [
   { slug: "servis-bojlera", naziv: "Servis bojlera", ikona: "🚿" },
@@ -38,7 +37,7 @@ export default function UslugaNaseljePage() {
   const { slug, naselje } = router.query;
 
   if (!slug || !naselje || typeof slug !== "string" || typeof naselje !== "string") {
-    return null; // ili <LoadingSpinner />
+    return null;
   }
 
   const prikazNaselja = naselja[naselje];
@@ -55,21 +54,54 @@ export default function UslugaNaseljePage() {
     );
   }
 
-  // Castujemo dinamičku komponentu da prima props isNaseljePage i naselje
+  const pageTitle = `${uslugaObj.naziv} – ${prikazNaselja} | MajstorDex`;
+  const pageDescription = `Brza usluga: ${uslugaObj.naziv.toLowerCase()} u naselju ${prikazNaselja}. Dolazak za 60–90 minuta. Dostupni 24/7!`;
+  const pageUrl = `https://majstordex.rs/usluge/${slug}/${naselje}`;
+
   const UslugaComponent = dynamic(importFn, { ssr: false }) as ComponentType<UslugaProps>;
 
   return (
     <>
-      <Head>
-        <title>{`${uslugaObj.naziv} – ${prikazNaselja} | MajstorDex`}</title>
-        <meta
-          name="description"
-          content={`Brza usluga: ${uslugaObj.naziv.toLowerCase()} u naselju ${prikazNaselja}. Dolazak za 60–90 minuta. Dostupni 24/7!`}
-        />
-      </Head>
+      {/* ✅ SEO meta + Open Graph */}
+      <SEO
+        title={pageTitle}
+        description={pageDescription}
+        url={pageUrl}
+        image="/og-default.jpg"
+      />
+
+      {/* ✅ JSON-LD Breadcrumb */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Početna",
+                item: "https://majstordex.rs"
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: uslugaObj.naziv,
+                item: `https://majstordex.rs/usluge/${slug}`
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: prikazNaselja,
+                item: pageUrl
+              }
+            ]
+          })
+        }}
+      />
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 text-gray-800">
-        {/* Hero blok */}
         <div className="bg-gradient-to-r from-yellow-100 to-white p-6 rounded-lg shadow mb-8">
           <h1 className="text-3xl sm:text-4xl font-bold mb-2 text-gray-900">
             {uslugaObj.naziv} – {prikazNaselja}
@@ -81,12 +113,10 @@ export default function UslugaNaseljePage() {
           </p>
         </div>
 
-        {/* SEO tekst iz fajla usluge */}
         <section className="mb-12">
           <UslugaComponent isNaseljePage={true} naselje={prikazNaselja} />
         </section>
 
-        {/* Ostale usluge u istom naselju */}
         <section className="mt-12">
           <h2 className="text-xl font-semibold mb-4">
             Ostale usluge u naselju {prikazNaselja}:
@@ -111,4 +141,3 @@ export default function UslugaNaseljePage() {
     </>
   );
 }
-
