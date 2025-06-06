@@ -173,12 +173,12 @@ export default function HomePage() {
             </a>
           </div>
           <div className="text-lg mb-4">
-            ✉️{' '}
+            {' '}
             <a
               href="mailto:dejan@majstordex.rs"
               className="text-blue-600 hover:underline font-semibold"
             >
-              dejan@majstordex.rs
+              e-mail:dejan@majstordex.rs
             </a>
           </div>
           <div className="text-sm text-gray-500">
