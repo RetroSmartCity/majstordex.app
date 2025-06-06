@@ -63,7 +63,7 @@ function UslugaCard({ slug, icon, title, desc }: typeof usluge[number]) {
     >
       <div className="text-4xl mb-4">{icon}</div>
       <h3 className="text-lg font-semibold mb-2">{title}</h3>
-      <p className="text-gray-600 text-sm">{desc}</p>
+      <p className="text-gray-800 text-sm">{desc}</p>
     </Link>
   );
 }
@@ -99,7 +99,7 @@ export default function HomePage() {
                 Hitne intervencije
               </span>
             </h1>
-            <p className="text-lg mb-6 text-gray-800">
+            <p className="text-lg mb-6 text-black">
               Brz dolazak na lice mesta – najčešće u roku od{' '}
               <strong>60 do 90 minuta</strong>!
             </p>
