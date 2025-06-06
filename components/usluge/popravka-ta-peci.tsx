@@ -10,13 +10,36 @@ export default function PopravkaTaPeci() {
         <title>Popravka TA peći | MajstorDex</title>
         <meta
           name="description"
-          content="Profesionalna popravka TA peći u Beogradu. Brza i kvalitetna usluga sa dolaskom u roku od 60–90 minuta."
+          content="Profesionalna popravka TA peći u Beogradu. Brza i kvalitetna usluga sa dolaskom u roku od 60–90 minuta. Popravka grejača, termostata, ventilatora i drugih kvarova."
         />
+        <link rel="canonical" href="https://majstordex.rs/usluge/popravka-ta-peci" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Popravka TA peći | MajstorDex" />
+        <meta
+          property="og:description"
+          content="Profesionalna popravka TA peći u Beogradu. Brza i kvalitetna usluga sa dolaskom u roku od 60–90 minuta. Popravka grejača, termostata, ventilatora i drugih kvarova."
+        />
+        <meta property="og:url" content="https://majstordex.rs/usluge/popravka-ta-peci" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://majstordex.rs/og-default.jpg" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Popravka TA peći | MajstorDex" />
+        <meta
+          name="twitter:description"
+          content="Profesionalna popravka TA peći u Beogradu. Brza i kvalitetna usluga sa dolaskom u roku od 60–90 minuta. Popravka grejača, termostata, ventilatora i drugih kvarova."
+        />
+        <meta name="twitter:image" content="https://majstordex.rs/og-default.jpg" />
       </Head>
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 text-gray-800">
+      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 text-gray-800">
         {/* Breadcrumb */}
-        <nav className="text-sm mb-6 text-gray-500 flex flex-wrap items-center gap-1">
+        <nav
+          aria-label="Breadcrumb"
+          className="text-sm mb-6 text-gray-500 flex flex-wrap items-center gap-1"
+        >
           <Link href="/" className="hover:underline text-blue-600">
             Početna
           </Link>
@@ -25,30 +48,39 @@ export default function PopravkaTaPeci() {
             Usluge
           </Link>
           <span>›</span>
-          <span className="text-gray-800 font-semibold">Popravka TA peći</span>
+          <span aria-current="page" className="text-gray-800 font-semibold">
+            Popravka TA peći
+          </span>
         </nav>
 
         {/* Opis usluge */}
         <section className="mb-12 text-lg leading-relaxed">
           <p>
-            TA (termoakumulacione) peći su odličan izbor za grejanje prostora, ali s vremenom mogu doći do kvara grejača, termostata, automatskog osigurača ili termičke zaštite. Naš tim stručno i efikasno dijagnostikuje problem i obavlja sve vrste popravki na TA pećima, bez obzira na model i proizvođača.
+            TA (termoakumulacione) peći su efikasan način grejanja, ali mogu se
+            pokvariti zbog problema sa grejačem, termostatom, osiguračima ili
+            ventilatorom. Naš stručni tim vrši dijagnostiku i popravku svih kvarova
+            na TA pećima, bilo kog modela i proizvođača, brzo i profesionalno.
           </p>
           <div className="mt-4">
-            <p>Popravljamo:</p>
+            <p>Popravke koje radimo uključuju:</p>
             <ul className="list-disc list-inside mt-2">
-              <li>Kvarove na grejačima</li>
-              <li>Neispravan termostat</li>
-              <li>Zamenu kablova i klema</li>
-              <li>Pregorele sklopke i osigurače</li>
-              <li>Peći koje se ne pune strujom ili ne greju</li>
-              <li>Zamenu ventilatora na TA peći</li>
+              <li>Zamenu i popravku grejača</li>
+              <li>Popravku i zamenu termostata</li>
+              <li>Zamenu pregorelih sklopki i osigurača</li>
+              <li>Popravku i zamenu ventilatora</li>
+              <li>Popravku električnih kablova i priključaka</li>
+              <li>Rešavanje problema sa punjenjem i grejanjem</li>
             </ul>
           </div>
           <p className="mt-4">
-            MajstorDex nudi uslugu popravke TA peći na teritoriji celog Beograda – uključujući Zemun, Novi Beograd, Voždovac, Zvezdaru, Palilulu i druga naselja. Dolazak majstora u roku od 60–90 minuta ili po dogovoru.
+            Radimo na teritoriji celog Beograda, uključujući Zemun, Novi Beograd,
+            Voždovac, Zvezdaru, Palilulu i druga naselja. Dolazak majstora je
+            moguć u roku od 60–90 minuta ili prema dogovoru.
           </p>
           <p className="mt-4">
-            TA peć koja ne radi kako treba ne samo da troši više struje, već može predstavljati i sigurnosni rizik. Ne čekajte – kontaktirajte nas već danas i omogućite svom prostoru sigurnu i efikasnu grejnu podršku.
+            Neispravna TA peć može dovesti do povećane potrošnje električne
+            energije i sigurnosnih problema. Ne čekajte da problem postane veći –
+            pozovite MajstorDex odmah.
           </p>
         </section>
 
@@ -65,7 +97,38 @@ export default function PopravkaTaPeci() {
             <li>✅ Dostupnost 24/7 za hitne intervencije</li>
           </ul>
         </section>
-      </main>
+
+        {/* JSON-LD Breadcrumb */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Početna",
+                  item: "https://majstordex.rs",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Usluge",
+                  item: "https://majstordex.rs/usluge",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 3,
+                  name: "Popravka TA peći",
+                  item: "https://majstordex.rs/usluge/popravka-ta-peci",
+                },
+              ],
+            }),
+          }}
+        />
+      </article>
     </>
   );
 }

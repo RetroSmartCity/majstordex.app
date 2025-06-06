@@ -10,13 +10,36 @@ export default function ServisBojlera() {
         <title>Servis bojlera | MajstorDex</title>
         <meta
           name="description"
-          content="Profesionalni servis bojlera u Beogradu. Brza i pouzdana usluga, dolazak 60–90 minuta."
+          content="Profesionalan servis bojlera u Beogradu. Brza i kvalitetna usluga sa dolaskom u roku od 60–90 minuta. Popravka grejača, termostata i drugih komponenti."
         />
+        <link rel="canonical" href="https://majstordex.rs/usluge/servis-bojlera" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Servis bojlera | MajstorDex" />
+        <meta
+          property="og:description"
+          content="Profesionalan servis bojlera u Beogradu. Brza i kvalitetna usluga sa dolaskom u roku od 60–90 minuta. Popravka grejača, termostata i drugih komponenti."
+        />
+        <meta property="og:url" content="https://majstordex.rs/usluge/servis-bojlera" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://majstordex.rs/og-default.jpg" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Servis bojlera | MajstorDex" />
+        <meta
+          name="twitter:description"
+          content="Profesionalan servis bojlera u Beogradu. Brza i kvalitetna usluga sa dolaskom u roku od 60–90 minuta. Popravka grejača, termostata i drugih komponenti."
+        />
+        <meta name="twitter:image" content="https://majstordex.rs/og-default.jpg" />
       </Head>
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 text-gray-800">
+      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 text-gray-800">
         {/* Breadcrumb */}
-        <nav className="text-sm mb-6 text-gray-500 flex flex-wrap items-center gap-1">
+        <nav
+          aria-label="Breadcrumb"
+          className="text-sm mb-6 text-gray-500 flex flex-wrap items-center gap-1"
+        >
           <Link href="/" className="hover:underline text-blue-600">
             Početna
           </Link>
@@ -25,34 +48,40 @@ export default function ServisBojlera() {
             Usluge
           </Link>
           <span>›</span>
-          <span className="text-gray-800 font-semibold">Servis bojlera</span>
+          <span aria-current="page" className="text-gray-800 font-semibold">
+            Servis bojlera
+          </span>
         </nav>
 
-
-        {/* SEO Opis usluge */}
+        {/* Opis usluge */}
         <section className="mb-12 text-lg leading-relaxed">
           <p>
-            Potreban vam je <strong>servis bojlera u Beogradu</strong>? MajstorDex tim
-            nudi brzu i pouzdanu popravku bojlera svih modela –{" "}
-            <strong>dolazak u roku od 60–90 minuta</strong>, radimo 24/7 i pokrivamo sva
-            beogradska naselja.
+            Bojleri su nezamenjiv deo svakog doma, ali kao i svaki uređaj, sa
+            vremenom mogu doći do problema kao što su kvarovi grejača, termostata
+            ili curenje vode. Naš stručni tim pruža profesionalan servis bojlera
+            svih tipova i modela, brzo i efikasno, uz dolazak na adresu u roku
+            od 60–90 minuta širom Beograda.
           </p>
-          <p className="mt-4">Najčešći problemi koje rešavamo uključuju:</p>
-          <ul className="list-disc list-inside mt-2 space-y-1 text-gray-700">
-            <li>✔️ Ne greje vodu ili greje previše</li>
-            <li>✔️ Pregoreo grejač ili termostat</li>
-            <li>✔️ Bojler curi ili se čuje neobično</li>
-            <li>✔️ Aktivira osigurače prilikom paljenja</li>
-          </ul>
+          <div className="mt-4">
+            <p>Usluge koje nudimo:</p>
+            <ul className="list-disc list-inside mt-2">
+              <li>Popravka i zamena grejača</li>
+              <li>Popravka i zamena termostata</li>
+              <li>Reparacija i zamena sigurnosnih ventila</li>
+              <li>Rešavanje problema sa curenjem</li>
+              <li>Čišćenje i održavanje bojlera</li>
+              <li>Preventivne provere i dijagnostika</li>
+            </ul>
+          </div>
           <p className="mt-4">
-            Naši električari dolaze opremljeni delovima i alatom za sve vrste bojlera:
-            Ariston, Termor, Gorenje, Tesla, Metalac, Bosch i druge marke. Na licu mesta
-            vršimo <strong>dijagnostiku, popravku i zamenu delova</strong>.
+            Pokrivamo sve beogradske opštine, uključujući Stari Grad, Zemun,
+            Vračar, Novi Beograd i ostala naselja. Kontaktirajte nas za pouzdan i
+            brz servis bojlera.
           </p>
           <p className="mt-4">
-            Pozovite nas odmah i rešite kvar u najkraćem roku! Radimo i vikendom i
-            praznicima, a <strong>garancija na ugrađene delove i rad</strong> je uključena
-            u cenu.
+            Redovno održavanje bojlera produžava mu vek trajanja i štedi energiju.
+            Ne dozvolite da kvarovi utiču na vašu udobnost – pozovite MajstorDex
+            odmah!
           </p>
         </section>
 
@@ -69,7 +98,38 @@ export default function ServisBojlera() {
             <li>✅ Dostupnost 24/7 za hitne intervencije</li>
           </ul>
         </section>
-      </main>
+
+        {/* JSON-LD Breadcrumb */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Početna",
+                  item: "https://majstordex.rs",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Usluge",
+                  item: "https://majstordex.rs/usluge",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 3,
+                  name: "Servis bojlera",
+                  item: "https://majstordex.rs/usluge/servis-bojlera",
+                },
+              ],
+            }),
+          }}
+        />
+      </article>
     </>
   );
 }
