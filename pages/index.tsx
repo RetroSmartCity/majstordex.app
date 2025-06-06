@@ -3,7 +3,6 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Benefits from '@/components/Benefits';
 
-// 📌 Statički podaci van komponente
 const usluge = [
   {
     slug: 'popravka-elektroinstalacija',
@@ -56,7 +55,6 @@ const naselja = [
   'zvezdara',
 ];
 
-// 📌 Kartica za usluge kao posebna komponenta
 function UslugaCard({ slug, icon, title, desc }: typeof usluge[number]) {
   return (
     <Link
@@ -79,9 +77,10 @@ export default function HomePage() {
           name="description"
           content="Brze elektro intervencije u Beogradu – dolazak za 60-90 minuta. Servis bojlera, klima, TA peći, osigurača i više!"
         />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* HERO SEKCIJA */}
+      {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center">
         <Image
           src="/images/pozadinaHero.webp"
@@ -120,9 +119,7 @@ export default function HomePage() {
       {/* USLUGE */}
       <section id="usluge" className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-10 text-gray-900">
-            Usluge koje nudimo
-          </h2>
+          <h2 className="text-3xl font-bold mb-10 text-gray-900">Usluge koje nudimo</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {usluge.map((usluga) => (
               <UslugaCard key={usluga.slug} {...usluga} />
@@ -173,17 +170,15 @@ export default function HomePage() {
             </a>
           </div>
           <div className="text-lg mb-4">
-            {' '}
             <a
               href="mailto:dejan@majstordex.rs"
               className="text-blue-600 hover:underline font-semibold"
             >
-              e-mail:dejan@majstordex.rs
+              e-mail: dejan@majstordex.rs
             </a>
           </div>
           <div className="text-sm text-gray-500">
-            Radimo na teritoriji celog Beograda, 24 časa dnevno, svih 7 dana u
-            nedelji.
+            Radimo na teritoriji celog Beograda, 24 časa dnevno, svih 7 dana u nedelji.
           </div>
         </div>
       </section>
