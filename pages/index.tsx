@@ -1,58 +1,23 @@
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import Head from 'next/head';
-import Benefits from '@/components/Benefits';
+
+const Benefits = dynamic(() => import('@/components/Benefits'), { ssr: false });
 
 const usluge = [
-  {
-    slug: 'popravka-elektroinstalacija',
-    icon: '💡',
-    title: 'Popravka elektroinstalacija',
-    desc: 'Zamena prekidača, kablova, osigurača i drugih elektro elemenata.',
-  },
-  {
-    slug: 'servis-bojlera',
-    icon: '🚿',
-    title: 'Servis bojlera',
-    desc: 'Zamena grejača, termostata i profesionalno čišćenje bojlera.',
-  },
-  {
-    slug: 'popravka-ta-peci',
-    icon: '🔥',
-    title: 'Popravka TA peći',
-    desc: 'Brza dijagnostika i zamena grejača, termostata i kontakta.',
-  },
-  {
-    slug: 'pranje-klime',
-    icon: '🧊',
-    title: 'Čišćenje klima uređaja',
-    desc: 'Dubinsko pranje, dezinfekcija i održavanje unutrašnje jedinice.',
-  },
-  {
-    slug: 'zamena-osiguraca-i-uticnica',
-    icon: '🔌',
-    title: 'Zamena osigurača i utičnica',
-    desc: 'Montaža sigurnosnih utičnica, osigurača i rasvete.',
-  },
-  {
-    slug: 'hitne-intervencije',
-    icon: '🔧',
-    title: 'Hitne intervencije 0-24',
-    desc: 'Dolazak na teren u roku od 60-90 minuta, svakog dana u nedelji.',
-  },
+  { slug: 'popravka-elektroinstalacija', icon: '💡', title: 'Popravka elektroinstalacija', desc: 'Zamena prekidača, kablova, osigurača i drugih elektro elemenata.' },
+  { slug: 'servis-bojlera', icon: '🚿', title: 'Servis bojlera', desc: 'Zamena grejača, termostata i profesionalno čišćenje bojlera.' },
+  { slug: 'popravka-ta-peci', icon: '🔥', title: 'Popravka TA peći', desc: 'Brza dijagnostika i zamena grejača, termostata i kontakta.' },
+  { slug: 'pranje-klime', icon: '🧊', title: 'Čišćenje klima uređaja', desc: 'Dubinsko pranje, dezinfekcija i održavanje unutrašnje jedinice.' },
+  { slug: 'zamena-osiguraca-i-uticnica', icon: '🔌', title: 'Zamena osigurača i utičnica', desc: 'Montaža sigurnosnih utičnica, osigurača i rasvete.' },
+  { slug: 'hitne-intervencije', icon: '🔧', title: 'Hitne intervencije 0-24', desc: 'Dolazak na teren u roku od 60-90 minuta, svakog dana u nedelji.' },
 ];
 
 const naselja = [
-  'stari-grad',
-  'savski-venac',
-  'vracar',
-  'novi-beograd',
-  'zemun',
-  'cukarica',
-  'vozdovac',
-  'palilula',
-  'rakovica',
-  'zvezdara',
+  'stari-grad', 'savski-venac', 'vracar', 'novi-beograd',
+  'zemun', 'cukarica', 'vozdovac', 'palilula',
+  'rakovica', 'zvezdara',
 ];
 
 function UslugaCard({ slug, icon, title, desc }: typeof usluge[number]) {
@@ -60,6 +25,7 @@ function UslugaCard({ slug, icon, title, desc }: typeof usluge[number]) {
     <Link
       href={`/usluge/${slug}`}
       className="bg-gray-50 p-6 rounded-lg shadow hover:shadow-md transition block h-full"
+      aria-label={`Usluga: ${title}`}
     >
       <div className="text-4xl mb-4">{icon}</div>
       <h3 className="text-lg font-semibold mb-2">{title}</h3>
@@ -72,22 +38,24 @@ export default function HomePage() {
   return (
     <>
       <Head>
-        <title>Majstor Dex - Hitne Elektro Intervencije Beograd</title>
+        <title>Majstor Dex - Hitne Elektro Intervencije 24/7 Beograd</title>
         <meta
           name="description"
-          content="Brze elektro intervencije u Beogradu – dolazak za 60-90 minuta. Servis bojlera, klima, TA peći, osigurača i više!"
+          content="Majstor Dex – Brze elektro intervencije u Beogradu. Dolazak za 60-90 minuta. Servis bojlera, klima, TA peći, utičnica i još mnogo toga. Dostupni 0-24!"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* HERO */}
-      <section className="relative min-h-screen flex items-center justify-center">
+      {/* HERO sekcija */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <Image
-          src="/images/pozadinaHero.webp"
-          alt="Pozadina Hero"
+          src="/images/pozadinaHero.jpg"
+          alt="Električar u kupatilu popravlja bojler - Majstor Dex"
           fill
-          quality={80}
+          quality={70}
           priority
+          sizes="100vw"
+          placeholder="empty"
           className="object-cover object-center z-0"
         />
         <div className="relative z-20 text-white text-center px-4 max-w-2xl mx-auto">
@@ -106,6 +74,7 @@ export default function HomePage() {
             <a
               href="tel:+381600500063"
               className="inline-block bg-yellow-400 text-black font-semibold py-3 px-6 rounded hover:bg-yellow-500 transition shadow-md"
+              aria-label="Pozovi Dejana na broj 0600500063"
             >
               📞 Pozovi Dejana: 060 0 5000 63
             </a>
@@ -131,19 +100,16 @@ export default function HomePage() {
       {/* NASELJA */}
       <section className="py-12 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-xl font-bold mb-6">
-            Pokrivamo sledeća naselja u Beogradu
-          </h2>
+          <h2 className="text-xl font-bold mb-6">Pokrivamo sledeća naselja u Beogradu</h2>
           <div className="flex flex-wrap justify-center gap-4 text-sm sm:text-base">
             {naselja.map((slug) => {
-              const naziv = slug
-                .replace('-', ' ')
-                .replace(/\b\w/g, (l) => l.toUpperCase());
+              const naziv = slug.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
               return (
                 <Link
                   key={slug}
                   href={`/${slug}`}
                   className="bg-white border border-gray-300 rounded px-4 py-2 hover:bg-gray-100 transition"
+                  aria-label={`Naselje: ${naziv}`}
                 >
                   {naziv}
                 </Link>
@@ -165,6 +131,7 @@ export default function HomePage() {
             <a
               href="tel:+381600500063"
               className="text-blue-600 hover:underline font-semibold"
+              aria-label="Telefon: 060 0 5000 63"
             >
               060 0 5000 63
             </a>
@@ -173,6 +140,7 @@ export default function HomePage() {
             <a
               href="mailto:dejan@majstordex.rs"
               className="text-blue-600 hover:underline font-semibold"
+              aria-label="Pošaljite e-mail na dejan@majstordex.rs"
             >
               e-mail: dejan@majstordex.rs
             </a>

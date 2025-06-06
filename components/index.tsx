@@ -22,14 +22,14 @@ export default function UslugeIndex() {
         <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center">Usluge</h1>
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-xl mx-auto mb-16">
-          {usluge.map((u) => (
-            <li key={u.slug}>
+          {usluge.map(({ slug, naziv, ikona }) => (
+            <li key={slug}>
               <Link
-                href={`/usluge/${u.slug}`}
+                href={`/usluge/${slug}`}
                 className="block bg-gray-100 hover:bg-yellow-100 transition rounded-xl p-6 shadow text-center cursor-pointer"
               >
-                <div className="text-4xl mb-3">{u.ikona}</div>
-                <p className="font-semibold text-lg">{u.naziv}</p>
+                <div className="text-4xl mb-3">{ikona}</div>
+                <p className="font-semibold text-lg">{naziv}</p>
               </Link>
             </li>
           ))}

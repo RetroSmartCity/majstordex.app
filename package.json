@@ -2,13 +2,13 @@
   "name": "majstordex-app",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "sitemap": "next-sitemap"
+    "sitemap": "next-sitemap",
+    "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
     "lucide-react": "^0.511.0",
@@ -18,10 +18,12 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^15.3.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
+    "cross-env": "^7.0.3",
     "eslint": "9.28.0",
     "eslint-config-next": "15.3.3",
     "postcss": "^8",
