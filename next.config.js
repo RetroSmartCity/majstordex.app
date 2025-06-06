@@ -1,9 +1,7 @@
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  swcMinify: true,
-  transpilePackages: [],
-  experimental: {
-    legacyBrowsers: false, // <== OVDE JE KLJUČ
-  },
+  reactStrictMode: true,
+  // dodaš ovde po potrebi ostale važeće opcije
 };
 
-module.exports = nextConfig;
+export default nextConfig;
