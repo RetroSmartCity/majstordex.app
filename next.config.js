@@ -1,8 +1,9 @@
-const path = require('path');
-
-module.exports = {
-  webpack(config) {
-    config.resolve.alias['@'] = path.resolve(__dirname);
-    return config;
+const nextConfig = {
+  swcMinify: true,
+  transpilePackages: [],
+  experimental: {
+    legacyBrowsers: false, // <== OVDE JE KLJUČ
   },
 };
+
+module.exports = nextConfig;
