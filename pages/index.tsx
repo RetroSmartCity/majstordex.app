@@ -26,8 +26,9 @@ function UslugaCard({ slug, icon, title, desc }: typeof usluge[number]) {
       href={`/usluge/${slug}`}
       className="bg-gray-50 p-6 rounded-lg shadow hover:shadow-md transition block h-full"
       aria-label={`Usluga: ${title}`}
+      tabIndex={0}
     >
-      <div className="text-4xl mb-4">{icon}</div>
+      <div className="text-4xl mb-4" aria-hidden="true">{icon}</div>
       <h3 className="text-lg font-semibold mb-2">{title}</h3>
       <p className="text-gray-800 text-sm">{desc}</p>
     </Link>
@@ -74,7 +75,7 @@ export default function HomePage() {
             <a
               href="tel:+381600500063"
               className="inline-block bg-yellow-400 text-black font-semibold py-3 px-6 rounded hover:bg-yellow-500 transition shadow-md"
-              aria-label="Pozovi Dejana na broj 0600500063"
+              aria-label="Pozovi Dejana na broj 0600 5000 63"
             >
               📞 Pozovi Dejana: 060 0 5000 63
             </a>
@@ -131,7 +132,7 @@ export default function HomePage() {
             <a
               href="tel:+381600500063"
               className="text-blue-600 hover:underline font-semibold"
-              aria-label="Telefon: 060 0 5000 63"
+              aria-label="Telefon: 0600 5000 63"
             >
               060 0 5000 63
             </a>

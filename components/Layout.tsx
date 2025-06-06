@@ -12,12 +12,10 @@ export default function Layout({ children }: LayoutProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowButton(window.scrollY > 100); // Pojavi se kad skroluješ 100px
+      setShowButton(window.scrollY > 100);
     };
 
     window.addEventListener('scroll', handleScroll);
-
-    // Poziv odmah da proveri stanje ako si već skrolovao
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
@@ -29,7 +27,6 @@ export default function Layout({ children }: LayoutProps) {
       <main className="flex-1 w-full">{children}</main>
       <Footer />
 
-      {/* Dugme pozovi fiksirano, tik iznad futera, pojavljuje se tek kad se skroluje */}
       {showButton && (
         <a
           href="tel:+381600500063"
