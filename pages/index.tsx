@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import Head from 'next/head';
+import { getAllPosts } from '@/lib/blog';
 
 const Benefits = dynamic(() => import('@/components/Benefits'), { ssr: false });
 
@@ -35,7 +36,36 @@ function UslugaCard({ slug, icon, title, desc }: typeof usluge[number]) {
   );
 }
 
-export default function HomePage() {
+function BlogPreview({ posts }: { posts: { slug: string; title: string }[] }) {
+  return (
+    <section className="py-16 px-4 bg-white">
+      <div className="max-w-4xl mx-auto text-center">
+        <h2 className="text-3xl font-bold mb-8 text-gray-900">Najnoviji saveti i vesti</h2>
+        <ul className="space-y-4">
+          {posts.map((post) => (
+            <li key={post.slug}>
+              <Link
+                href={`/blog/${post.slug}`}
+                className="text-blue-600 hover:underline text-lg font-medium"
+              >
+                {post.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+export async function getStaticProps() {
+  const posts = getAllPosts().slice(0, 3); // samo prva 3 blog posta
+  return {
+    props: { posts },
+  };
+}
+
+export default function HomePage({ posts }: { posts: { slug: string; title: string }[] }) {
   return (
     <>
       <Head>
@@ -47,7 +77,7 @@ export default function HomePage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* HERO sekcija */}
+      {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <Image
           src="/images/pozadinaHero.jpg"
@@ -119,6 +149,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* BLOG */}
+      <BlogPreview posts={posts} />
 
       {/* KONTAKT */}
       <section id="kontakt" className="py-16 px-4 bg-gray-50">

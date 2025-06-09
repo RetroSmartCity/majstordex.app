@@ -1,3 +1,6 @@
+import Link from "next/link"; // dodaj na vrhu ako već nije
+
+
 type Props = {
   isNaseljePage: boolean;
   naselje: string;
@@ -43,6 +46,13 @@ export default function PranjeKlime({ isNaseljePage, naselje }: Props) {
       <p>
         <strong>Ne čekajte da klima počne da curi ili smrdi –</strong> zakažite pranje na vreme i obezbedite čist vazduh u svom domu.
       </p>
+      <p>
+  👉{" "}
+  <Link href="/blog/pranje-klime" className="text-blue-600 underline hover:text-blue-800">
+    Detaljan opis dubinskog pranja klime pogledajte u našem blogu
+  </Link>
+</p>
+
     </article>
   );
 }
