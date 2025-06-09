@@ -4,7 +4,7 @@ import { getAllPosts } from '@/lib/blog';
 type BlogPost = {
   title: string;
   slug: string;
-  excerpt: string;
+  excerpt?: string;
 };
 
 type BlogListProps = {
