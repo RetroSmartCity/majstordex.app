@@ -116,7 +116,7 @@ export default function HomePage({ posts }: { posts: { slug: string; title: stri
       {/* BENEFITI */}
       <Benefits />
 
-      {/* USLUGE */}
+      {/* VIDLJIVE USLUGE - SVE */}
       <section id="usluge" className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-10 text-gray-900">Usluge koje nudimo</h2>
@@ -124,30 +124,6 @@ export default function HomePage({ posts }: { posts: { slug: string; title: stri
             {usluge.map((usluga) => (
               <UslugaCard key={usluga.slug} {...usluga} />
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* DODAT: POPULARNE USLUGE PO NASELJIMA */}
-      <section className="py-12 px-4 bg-white border-t border-gray-200">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-xl font-bold mb-6">Popularne usluge po naseljima</h2>
-          <div className="flex flex-wrap justify-center gap-3 text-sm sm:text-base">
-            {usluge.flatMap((usluga) =>
-              naselja.map((naselje) => {
-                const naseljeNaziv = naselje.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
-                return (
-                  <Link
-                    key={`${usluga.slug}-${naselje}`}
-                    href={`/usluge/${usluga.slug}/${naselje}`}
-                    className="bg-gray-100 rounded px-3 py-1 hover:bg-yellow-100 transition text-gray-800"
-                    aria-label={`${usluga.title} u naselju ${naseljeNaziv}`}
-                  >
-                    {usluga.title} – {naseljeNaziv}
-                  </Link>
-                );
-              })
-            )}
           </div>
         </div>
       </section>
