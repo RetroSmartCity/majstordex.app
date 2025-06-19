@@ -128,6 +128,30 @@ export default function HomePage({ posts }: { posts: { slug: string; title: stri
         </div>
       </section>
 
+      {/* DODAT: POPULARNE USLUGE PO NASELJIMA */}
+      <section className="py-12 px-4 bg-white border-t border-gray-200">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-xl font-bold mb-6">Popularne usluge po naseljima</h2>
+          <div className="flex flex-wrap justify-center gap-3 text-sm sm:text-base">
+            {usluge.flatMap((usluga) =>
+              naselja.map((naselje) => {
+                const naseljeNaziv = naselje.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
+                return (
+                  <Link
+                    key={`${usluga.slug}-${naselje}`}
+                    href={`/usluge/${usluga.slug}/${naselje}`}
+                    className="bg-gray-100 rounded px-3 py-1 hover:bg-yellow-100 transition text-gray-800"
+                    aria-label={`${usluga.title} u naselju ${naseljeNaziv}`}
+                  >
+                    {usluga.title} – {naseljeNaziv}
+                  </Link>
+                );
+              })
+            )}
+          </div>
+        </div>
+      </section>
+
       {/* NASELJA */}
       <section className="py-12 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto text-center">
