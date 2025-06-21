@@ -5,6 +5,13 @@ type Props = {
   naselje: string;
 };
 
+const lokalniOpisi: Record<string, string> = {
+  "Novi Beograd":
+    "Radimo sve blokove na Novom Beogradu: Blok 21, Blok 22, Blok 23, Blok 24, Blok 29, Blok 30, Blok 45, Blok 61, Blok 62, Blok 63, Blok 64, Blok 70, Blok 72 i ostale blokove duž Jurija Gagarina, Gandijeve, Bulevara Zorana Đinđića i Omladinskih brigada.",
+  Zvezdara:
+    "Pokrivamo Zvezdaru: Đeram pijaca, Bulbulder, Mirijevo, Lion, Cvetkova pijaca, Vukov spomenik, Slavujev venac i sve okolne ulice – Bulevar kralja Aleksandra, Dimitrija Tucovića, Ruzveltova i Maksima Gorkog.",
+};
+
 export default function PranjeKlime({ isNaseljePage, naselje }: Props) {
   const jeAkcijaNoviBeograd = isNaseljePage && naselje === "Novi Beograd";
   const jeAkcijaZvezdara = isNaseljePage && naselje === "Zvezdara";
@@ -40,8 +47,8 @@ export default function PranjeKlime({ isNaseljePage, naselje }: Props) {
       <p>
         {isNaseljePage ? (
           <>
-            Ako ste iz naselja <strong>{naselje}</strong> i klima vam duva neprijatan miris, slabije hladi, ili primećujete curenje –
-            vreme je za profesionalno <strong>pranje klima uređaja</strong>.
+            Ako ste iz naselja <strong>{naselje}</strong> i klima vam duva neprijatan miris, slabije hladi, ili primećujete curenje – vreme je za profesionalno{" "}
+            <strong>pranje klima uređaja</strong>.
           </>
         ) : (
           <>
@@ -49,13 +56,18 @@ export default function PranjeKlime({ isNaseljePage, naselje }: Props) {
             <strong>pranje klima uređaja</strong>.
           </>
         )}{" "}
-        Tim <strong>MajstorDex Beograd</strong> koristi profesionalna sredstva i opremu koja temeljno uklanja bakterije, buđ, prašinu i naslage
-        iz unutrašnje i spoljašnje jedinice.
+        Tim <strong>MajstorDex Beograd</strong> koristi profesionalna sredstva i opremu koja temeljno uklanja bakterije, buđ, prašinu i naslage iz unutrašnje i spoljašnje jedinice.
       </p>
 
+      {isNaseljePage && lokalniOpisi[naselje] && (
+        <p className="text-gray-700">
+          {lokalniOpisi[naselje]}
+        </p>
+      )}
+
       <p>
-        <strong>Zašto je važno redovno čistiti klimu?</strong> Nepravilno održavana klima može izazvati respiratorne tegobe, naročito kod dece,
-        starijih i osoba sa alergijama. Redovnim pranjem klima uređaja obezbeđujete:
+        <strong>Zašto je važno redovno čistiti klimu?</strong> Nepravilno održavana klima može izazvati respiratorne tegobe, naročito kod dece, starijih i osoba sa alergijama.
+        Redovnim pranjem klima uređaja obezbeđujete:
       </p>
 
       <ul className="list-disc list-inside">
@@ -69,8 +81,7 @@ export default function PranjeKlime({ isNaseljePage, naselje }: Props) {
       {isNaseljePage && (
         <p>
           Na teritoriji naselja <strong>{naselje}</strong> dolazimo na Vašu adresu u roku od <strong>60–90 minuta</strong>.
-          Nema skrivenih troškova – radimo temeljno, detaljno i bez žurbe.{" "}
-          <strong>Dostupni smo 24/7</strong>, čak i van standardnog radnog vremena.
+          Nema skrivenih troškova – radimo temeljno, detaljno i bez žurbe. <strong>Dostupni smo 24/7</strong>, čak i van standardnog radnog vremena.
         </p>
       )}
 

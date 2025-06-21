@@ -27,6 +27,14 @@ const naselja: Record<string, string> = {
   "zvezdara": "Zvezdara",
 };
 
+// Lokalni opisi za naselja
+const lokalniOpisi: Record<string, string> = {
+  "Novi Beograd":
+    "Radimo sve blokove na Novom Beogradu: Blok 21, Blok 22, Blok 23, Blok 24, Blok 29, Blok 30, Blok 45, Blok 61, Blok 62, Blok 63, Blok 64, Blok 70, Blok 72 i ostale blokove duž Jurija Gagarina, Gandijeve, Bulevara Zorana Đinđića i Omladinskih brigada.",
+  "Zvezdara":
+    "Pokrivamo Zvezdaru: Đeram pijaca, Bulbulder, Mirijevo, Lion, Cvetkova pijaca, Vukov spomenik, Slavujev venac i sve okolne ulice – Bulevar kralja Aleksandra, Dimitrija Tucovića, Ruzveltova i Maksima Gorkog.",
+};
+
 type UslugaProps = {
   isNaseljePage: boolean;
   naselje: string;
@@ -34,13 +42,13 @@ type UslugaProps = {
 
 export default function UslugaNaseljePage() {
   const router = useRouter();
-  const { slug, naselje } = router.query;
+  const { slug, naselje: naseljeSlug } = router.query;
 
-  if (!slug || !naselje || typeof slug !== "string" || typeof naselje !== "string") {
+  if (!slug || !naseljeSlug || typeof slug !== "string" || typeof naseljeSlug !== "string") {
     return null;
   }
 
-  const prikazNaselja = naselja[naselje];
+  const prikazNaselja = naselja[naseljeSlug];
   const uslugaObj = usluge.find((u) => u.slug === slug);
   const importFn = uslugeMap[slug];
 
@@ -54,11 +62,10 @@ export default function UslugaNaseljePage() {
     );
   }
 
-  // SEO TITLE / DESCRIPTION dinamički:
+  // SEO TITLE / DESCRIPTION
   let pageTitle = `${uslugaObj.naziv} u naselju ${prikazNaselja} | MajstorDex Beograd`;
   let pageDescription = `Profesionalna usluga: ${uslugaObj.naziv.toLowerCase()} u naselju ${prikazNaselja}. Dolazak na Vašu adresu u roku od 60–90 minuta. Pozovite nas 24/7 – MajstorDex.`;
 
-  // Specijalne akcije — SEO za pranje klime Novi Beograd i Zvezdara:
   if (slug === "pranje-klime" && prikazNaselja === "Novi Beograd") {
     pageTitle = "Akcija: Pranje klima uređaja Novi Beograd | MajstorDex Beograd";
     pageDescription = "Iskoristite specijalnu akciju – pranje i dezinfekcija klima uređaja u Novom Beogradu. Dolazak za 60–90 minuta. Profesionalni servis MajstorDex. Pozovite odmah!";
@@ -69,12 +76,11 @@ export default function UslugaNaseljePage() {
     pageDescription = "Pranje i dubinsko čišćenje klima uređaja Zvezdara – profesionalna usluga po promotivnim cenama. Dolazak na adresu za 60–90 minuta. MajstorDex Beograd.";
   }
 
-  const pageUrl = `https://majstordex.rs/usluge/${slug}/${naselje}`;
+  const pageUrl = `https://majstordex.rs/usluge/${slug}/${naseljeSlug}`;
   const UslugaComponent = dynamic(importFn, { ssr: false }) as ComponentType<UslugaProps>;
 
   return (
     <>
-      {/* SEO meta + Open Graph */}
       <SEO
         title={pageTitle}
         description={pageDescription}
@@ -82,7 +88,6 @@ export default function UslugaNaseljePage() {
         image="/og-default.jpg"
       />
 
-      {/* JSON-LD Breadcrumb */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -94,22 +99,22 @@ export default function UslugaNaseljePage() {
                 "@type": "ListItem",
                 position: 1,
                 name: "Početna",
-                item: "https://majstordex.rs"
+                item: "https://majstordex.rs",
               },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: uslugaObj.naziv,
-                item: `https://majstordex.rs/usluge/${slug}`
+                item: `https://majstordex.rs/usluge/${slug}`,
               },
               {
                 "@type": "ListItem",
                 position: 3,
                 name: prikazNaselja,
-                item: pageUrl
-              }
-            ]
-          })
+                item: pageUrl,
+              },
+            ],
+          }),
         }}
       />
 
@@ -119,10 +124,14 @@ export default function UslugaNaseljePage() {
             {uslugaObj.naziv} u naselju {prikazNaselja}
           </h1>
           <p className="text-lg text-gray-700">
-            Trebate hitno {uslugaObj.naziv.toLowerCase()} u naselju {prikazNaselja}?  
-            MajstorDex Vam nudi pouzdanu uslugu sa dolaskom na adresu u roku od <strong>60–90 minuta</strong>.  
-            Radimo na celoj teritoriji {prikazNaselja}, dostupni 24/7 – pozovite sada!
+            Trebate hitno {uslugaObj.naziv.toLowerCase()} u naselju {prikazNaselja}?{" "}
+            MajstorDex Vam nudi pouzdanu uslugu sa dolaskom na adresu u roku od{" "}
+            <strong>60–90 minuta</strong>. Radimo na celoj teritoriji {prikazNaselja}.
           </p>
+
+          {lokalniOpisi[prikazNaselja] && (
+            <p className="mt-2 text-gray-600">{lokalniOpisi[prikazNaselja]}</p>
+          )}
         </div>
 
         <section className="mb-12">
@@ -139,7 +148,7 @@ export default function UslugaNaseljePage() {
               .map((u) => (
                 <li key={u.slug}>
                   <Link
-                    href={`/usluge/${u.slug}/${naselje}`}
+                    href={`/usluge/${u.slug}/${naseljeSlug}`}
                     className="block bg-gray-100 hover:bg-yellow-100 transition rounded-xl p-6 shadow text-center cursor-pointer"
                   >
                     <div className="text-2xl mb-2">{u.ikona}</div>
