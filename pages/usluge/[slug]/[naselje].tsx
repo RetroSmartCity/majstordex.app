@@ -77,7 +77,7 @@ export default function UslugaNaseljePage() {
   }
 
   const pageUrl = `https://majstordex.rs/usluge/${slug}/${naseljeSlug}`;
-  const UslugaComponent = dynamic(importFn, { ssr: false }) as ComponentType<UslugaProps>;
+ const UslugaComponent = dynamic(importFn) as ComponentType<UslugaProps>;
 
   return (
     <>
