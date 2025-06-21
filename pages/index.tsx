@@ -116,7 +116,28 @@ export default function HomePage({ posts }: { posts: { slug: string; title: stri
       {/* BENEFITI */}
       <Benefits />
 
-      {/* VIDLJIVE USLUGE - SVE */}
+      {/* AKTUELNE AKCIJE */}
+      <section className="py-10 px-4 bg-yellow-50 border-t border-b border-yellow-200">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-2xl font-bold mb-6 text-yellow-700">Sezonske Akcije</h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/usluge/pranje-klime/novi-beograd"
+              className="bg-yellow-100 text-yellow-900 border border-yellow-300 rounded px-5 py-3 font-semibold hover:bg-yellow-200 transition"
+            >
+              Akcija: Pranje klime Novi Beograd
+            </Link>
+            <Link
+              href="/usluge/pranje-klime/zvezdara"
+              className="bg-yellow-100 text-yellow-900 border border-yellow-300 rounded px-5 py-3 font-semibold hover:bg-yellow-200 transition"
+            >
+              Akcija: Pranje klime Zvezdara
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* USLUGE */}
       <section id="usluge" className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-10 text-gray-900">Usluge koje nudimo</h2>

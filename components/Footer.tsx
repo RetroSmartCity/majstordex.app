@@ -10,10 +10,12 @@ export default function Footer() {
           © {year} MajstorDex. Sva prava zadržana.
         </p>
 
-        <div className="flex gap-4 text-gray-400">
-          <Link href="/" className="hover:text-white transition">Početna</Link>
-          <Link href="/#usluge" className="hover:text-white transition">Usluge</Link>
-          <Link href="/#kontakt" className="hover:text-white transition">Kontakt</Link>
+        <div className="flex flex-col sm:flex-row items-center gap-4">
+          <div className="flex gap-4 text-gray-400 text-sm">
+            <Link href="/" className="hover:text-white transition">Početna</Link>
+            <Link href="/#usluge" className="hover:text-white transition">Usluge</Link>
+            <Link href="/#kontakt" className="hover:text-white transition">Kontakt</Link>
+          </div>
         </div>
       </div>
     </footer>

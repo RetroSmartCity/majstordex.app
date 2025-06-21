@@ -1,3 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /cdn-cgi/
+Disallow: /blog/[slug]
+
 Sitemap: https://majstordex.rs/sitemap.xml

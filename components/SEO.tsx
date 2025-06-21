@@ -57,7 +57,7 @@ export default function SEO({
 
   return (
     <Head>
-      <title>{title}</title>
+      <title>{`${title}`}</title>
       <meta name="description" content={description} />
       {keywords.length > 0 && <meta name="keywords" content={keywords.join(", ")} />}
       <meta name="author" content={author} />
@@ -86,4 +86,3 @@ export default function SEO({
     </Head>
   );
 }
-
