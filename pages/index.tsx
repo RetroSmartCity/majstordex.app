@@ -20,6 +20,21 @@ const naselja = [
   'zemun', 'cukarica', 'vozdovac', 'palilula',
   'rakovica', 'zvezdara',
 ];
+const akcije = [
+  {
+    slug: '/usluge/pranje-klime/novi-beograd',
+    title: 'Akcija: Pranje klime Novi Beograd',
+    opis: 'Specijalna ponuda za Novi Beograd: pranje, dezinfekcija i čišćenje klima uređaja. Dolazak u roku od 60–90 minuta.',
+    linkText: '➜ Pogledaj detalje akcije',
+  },
+  {
+    slug: '/usluge/pranje-klime/zvezdara',
+    title: 'Akcija: Pranje klime Zvezdara',
+    opis: 'Dubinsko pranje i dezinfekcija klima uređaja na Zvezdari uz promotivne cene. Dostupni 0-24!',
+    linkText: '➜ Pogledaj detalje akcije',
+  },
+  // ovde možeš lako da dodaš ili skineš akciju
+];
 
 function UslugaCard({ slug, icon, title, desc }: typeof usluge[number]) {
   return (
@@ -116,26 +131,33 @@ export default function HomePage({ posts }: { posts: { slug: string; title: stri
       {/* BENEFITI */}
       <Benefits />
 
-      {/* AKTUELNE AKCIJE */}
-      <section className="py-10 px-4 bg-yellow-50 border-t border-b border-yellow-200">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-6 text-yellow-700">Sezonske Akcije</h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/usluge/pranje-klime/novi-beograd"
-              className="bg-yellow-100 text-yellow-900 border border-yellow-300 rounded px-5 py-3 font-semibold hover:bg-yellow-200 transition"
-            >
-              Akcija: Pranje klime Novi Beograd
-            </Link>
-            <Link
-              href="/usluge/pranje-klime/zvezdara"
-              className="bg-yellow-100 text-yellow-900 border border-yellow-300 rounded px-5 py-3 font-semibold hover:bg-yellow-200 transition"
-            >
-              Akcija: Pranje klime Zvezdara
-            </Link>
+{/* AKTUELNE AKCIJE */}
+<section className="py-12 px-4 bg-yellow-50 border-t border-b border-yellow-200">
+  <div className="max-w-6xl mx-auto text-center">
+    <h2 className="text-3xl font-bold mb-8 text-yellow-700">Aktuelne Sezonske Akcije</h2>
+    <div className="flex flex-wrap justify-center gap-6">
+      {akcije.map((akcija) => (
+        <div key={akcija.slug} className="relative group">
+          <Link
+            href={akcija.slug}
+            className="bg-yellow-100 text-yellow-900 border border-yellow-300 rounded px-6 py-4 font-semibold text-lg hover:bg-yellow-200 transition shadow-md"
+          >
+            {akcija.title}
+          </Link>
+          <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-80 p-4 bg-white border border-yellow-200 shadow-xl rounded-xl text-sm text-gray-800 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300 z-20">
+            <p className="font-bold mb-2">{akcija.title}</p>
+            <p>{akcija.opis}</p>
+            <div className="mt-3">
+              <Link href={akcija.slug} className="text-blue-600 hover:underline text-sm font-medium">
+                {akcija.linkText}
+              </Link>
+            </div>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* USLUGE */}
       <section id="usluge" className="py-16 px-4 bg-white">
