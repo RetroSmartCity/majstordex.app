@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Head from 'next/head';
 import { getAllPosts } from '@/lib/blog';
+import SezonskeAkcije from '@/components/SezonskeAkcije';
 
 const Benefits = dynamic(() => import('@/components/Benefits'), { ssr: false });
 
@@ -20,6 +21,7 @@ const naselja = [
   'zemun', 'cukarica', 'vozdovac', 'palilula',
   'rakovica', 'zvezdara',
 ];
+
 const akcije = [
   {
     slug: '/usluge/pranje-klime/novi-beograd',
@@ -33,7 +35,6 @@ const akcije = [
     opis: 'Dubinsko pranje i dezinfekcija klima uređaja na Zvezdari uz promotivne cene. Dostupni 0-24!',
     linkText: '➜ Pogledaj detalje akcije',
   },
-  // ovde možeš lako da dodaš ili skineš akciju
 ];
 
 function UslugaCard({ slug, icon, title, desc }: typeof usluge[number]) {
@@ -41,8 +42,6 @@ function UslugaCard({ slug, icon, title, desc }: typeof usluge[number]) {
     <Link
       href={`/usluge/${slug}`}
       className="bg-gray-50 p-6 rounded-lg shadow hover:shadow-md transition block h-full"
-      aria-label={`Usluga: ${title}`}
-      tabIndex={0}
     >
       <div className="text-4xl mb-4" aria-hidden="true">{icon}</div>
       <h3 className="text-lg font-semibold mb-2">{title}</h3>
@@ -51,30 +50,8 @@ function UslugaCard({ slug, icon, title, desc }: typeof usluge[number]) {
   );
 }
 
-function BlogPreview({ posts }: { posts: { slug: string; title: string }[] }) {
-  return (
-    <section className="py-16 px-4 bg-white">
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-8 text-gray-900">Najnoviji saveti i vesti</h2>
-        <ul className="space-y-4">
-          {posts.map((post) => (
-            <li key={post.slug}>
-              <Link
-                href={`/blog/${post.slug}`}
-                className="text-blue-600 hover:underline text-lg font-medium"
-              >
-                {post.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
 export async function getStaticProps() {
-  const posts = getAllPosts().slice(0, 3); // samo prva 3 blog posta
+  const posts = getAllPosts().slice(0, 3);
   return {
     props: { posts },
   };
@@ -120,7 +97,6 @@ export default function HomePage({ posts }: { posts: { slug: string; title: stri
             <a
               href="tel:+381600500063"
               className="inline-block bg-yellow-400 text-black font-semibold py-3 px-6 rounded hover:bg-yellow-500 transition shadow-md"
-              aria-label="Pozovi Dejana na broj 0600 5000 63"
             >
               📞 Pozovi Dejana: 060 0 5000 63
             </a>
@@ -131,33 +107,8 @@ export default function HomePage({ posts }: { posts: { slug: string; title: stri
       {/* BENEFITI */}
       <Benefits />
 
-{/* AKTUELNE AKCIJE */}
-<section className="py-12 px-4 bg-yellow-50 border-t border-b border-yellow-200">
-  <div className="max-w-6xl mx-auto text-center">
-    <h2 className="text-3xl font-bold mb-8 text-yellow-700">Aktuelne Sezonske Akcije</h2>
-    <div className="flex flex-wrap justify-center gap-6">
-      {akcije.map((akcija) => (
-        <div key={akcija.slug} className="relative group">
-          <Link
-            href={akcija.slug}
-            className="bg-yellow-100 text-yellow-900 border border-yellow-300 rounded px-6 py-4 font-semibold text-lg hover:bg-yellow-200 transition shadow-md"
-          >
-            {akcija.title}
-          </Link>
-          <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-80 p-4 bg-white border border-yellow-200 shadow-xl rounded-xl text-sm text-gray-800 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300 z-20">
-            <p className="font-bold mb-2">{akcija.title}</p>
-            <p>{akcija.opis}</p>
-            <div className="mt-3">
-              <Link href={akcija.slug} className="text-blue-600 hover:underline text-sm font-medium">
-                {akcija.linkText}
-              </Link>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
+      {/* SEZONSKE AKCIJE */}
+      <SezonskeAkcije akcije={akcije} />
 
       {/* USLUGE */}
       <section id="usluge" className="py-16 px-4 bg-white">
@@ -183,7 +134,6 @@ export default function HomePage({ posts }: { posts: { slug: string; title: stri
                   key={slug}
                   href={`/${slug}`}
                   className="bg-white border border-gray-300 rounded px-4 py-2 hover:bg-gray-100 transition"
-                  aria-label={`Naselje: ${naziv}`}
                 >
                   {naziv}
                 </Link>
@@ -194,7 +144,23 @@ export default function HomePage({ posts }: { posts: { slug: string; title: stri
       </section>
 
       {/* BLOG */}
-      <BlogPreview posts={posts} />
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-8 text-gray-900">Najnoviji saveti i vesti</h2>
+          <ul className="space-y-4">
+            {posts.map((post) => (
+              <li key={post.slug}>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="text-blue-600 hover:underline text-lg font-medium"
+                >
+                  {post.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       {/* KONTAKT */}
       <section id="kontakt" className="py-16 px-4 bg-gray-50">
@@ -208,7 +174,6 @@ export default function HomePage({ posts }: { posts: { slug: string; title: stri
             <a
               href="tel:+381600500063"
               className="text-blue-600 hover:underline font-semibold"
-              aria-label="Telefon: 0600 5000 63"
             >
               060 0 5000 63
             </a>
@@ -217,7 +182,6 @@ export default function HomePage({ posts }: { posts: { slug: string; title: stri
             <a
               href="mailto:dejan@majstordex.rs"
               className="text-blue-600 hover:underline font-semibold"
-              aria-label="Pošaljite e-mail na dejan@majstordex.rs"
             >
               e-mail: dejan@majstordex.rs
             </a>
