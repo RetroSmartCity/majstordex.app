@@ -12,9 +12,18 @@ export default function Footer() {
 
         <div className="flex flex-col sm:flex-row items-center gap-4">
           <div className="flex gap-4 text-gray-400 text-sm">
-            <Link href="/" className="hover:text-white transition">Početna</Link>
-            <Link href="/#usluge" className="hover:text-white transition">Usluge</Link>
-            <Link href="/#kontakt" className="hover:text-white transition">Kontakt</Link>
+            <Link href="/" className="hover:text-white transition">
+              Početna
+            </Link>
+            <Link href="/#usluge" className="hover:text-white transition">
+              Usluge
+            </Link>
+            <Link href="/cene" className="hover:text-white transition">
+              Cene
+            </Link>
+            <Link href="/#kontakt" className="hover:text-white transition">
+              Kontakt
+            </Link>
           </div>
         </div>
       </div>

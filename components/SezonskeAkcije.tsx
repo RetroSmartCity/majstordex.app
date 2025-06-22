@@ -10,30 +10,30 @@ export default function SezonskeAkcije({
 
   return (
     <section className="py-12 px-6 bg-yellow-50 border-t border-b border-yellow-300 max-w-6xl mx-auto text-center">
-      {/* Klikabilni naslov sa animacijom */}
+      {/* Naslov sa pulse animacijom */}
       <h2
-        onClick={() => setPrikaziKartice(!prikaziKartice)}
-        className="text-3xl font-bold mb-8 text-yellow-700 select-none cursor-pointer
-          animate-pulse hover:text-yellow-900 transition-colors duration-300"
-        role="button"
-        aria-expanded={prikaziKartice}
-        tabIndex={0}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            setPrikaziKartice(!prikaziKartice);
-          }
-        }}
+        className="text-4xl font-bold mb-6 text-yellow-800 animate-pulse"
       >
         Sezonske Akcije
       </h2>
 
-      {/* Kartice se prikazuju samo ako je prikaziKartice true */}
+      {/* Dugme za prikaz/sakrivanje kartica */}
+      <button
+        type="button"
+        onClick={() => setPrikaziKartice(!prikaziKartice)}
+        className="text-lg font-semibold px-6 py-3 mb-8 bg-yellow-400 text-yellow-900 rounded shadow hover:bg-yellow-500 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-600"
+        aria-expanded={prikaziKartice}
+      >
+        {prikaziKartice ? '▲ Sakrij Akcije' : '▼ Prikaži Akcije'}
+      </button>
+
+      {/* Kartice */}
       {prikaziKartice && (
         <div className="flex flex-wrap justify-center gap-8">
           {akcije.map(({ slug, title, opis, linkText }) => (
             <div
               key={slug}
-              className="bg-yellow-100 text-yellow-900 border border-yellow-300 rounded-lg px-6 py-5 shadow-md max-w-sm w-full"
+              className="bg-yellow-100 text-yellow-900 border border-yellow-300 rounded-lg px-6 py-5 shadow-md max-w-sm w-full text-left"
             >
               <h3 className="text-lg font-semibold mb-2">
                 {title.replace(/^Akcija:\s*/, '')}

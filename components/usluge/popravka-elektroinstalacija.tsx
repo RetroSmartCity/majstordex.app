@@ -2,6 +2,8 @@
 
 import Head from "next/head";
 import Link from "next/link";
+import { cene } from "../../src/data/cene";
+
 
 export default function PopravkaElektroinstalacija() {
   return (
@@ -80,6 +82,20 @@ export default function PopravkaElektroinstalacija() {
             <li>✅ Sigurnost vašeg doma na prvom mestu</li>
           </ul>
         </section>
+
+        {/* Cena usluge */}
+<section className="bg-yellow-50 rounded-xl p-6 shadow-md mt-10 text-center">
+  <h2 className="text-2xl font-bold mb-3 text-yellow-800">Cena usluge</h2>
+  <p className="text-gray-700 mb-2 text-lg">
+    Orijentaciona cena za popravku elektroinstalacija:
+  </p>
+<p className="text-3xl font-bold text-yellow-600 mb-2">{cene.popravkaElektroinstalacija}</p>
+  <p className="text-sm text-gray-600">
+    Za preciznu cenu i termin dolaska, pozovite nas — dostupni smo 0-24!
+  </p>
+</section>
+
+
 
         {/* JSON-LD Breadcrumb */}
         <script

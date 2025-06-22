@@ -1,113 +1,114 @@
+// pages/usluge/pranje-klime.tsx
+
+import Head from "next/head";
 import Link from "next/link";
+import { cene } from "../../src/data/cene";
 
-type Props = {
-  isNaseljePage: boolean;
-  naselje: string;
-};
-
-const lokalniOpisi: Record<string, string> = {
-  "Novi Beograd":
-    "Radimo sve blokove na Novom Beogradu: Blok 21, Blok 22, Blok 23, Blok 24, Blok 29, Blok 30, Blok 45, Blok 61, Blok 62, Blok 63, Blok 64, Blok 70, Blok 72 i ostale blokove duž Jurija Gagarina, Gandijeve, Bulevara Zorana Đinđića i Omladinskih brigada.",
-  Zvezdara:
-    "Pokrivamo Zvezdaru: Đeram pijaca, Bulbulder, Mirijevo, Lion, Cvetkova pijaca, Vukov spomenik, Slavujev venac i sve okolne ulice – Bulevar kralja Aleksandra, Dimitrija Tucovića, Ruzveltova i Maksima Gorkog.",
-};
-
-export default function PranjeKlime({ isNaseljePage, naselje }: Props) {
-  const jeAkcijaNoviBeograd = isNaseljePage && naselje === "Novi Beograd";
-  const jeAkcijaZvezdara = isNaseljePage && naselje === "Zvezdara";
-
+export default function PranjeKlime() {
   return (
-    <article className="space-y-6 text-gray-800 leading-relaxed">
-      {jeAkcijaNoviBeograd && (
-        <>
-          <h2 className="text-2xl font-bold text-gray-900">
-            Akcija – Profesionalno pranje klima uređaja Novi Beograd!
-          </h2>
+    <>
+      <Head>
+        <title>Pranje klima uređaja u Beogradu | MajstorDex</title>
+        <meta
+          name="description"
+          content="Temeljno pranje i dezinfekcija klima uređaja u Beogradu. Brza usluga sa dolaskom majstora u roku od 60–90 minuta. Profesionalno čišćenje unutrašnje i spoljašnje jedinice."
+        />
+        <link rel="canonical" href="https://majstordex.rs/usluge/pranje-klime" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Pranje klima uređaja u Beogradu | MajstorDex" />
+        <meta
+          property="og:description"
+          content="Temeljno pranje i dezinfekcija klima uređaja u Beogradu. Brza usluga sa dolaskom majstora u roku od 60–90 minuta. Profesionalno čišćenje unutrašnje i spoljašnje jedinice."
+        />
+        <meta property="og:url" content="https://majstordex.rs/usluge/pranje-klime" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://majstordex.rs/og-default.jpg" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Pranje klima uređaja u Beogradu | MajstorDex" />
+        <meta
+          name="twitter:description"
+          content="Temeljno pranje i dezinfekcija klima uređaja u Beogradu. Brza usluga sa dolaskom majstora u roku od 60–90 minuta. Profesionalno čišćenje unutrašnje i spoljašnje jedinice."
+        />
+        <meta name="twitter:image" content="https://majstordex.rs/og-default.jpg" />
+      </Head>
+
+      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 text-gray-800">
+        {/* Breadcrumb */}
+        <nav aria-label="Breadcrumb" className="text-sm mb-6 text-gray-500 flex flex-wrap items-center gap-1">
+          <Link href="/" className="hover:underline text-blue-600">
+            Početna
+          </Link>
+          <span>›</span>
+          <Link href="/usluge" className="hover:underline text-blue-600">
+            Usluge
+          </Link>
+          <span>›</span>
+          <span aria-current="page" className="text-gray-800 font-semibold">
+            Pranje klima uređaja
+          </span>
+        </nav>
+
+        {/* Opis usluge */}
+        <section className="mb-12 text-lg leading-relaxed">
           <p>
-            Samo za korisnike sa teritorije <strong>Novi Beograd</strong> nudimo promotivnu cenu za{" "}
-            <strong>profesionalno dubinsko pranje i dezinfekciju unutrašnje jedinice klima uređaja</strong>.
-            Obezbedite zdrav i prijatan vazduh u vašem domu – već danas!
+            Klima uređaji koji nisu redovno čišćeni mogu postati leglo bakterija, buđi i neprijatnih mirisa.
+            Zato je važno bar jednom godišnje uraditi temeljno <strong>pranje klima uređaja</strong>.
           </p>
-        </>
-      )}
+          <p className="mt-4">
+            Naš tim iz MajstorDex Beograd vrši profesionalno <strong>pranje i dezinfekciju unutrašnje i spoljašnje jedinice</strong>, sa dolaskom u roku od 60–90 minuta na vašu adresu.
+          </p>
+          <p className="mt-4">
+            Koristimo proverena sredstva i opremu koja uklanja prašinu, masnoće, buđ, polen i alergene — kako biste udisali zdrav i svež vazduh.
+          </p>
+        </section>
 
-      {jeAkcijaZvezdara && (
-        <>
-          <h2 className="text-2xl font-bold text-gray-900">
-            Akcija – Pranje klima uređaja Zvezdara po promotivnoj ceni!
+        {/* Zašto odabrati MajstorDex */}
+        <section className="bg-yellow-50 rounded-xl p-6 shadow-md">
+          <h2 className="text-2xl font-semibold mb-4 text-center">
+            Zašto redovno prati klima uređaj?
           </h2>
-          <p>
-            Stanovnici naselja <strong>Zvezdara</strong> ostvaruju specijalne uslove za{" "}
-            <strong>temeljno čišćenje i dezinfekciju klima uređaja</strong>.
-            Očistite vašu klimu i uživajte u zdravijem, svežem vazduhu!
+          <ul className="list-disc list-inside space-y-2 text-gray-700 text-base max-w-xl mx-auto">
+            <li>✅ Uklanjanje buđi, bakterija i neprijatnih mirisa</li>
+            <li>✅ Zdraviji i svežiji vazduh u prostoru</li>
+            <li>✅ Ušteda na potrošnji struje</li>
+            <li>✅ Duži vek trajanja klima uređaja</li>
+            <li>✅ Smanjenje rizika od alergija i respiratornih tegoba</li>
+          </ul>
+        </section>
+
+        {/* Cena usluge */}
+        <section className="bg-yellow-50 rounded-xl p-6 shadow-md mt-10 text-center">
+          <h2 className="text-2xl font-bold mb-3 text-yellow-800">Cena usluge</h2>
+          <p className="text-gray-700 mb-2 text-lg">
+            Orijentaciona cena za pranje klima uređaja:
           </p>
-        </>
-      )}
+          <p className="text-3xl font-bold text-yellow-600 mb-2">
+            {cene.pranjeKlime}
+          </p>
+          <p className="text-sm text-gray-600">
+            Za preciznu cenu i termin dolaska, pozovite nas — dostupni smo 0-24!
+          </p>
+        </section>
 
-      <p>
-        {isNaseljePage ? (
-          <>
-            Ako ste iz naselja <strong>{naselje}</strong> i klima vam duva neprijatan miris, slabije hladi, ili primećujete curenje – vreme je za profesionalno{" "}
-            <strong>pranje klima uređaja</strong>.
-          </>
-        ) : (
-          <>
-            Klima vam duva neprijatan miris ili slabije hladi? Primećujete curenje ili vlagu? Vreme je za temeljno{" "}
-            <strong>pranje klima uređaja</strong>.
-          </>
-        )}{" "}
-        Tim <strong>MajstorDex Beograd</strong> koristi profesionalna sredstva i opremu koja temeljno uklanja bakterije, buđ, prašinu i naslage iz unutrašnje i spoljašnje jedinice.
-      </p>
-
-      {isNaseljePage && lokalniOpisi[naselje] && (
-        <p className="text-gray-700">
-          {lokalniOpisi[naselje]}
-        </p>
-      )}
-
-      <p>
-        <strong>Zašto je važno redovno čistiti klimu?</strong> Nepravilno održavana klima može izazvati respiratorne tegobe, naročito kod dece, starijih i osoba sa alergijama.
-        Redovnim pranjem klima uređaja obezbeđujete:
-      </p>
-
-      <ul className="list-disc list-inside">
-        <li>Čist i zdrav vazduh u prostoru</li>
-        <li>Otklanjanje neprijatnih mirisa</li>
-        <li>Zaštitu od buđi i bakterija</li>
-        <li>Produženje veka trajanja klima uređaja</li>
-        <li>Uštedu na potrošnji električne energije</li>
-      </ul>
-
-      {isNaseljePage && (
-        <p>
-          Na teritoriji naselja <strong>{naselje}</strong> dolazimo na Vašu adresu u roku od <strong>60–90 minuta</strong>.
-          Nema skrivenih troškova – radimo temeljno, detaljno i bez žurbe. <strong>Dostupni smo 24/7</strong>, čak i van standardnog radnog vremena.
-        </p>
-      )}
-
-      <p>
-        U našoj usluzi je uključeno:
-      </p>
-
-      <ul className="list-disc list-inside">
-        <li>Kompletno čišćenje i dezinfekcija unutrašnje jedinice</li>
-        <li>Pranje spoljašnje jedinice (po potrebi i dostupnosti)</li>
-        <li>Čišćenje filtera i ventilatora</li>
-        <li>Neutralisanje neprijatnih mirisa</li>
-        <li>Zaštita od buđi i alergena</li>
-      </ul>
-
-      <p>
-        <strong>Ne čekajte da klima počne da curi ili da širi neprijatne mirise –</strong>{" "}
-        zakažite pranje na vreme i obezbedite zdrav vazduh za Vašu porodicu!
-      </p>
-
-      <p>
-        👉{" "}
-        <Link href="/blog/pranje-klime" className="text-blue-600 underline hover:text-blue-800">
-          Pročitajte više o detaljnom pranju klima uređaja na našem blogu
-        </Link>
-      </p>
-    </article>
+        {/* JSON-LD Breadcrumb */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Početna", item: "https://majstordex.rs" },
+                { "@type": "ListItem", position: 2, name: "Usluge", item: "https://majstordex.rs/usluge" },
+                { "@type": "ListItem", position: 3, name: "Pranje klima uređaja", item: "https://majstordex.rs/usluge/pranje-klime" },
+              ],
+            }),
+          }}
+        />
+      </article>
+    </>
   );
 }
