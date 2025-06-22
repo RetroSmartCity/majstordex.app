@@ -85,7 +85,7 @@ export default function ZamenaOsiguracaIUticnica() {
             Orijentaciona cena za zamenu osigurača i utičnica:
           </p>
           <p className="text-3xl font-bold text-yellow-600 mb-2">
-            {cene.zamenaOsiguracaIUticnica}
+            {cene.zamenaOsiguraca}
           </p>
           <p className="text-sm text-gray-600">
             Za preciznu cenu i termin dolaska, pozovite nas — dostupni smo 0-24!
