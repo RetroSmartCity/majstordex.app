@@ -86,7 +86,7 @@ export default function Cene() {
 
           <div className="bg-yellow-50 p-6 rounded-xl shadow-md">
             <h2 className="text-2xl font-semibold mb-2 text-yellow-800">Zamena osigurača i utičnica</h2>
-            <p className="text-xl font-bold text-yellow-600">{cene.zamenaOsiguracaIUticnica}</p>
+            <p className="text-xl font-bold text-yellow-600">{cene.zamenaOsiguraca}</p>
             <p className="text-gray-700 text-sm">Ugradnja osigurača, utičnica, sigurnosne rasvete.</p>
           </div>
 
