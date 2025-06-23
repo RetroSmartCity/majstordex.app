@@ -12,7 +12,7 @@ export default function SezonskeAkcije({
     <section className="py-12 px-6 bg-yellow-50 border-t border-b border-yellow-300 max-w-6xl mx-auto text-center">
       {/* Naslov sa pulse animacijom */}
       <h2
-        className="text-4xl font-bold mb-6 text-yellow-800 animate-pulse"
+        className="text-4xl font-bold mb-6 text-gray-900 animate-pulse"
       >
         Sezonske Akcije
       </h2>
