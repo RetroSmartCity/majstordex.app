@@ -9,11 +9,11 @@ type GtagFunction = (
   command: 'config' | 'event' | 'set',
   targetId: string,
   params?: Record<string, unknown>
-) => void;
+) => void
 
 declare global {
   interface Window {
-    gtag?: GtagFunction;
+    gtag?: GtagFunction
   }
 }
 
@@ -58,7 +58,7 @@ export default function App({ Component, pageProps }: AppProps) {
     // Prati promenu rute za GA4
     router.events.on('routeChangeComplete', handleRouteChange)
 
-    // Prvi pageview na učitavanju
+    // Početni pageview na učitavanju
     sendPageview(window.location.pathname)
 
     return () => {
@@ -67,11 +67,12 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [router.events])
 
   useEffect(() => {
-    // Praćenje klikova na telefon linkove (tel:)
+    // Praćenje klikova na linkove sa tel:
     function handleClick(event: MouseEvent) {
       const target = event.target as HTMLElement
       if (!target) return
 
+      // Proveravamo da li je klik na <a href="tel:...">
       const link = target.closest('a[href^="tel:"]') as HTMLAnchorElement | null
       if (link) {
         sendEvent({
