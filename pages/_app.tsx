@@ -5,13 +5,19 @@ import { useRouter } from 'next/router'
 import Layout from '@/components/Layout'
 import '@/styles/globals.css'
 
+type GtagFunction = (
+  command: 'config' | 'event' | 'set',
+  targetId: string,
+  params?: Record<string, unknown>
+) => void;
+
 declare global {
   interface Window {
-    gtag?: (...args: any[]) => void
+    gtag?: GtagFunction;
   }
 }
 
-const GA_ID = 'G-JF0XYKPFKP' // tvoj GA4 ID
+const GA_ID = 'G-JF0XYKPFKP' // Zameni sa svojim GA4 ID
 
 function sendPageview(url: string) {
   if (window.gtag) {
@@ -21,7 +27,17 @@ function sendPageview(url: string) {
   }
 }
 
-function sendEvent({ action, category, label, value }: { action: string; category: string; label?: string; value?: number }) {
+function sendEvent({
+  action,
+  category,
+  label,
+  value,
+}: {
+  action: string
+  category: string
+  label?: string
+  value?: number
+}) {
   if (window.gtag) {
     window.gtag('event', action, {
       event_category: category,
@@ -35,38 +51,37 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
   useEffect(() => {
-    // Početni pageview
-    sendPageview(window.location.pathname)
-
-    // Prati promene rute
     const handleRouteChange = (url: string) => {
       sendPageview(url)
     }
+
+    // Prati promenu rute za GA4
     router.events.on('routeChangeComplete', handleRouteChange)
+
+    // Prvi pageview na učitavanju
+    sendPageview(window.location.pathname)
 
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange)
     }
   }, [router.events])
 
-  // Dodaj listener za klik na telefon
   useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      const target = e.target as HTMLElement
+    // Praćenje klikova na telefon linkove (tel:)
+    function handleClick(event: MouseEvent) {
+      const target = event.target as HTMLElement
       if (!target) return
 
-      // proveravamo da li je klik na <a href="tel:...">
-      if (
-        target.tagName === 'A' &&
-        target.getAttribute('href')?.startsWith('tel:')
-      ) {
+      const link = target.closest('a[href^="tel:"]') as HTMLAnchorElement | null
+      if (link) {
         sendEvent({
           action: 'click',
-          category: 'Phone',
-          label: target.getAttribute('href') ?? '',
+          category: 'Telefon',
+          label: link.href,
         })
       }
     }
+
     document.addEventListener('click', handleClick)
 
     return () => {
