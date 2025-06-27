@@ -1,13 +1,14 @@
 // pages/_app.tsx
+// pages/_app.tsx
+import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Layout from '@/components/Layout'
-import '@/styles/globals.css'
 
 declare global {
   interface Window {
-    gtag?: (...args: any[]) => void
+    gtag?: (...args: unknown[]) => void
   }
 }
 
@@ -21,22 +22,18 @@ function sendPageview(url: string) {
   }
 }
 
-function sendEvent({
-  action,
-  category,
-  label,
-  value,
-}: {
+function sendEvent(params: {
   action: string
   category: string
   label?: string
   value?: number
 }) {
   if (window.gtag) {
-    window.gtag('event', action, {
-      event_category: category,
-      event_label: label,
-      value,
+    window.gtag('event', params.action, {
+      event_category: params.category,
+      event_label: params.label,
+      value: params.value,
+      transport_type: 'beacon',
     })
   }
 }
@@ -45,21 +42,24 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
   useEffect(() => {
+    // Početni pageview
+    sendPageview(window.location.pathname)
+
+    // Praćenje promene rute
     const handleRouteChange = (url: string) => {
       sendPageview(url)
     }
 
     router.events.on('routeChangeComplete', handleRouteChange)
-    sendPageview(window.location.pathname)
-
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange)
     }
   }, [router.events])
 
+  // Praćenje klikova na linkove sa tel:
   useEffect(() => {
     function handleClick(event: MouseEvent) {
-      const target = event.target as HTMLElement
+      const target = event.target as HTMLElement | null
       if (!target) return
 
       const link = target.closest('a[href^="tel:"]') as HTMLAnchorElement | null
@@ -71,9 +71,7 @@ export default function App({ Component, pageProps }: AppProps) {
         })
       }
     }
-
     document.addEventListener('click', handleClick)
-
     return () => {
       document.removeEventListener('click', handleClick)
     }
