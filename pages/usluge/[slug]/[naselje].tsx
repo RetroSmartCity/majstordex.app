@@ -77,14 +77,14 @@ export default function UslugaNaseljePage() {
   }
 
   const pageUrl = `https://majstordex.rs/usluge/${slug}/${naseljeSlug}`;
- const UslugaComponent = dynamic(importFn) as ComponentType<UslugaProps>;
+  const UslugaComponent = dynamic(importFn) as ComponentType<UslugaProps>;
 
   return (
     <>
       <SEO
         title={pageTitle}
         description={pageDescription}
-        url={pageUrl}
+        url={pageUrl}      // OVO je VAŽNO: canonical URL ide u SEO komponentu
         image="/og-default.jpg"
       />
 
