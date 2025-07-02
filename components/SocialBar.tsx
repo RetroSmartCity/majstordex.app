@@ -7,7 +7,7 @@ export default function SocialBar() {
       <div className="max-w-7xl mx-auto px-4 flex justify-center gap-6 flex-wrap">
         {/* Facebook */}
         <a
-          href="https://www.facebook.com/yourpage"
+          href="https://www.facebook.com/profile.php?id=61577814248884"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Facebook"
