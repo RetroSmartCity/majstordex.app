@@ -5,7 +5,14 @@ import { NextApiRequest, NextApiResponse } from "next";
 const hostname = "https://majstordex.rs";
 const today = new Date().toISOString().split("T")[0];
 
-// Definiši naselja Beograda za lokalizaciju
+// Tip za URL u sitemapu
+type SitemapUrl = {
+  loc: string;
+  lastmod?: string;
+  priority?: string;
+  changefreq?: string;
+};
+
 const naselja = [
   "stari-grad",
   "savski-venac",
@@ -19,7 +26,6 @@ const naselja = [
   "zvezdara",
 ];
 
-// Definiši usluge sa slugovima (mora da se poklapa sa tvojim URL šemama)
 const usluge = [
   "servis-bojlera",
   "pranje-klime",
@@ -29,12 +35,10 @@ const usluge = [
   "hitne-intervencije",
 ];
 
-// Putanja do blog foldera
 const blogDirectory = path.join(process.cwd(), "components/blog");
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  // Učitaj blog fajlove (.md i .mdx)
-  const blogSlugs = fs
+  const blogSlugs: string[] = fs
     .readdirSync(blogDirectory)
     .filter((file) => file.endsWith(".md") || file.endsWith(".mdx"))
     .map((file) =>
@@ -46,8 +50,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         .toLowerCase()
     );
 
-  // Staticni URL-ovi (početna, usluge bez naselja)
-  const staticUrls = [
+  const staticUrls: SitemapUrl[] = [
     {
       loc: hostname,
       lastmod: today,
@@ -60,7 +63,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       priority: "0.7",
       changefreq: "weekly",
     },
-    // Glavne usluge bez naselja
     ...usluge.map((usluga) => ({
       loc: `${hostname}/usluge/${usluga}`,
       lastmod: today,
@@ -68,8 +70,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     })),
   ];
 
-  // Dinamički URL-ovi za usluge + naselja
-  const uslugeNaseljaUrls = usluge.flatMap((usluga) =>
+  const uslugeNaseljaUrls: SitemapUrl[] = usluge.flatMap((usluga) =>
     naselja.map((naselje) => ({
       loc: `${hostname}/usluge/${usluga}/${naselje}`,
       lastmod: today,
@@ -77,18 +78,15 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     }))
   );
 
-  // Blog URL-ovi iz fajlova
-  const blogUrls = blogSlugs.map((slug) => ({
+  const blogUrls: SitemapUrl[] = blogSlugs.map((slug) => ({
     loc: `${hostname}/blog/${slug}`,
     lastmod: today,
     priority: "0.6",
     changefreq: "monthly",
   }));
 
-  // Spojimo sve URL-ove u jedan niz
   const allUrls = [...staticUrls, ...uslugeNaseljaUrls, ...blogUrls];
 
-  // Generišemo XML sitemap string
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -114,4 +112,3 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   res.setHeader("Content-Type", "application/xml");
   res.status(200).send(sitemap);
 }
-
