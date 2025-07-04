@@ -1,7 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Ne dodaj "experimental.legacyBrowsers" jer nije podržano u Next.js 15
-}
 
-module.exports = nextConfig
+  async rewrites() {
+    return [
+      {
+        source: "/sitemap.xml",
+        destination: "/api/sitemap",
+      },
+    ];
+  },
+};
+
+module.exports = nextConfig;
