@@ -1,8 +1,9 @@
 import { ReactNode, useEffect, useState } from 'react';
+import Head from 'next/head';
 import Header from './Header';
 import Footer from './Footer';
 import { Phone } from 'lucide-react';
-import SocialBar from './SocialBar'; // Dodajemo SocialBar
+import SocialBar from './SocialBar';
 
 type LayoutProps = {
   children: ReactNode;
@@ -24,11 +25,20 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-black">
+      <Head>
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="MajstorDex Blog RSS"
+          href="/rss.xml"
+        />
+      </Head>
+
       <Header />
       <main className="flex-1 w-full">{children}</main>
-      
-      <SocialBar /> {/* Dodajemo ispod main, iznad Footer */}
-      
+
+      <SocialBar />
+
       <Footer />
 
       {showButton && (

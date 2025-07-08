@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import { getAllPosts } from '@/lib/blog';
 import SezonskeAkcije from '@/components/SezonskeAkcije';
 
@@ -60,14 +60,18 @@ export async function getStaticProps() {
 export default function HomePage({ posts }: { posts: { slug: string; title: string }[] }) {
   return (
     <>
-      <Head>
-        <title>Majstor Dex - Hitne Elektro Intervencije 24/7 Beograd</title>
-        <meta
-          name="description"
-          content="Majstor Dex – Brze elektro intervencije u Beogradu. Dolazak za 60-90 minuta. Servis bojlera, klima, TA peći, utičnica i još mnogo toga. Dostupni 0-24!"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      {/* SEO META */}
+      <SEO
+        title="Majstor Dex - Hitne Elektro Intervencije 24/7 Beograd"
+        description="Brze elektro intervencije u Beogradu. Dolazak za 60-90 minuta. Servis bojlera, klima, TA peći, utičnica i još mnogo toga. Dostupni 0-24!"
+        url="https://majstordex.rs"
+        image="https://majstordex.rs/images/pozadinaHero.jpg"
+        keywords={[
+          'majstordex', 'majstor dex', 'dex majstor', 'električar beograd',
+          'hitne intervencije', 'servis bojlera', 'pranje klime',
+          'popravka elektroinstalacija', 'zamena osigurača', 'majstor hitno'
+        ]}
+      />
 
       {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
