@@ -63,7 +63,7 @@ export default function HomePage({ posts }: { posts: { slug: string; title: stri
       {/* SEO META */}
       <SEO
         title="Majstor Dex - Hitne Elektro Intervencije 24/7 Beograd"
-        description="Brze elektro intervencije u Beogradu. Dolazak za 60-90 minuta. Servis bojlera, klima, TA peći, utičnica i još mnogo toga. Dostupni 0-24!"
+        description="Majstor Dex (poznat i kao Majstordex i Dex Majstor) – brze elektro intervencije u Beogradu. Dolazak za 60-90 minuta. Servis bojlera, klima, TA peći, utičnica i još mnogo toga. Dostupni 0-24!"
         url="https://majstordex.rs"
         image="https://majstordex.rs/images/pozadinaHero.jpg"
         keywords={[

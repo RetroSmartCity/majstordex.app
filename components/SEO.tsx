@@ -8,7 +8,7 @@ type Props = {
   siteName?: string;
   author?: string;
   publishedTime?: string; // ISO format: '2023-06-01T12:00:00Z'
-  modifiedTime?: string;  // ISO format
+  modifiedTime?: string;
   keywords?: string[];
 };
 
@@ -24,6 +24,9 @@ export default function SEO({
   keywords = [],
 }: Props) {
   const isArticle = !!publishedTime;
+
+  const synonymKeywords = ['MajstorDex', 'Majstor Dex', 'Dex Majstor'];
+  const allKeywords = Array.from(new Set([...keywords, ...synonymKeywords]));
 
   const jsonLd = isArticle
     ? {
@@ -50,19 +53,21 @@ export default function SEO({
           '@type': 'WebPage',
           '@id': url,
         },
+        alternateName: synonymKeywords,
       }
     : {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
         name: siteName,
         url,
+        alternateName: synonymKeywords,
       };
 
   return (
     <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
-      {keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
+      {allKeywords.length > 0 && <meta name="keywords" content={allKeywords.join(', ')} />}
       <meta name="author" content={author} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="robots" content="index, follow" />
@@ -76,13 +81,23 @@ export default function SEO({
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
       <meta property="og:site_name" content={siteName} />
-      {image && <meta property="og:image" content={image} />}
+      {image && (
+        <>
+          <meta property="og:image" content={image} />
+          <meta property="og:image:alt" content="Majstor Dex - Elektro intervencije 24/7 u Beogradu" />
+        </>
+      )}
 
       {/* Twitter */}
       <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      {image && <meta name="twitter:image" content={image} />}
+      {image && (
+        <>
+          <meta name="twitter:image" content={image} />
+          <meta name="twitter:image:alt" content="Majstor Dex - Hitne elektro usluge" />
+        </>
+      )}
       <meta name="twitter:creator" content={`@${author.replace(/\s/g, '')}`} />
 
       {/* Structured Data */}
