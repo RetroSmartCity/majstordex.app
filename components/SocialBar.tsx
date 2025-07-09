@@ -18,7 +18,7 @@ export default function SocialBar() {
 
         {/* Instagram */}
         <a
-          href="https://www.instagram.com/yourpage"
+          href="https://www.instagram.com/majstordex.rs/"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Instagram"
