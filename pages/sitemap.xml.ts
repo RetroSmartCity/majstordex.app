@@ -1,17 +1,10 @@
+// pages/sitemap.xml.ts
 import fs from "fs";
 import path from "path";
-import { NextApiRequest, NextApiResponse } from "next";
+import { GetServerSideProps } from "next";
 
 const hostname = "https://majstordex.rs";
 const today = new Date().toISOString().split("T")[0];
-
-// Tip za URL u sitemapu
-type SitemapUrl = {
-  loc: string;
-  lastmod?: string;
-  priority?: string;
-  changefreq?: string;
-};
 
 const naselja = [
   "stari-grad",
@@ -35,11 +28,10 @@ const usluge = [
   "hitne-intervencije",
 ];
 
-const blogDirectory = path.join(process.cwd(), "components/blog");
-
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+  const blogDir = path.join(process.cwd(), "components/blog");
   const blogSlugs: string[] = fs
-    .readdirSync(blogDirectory)
+    .readdirSync(blogDir)
     .filter((file) => file.endsWith(".md") || file.endsWith(".mdx"))
     .map((file) =>
       file
@@ -50,65 +42,46 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         .toLowerCase()
     );
 
-  const staticUrls: SitemapUrl[] = [
-    {
-      loc: hostname,
-      lastmod: today,
-      priority: "0.7",
-      changefreq: "weekly",
-    },
-    {
-      loc: `${hostname}/usluge`,
-      lastmod: today,
-      priority: "0.7",
-      changefreq: "weekly",
-    },
-    ...usluge.map((usluga) => ({
-      loc: `${hostname}/usluge/${usluga}`,
-      lastmod: today,
+  const urls = [
+    { loc: hostname, priority: "1.0" },
+    { loc: `${hostname}/usluge`, priority: "0.8" },
+    ...usluge.map((slug) => ({
+      loc: `${hostname}/usluge/${slug}`,
       priority: "0.8",
+    })),
+    ...usluge.flatMap((u) =>
+      naselja.map((n) => ({
+        loc: `${hostname}/usluge/${u}/${n}`,
+        priority: "0.7",
+      }))
+    ),
+    ...blogSlugs.map((slug) => ({
+      loc: `${hostname}/blog/${slug}`,
+      priority: "0.6",
     })),
   ];
 
-  const uslugeNaseljaUrls: SitemapUrl[] = usluge.flatMap((usluga) =>
-    naselja.map((naselje) => ({
-      loc: `${hostname}/usluge/${usluga}/${naselje}`,
-      lastmod: today,
-      priority: "0.7",
-    }))
-  );
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${urls
+      .map(
+        ({ loc, priority }) => `
+      <url>
+        <loc>${loc}</loc>
+        <lastmod>${today}</lastmod>
+        <priority>${priority}</priority>
+      </url>`
+      )
+      .join("")}
+  </urlset>`;
 
-  const blogUrls: SitemapUrl[] = blogSlugs.map((slug) => ({
-    loc: `${hostname}/blog/${slug}`,
-    lastmod: today,
-    priority: "0.6",
-    changefreq: "monthly",
-  }));
+  res.setHeader("Content-Type", "text/xml");
+  res.write(xml);
+  res.end();
 
-  const allUrls = [...staticUrls, ...uslugeNaseljaUrls, ...blogUrls];
+  return { props: {} };
+};
 
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml"
-  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-  xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
-  xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
-  xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
->
-  ${allUrls
-    .map(
-      ({ loc, lastmod, priority, changefreq }) => `
-  <url>
-    <loc>${loc}</loc>
-    ${lastmod ? `<lastmod>${lastmod}</lastmod>` : ""}
-    ${changefreq ? `<changefreq>${changefreq}</changefreq>` : ""}
-    ${priority ? `<priority>${priority}</priority>` : ""}
-  </url>`
-    )
-    .join("")}
-</urlset>`;
-
-  res.setHeader("Content-Type", "application/xml");
-  res.status(200).send(sitemap);
+export default function SitemapXml() {
+  return null;
 }
