@@ -1,6 +1,7 @@
+// pages/_document.tsx
 import { Html, Head, Main, NextScript } from 'next/document';
 
-const GA_ID = 'G-JF0XYKPFKP';
+const GA_ID = 'G-JF0XYKPFKP'; // Zameni sa svojim GA4 ID-em
 
 export default function Document() {
   return (
@@ -14,14 +15,16 @@ export default function Document() {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', '${GA_ID}');
+              gtag('config', '${GA_ID}', {
+                page_path: window.location.pathname,
+              });
             `,
           }}
         />
 
         {/* Manifest i ikone */}
         <link rel="manifest" href="/site.webmanifest" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

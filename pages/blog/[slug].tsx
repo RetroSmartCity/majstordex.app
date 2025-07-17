@@ -1,57 +1,104 @@
-import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
-import { getPostBySlug, getAllPosts } from '@/lib/blog';
-import { remark } from 'remark';
-import html from 'remark-html';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { serialize } from 'next-mdx-remote/serialize';
+import BlogImage from '@/components/BlogImage';
+import Head from 'next/head';
 
-type BlogPost = {
+const postsDirectory = path.join(process.cwd(), 'posts');
+
+type FrontMatter = {
   title: string;
-  slug: string;
-  content: string;
-  contentHtml: string;
+  excerpt?: string;
 };
 
-type PostPageProps = {
-  post: BlogPost;
+type PostProps = {
+  source: MDXRemoteSerializeResult;
+  frontMatter: FrontMatter;
 };
 
-export default function Post({ post }: PostPageProps) {
+const components = {
+  BlogImage,
+};
+
+export default function PostPage({ source, frontMatter }: PostProps) {
   return (
-    <div className="max-w-2xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-2">{post.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
-    </div>
+    <>
+      <Head>
+        <title>{frontMatter.title ?? 'Blog post'}</title>
+        <meta
+          name="description"
+          content={frontMatter.excerpt ?? 'MajstorDex blog post o elektro uslugama u Beogradu'}
+        />
+        <meta name="robots" content="index, follow" />
+      </Head>
+
+      <main className="max-w-3xl mx-auto px-4 py-12">
+        <h1 className="text-4xl font-bold mb-4 text-center text-gray-900 dark:text-white">
+          {frontMatter.title ?? 'Naslov nije dostupan'}
+        </h1>
+
+        {frontMatter.excerpt && (
+          <p className="text-lg text-center text-gray-600 dark:text-gray-300 mb-8">
+            {frontMatter.excerpt}
+          </p>
+        )}
+
+        <article className="prose prose-neutral dark:prose-invert max-w-none">
+          <MDXRemote {...source} components={components} />
+        </article>
+      </main>
+    </>
   );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = getAllPosts();
-  const paths = posts.map((post: { slug: string }) => ({
-    params: { slug: post.slug },
+  const filenames = fs.readdirSync(postsDirectory).filter((name) => name.endsWith('.mdx'));
+
+  const paths = filenames.map((filename) => ({
+    params: {
+      slug: filename.replace(/\.mdx$/, ''),
+    },
   }));
 
-  return { paths, fallback: false };
+  return {
+    paths,
+    fallback: false,
+  };
 };
 
-export const getStaticProps: GetStaticProps<PostPageProps> = async (
-  context: GetStaticPropsContext
-) => {
-  const { params } = context;
+export const getStaticProps: GetStaticProps<PostProps> = async (context) => {
+  const slug = context.params?.slug;
 
-  if (!params || typeof params.slug !== 'string') {
-    return { notFound: true };
+  if (!slug || Array.isArray(slug)) {
+    return {
+      notFound: true,
+    };
   }
 
-  const post = getPostBySlug(params.slug);
+  const fullPath = path.join(postsDirectory, `${slug}.mdx`);
+  if (!fs.existsSync(fullPath)) {
+    return {
+      notFound: true,
+    };
+  }
 
-  const processedContent = await remark().use(html).process(post.content);
-  const contentHtml = processedContent.toString();
+  const fileContents = fs.readFileSync(fullPath, 'utf-8');
+
+  const { data: frontMatter, content } = matter(fileContents);
+
+  if (!frontMatter.title) {
+    frontMatter.title = 'Naslov nije dostupan';
+  }
+
+  const mdxSource = await serialize(content, { scope: frontMatter });
 
   return {
     props: {
-      post: {
-        ...post,
-        contentHtml,
-      },
+      source: mdxSource,
+      frontMatter: frontMatter as FrontMatter,
     },
   };
 };
