@@ -1,3 +1,5 @@
+// pages/blog/[slug].tsx
+
 import { GetStaticPaths, GetStaticProps } from 'next';
 import fs from 'fs';
 import path from 'path';
@@ -24,25 +26,36 @@ const components = {
 };
 
 export default function PostPage({ source, frontMatter }: PostProps) {
+  const title = frontMatter.title || 'Naslov nije dostupan';
+  const excerpt =
+    frontMatter.excerpt ||
+    'MajstorDex blog post o elektro uslugama u Beogradu. Saznajte više o servisima i stručnim savetima.';
+
   return (
     <>
       <Head>
-        <title>{frontMatter.title ?? 'Blog post'}</title>
-        <meta
-          name="description"
-          content={frontMatter.excerpt ?? 'MajstorDex blog post o elektro uslugama u Beogradu'}
-        />
+        <title>{title}</title>
+        <meta name="description" content={excerpt} />
         <meta name="robots" content="index, follow" />
+
+        {/* Social meta */}
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={excerpt} />
       </Head>
 
       <main className="max-w-3xl mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold mb-4 text-center text-gray-900 dark:text-white">
-          {frontMatter.title ?? 'Naslov nije dostupan'}
+        {/* Optional breadcrumb */}
+        {/* <div className="text-sm text-gray-500 mb-4">
+          <a href="/blog" className="hover:underline">← Nazad na blog</a>
+        </div> */}
+
+        <h1 className="text-4xl sm:text-5xl font-bold text-center text-gray-900 dark:text-white mb-6">
+          {title}
         </h1>
 
-        {frontMatter.excerpt && (
-          <p className="text-lg text-center text-gray-600 dark:text-gray-300 mb-8">
-            {frontMatter.excerpt}
+        {excerpt && (
+          <p className="text-lg sm:text-xl text-center text-gray-700 dark:text-gray-300 mb-10">
+            {excerpt}
           </p>
         )}
 
@@ -85,15 +98,12 @@ export const getStaticProps: GetStaticProps<PostProps> = async (context) => {
     };
   }
 
-  const fileContents = fs.readFileSync(fullPath, 'utf-8');
-
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data: frontMatter, content } = matter(fileContents);
 
-  if (!frontMatter.title) {
-    frontMatter.title = 'Naslov nije dostupan';
-  }
-
-  const mdxSource = await serialize(content, { scope: frontMatter });
+  const mdxSource = await serialize(content, {
+    scope: frontMatter,
+  });
 
   return {
     props: {
