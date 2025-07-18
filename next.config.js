@@ -1,4 +1,3 @@
-// next.config.js
 const withMDX = require('@next/mdx')({
   extension: /\.(md|mdx)$/,
   options: {
@@ -11,26 +10,23 @@ const withMDX = require('@next/mdx')({
 const nextConfig = {
   reactStrictMode: true,
 
-  // Dodatni rewrites (npr. sitemap)
   async rewrites() {
     return [
       {
         source: '/sitemap.xml',
-        destination: '/api/sitemap',
+        destination: '/api/sitemap', // podrazumeva da postoji pages/api/sitemap.ts
       },
       {
         source: '/rss.xml',
-        destination: '/api/rss',
+        destination: '/api/rss', // destination *ne sme* imati .xml
       },
     ];
   },
 
-  // Omogući MD/MDX + default Next ekstenzije
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
 
-  // Buduće opcije ako budeš dodavao slike, i18n itd.
   experimental: {
-    mdxRs: true, // ako koristiš novi Rust-based MDX parser (nije obavezno)
+    mdxRs: true,
   },
 };
 
