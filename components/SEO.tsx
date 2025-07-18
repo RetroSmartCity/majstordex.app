@@ -7,9 +7,10 @@ type Props = {
   image?: string;
   siteName?: string;
   author?: string;
-  publishedTime?: string; // ISO format: '2023-06-01T12:00:00Z'
+  publishedTime?: string;
   modifiedTime?: string;
   keywords?: string[];
+  fbAppId?: string; // opcionalno, za Facebook Insights
 };
 
 export default function SEO({
@@ -22,6 +23,7 @@ export default function SEO({
   publishedTime,
   modifiedTime,
   keywords = [],
+  fbAppId,
 }: Props) {
   const isArticle = !!publishedTime;
 
@@ -34,7 +36,7 @@ export default function SEO({
         '@type': 'Article',
         headline: title,
         description,
-        image: image ? [image] : undefined,
+        image: [image],
         author: {
           '@type': 'Organization',
           name: author,
@@ -74,7 +76,7 @@ export default function SEO({
       <link rel="canonical" href={url} />
       <link rel="alternate" type="application/rss+xml" title="MajstorDex RSS" href="/rss.xml" />
 
-      {/* Open Graph */}
+      {/* Open Graph / Facebook */}
       <meta property="og:type" content={isArticle ? 'article' : 'website'} />
       <meta property="og:locale" content="sr_RS" />
       <meta property="og:title" content={title} />
@@ -85,11 +87,15 @@ export default function SEO({
         <>
           <meta property="og:image" content={image} />
           <meta property="og:image:alt" content="Majstor Dex - Elektro intervencije 24/7 u Beogradu" />
+          <meta property="og:image:type" content="image/jpeg" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
         </>
       )}
+      {fbAppId && <meta property="fb:app_id" content={fbAppId} />}
 
       {/* Twitter */}
-      <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       {image && (
@@ -98,13 +104,11 @@ export default function SEO({
           <meta name="twitter:image:alt" content="Majstor Dex - Hitne elektro usluge" />
         </>
       )}
-      <meta name="twitter:creator" content={`@${author.replace(/\s/g, '')}`} />
+      <meta name="twitter:site" content="@MajstorDex" />
+      <meta name="twitter:creator" content="@MajstorDex" />
 
       {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </Head>
   );
 }
