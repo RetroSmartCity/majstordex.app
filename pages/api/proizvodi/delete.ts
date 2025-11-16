@@ -1,5 +1,6 @@
+
 import type { NextApiRequest, NextApiResponse } from "next";
-import { supabase } from "@/lib/supabaseClient";
+import { supabaseAdmin } from "@/lib/supabaseAdmin";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "DELETE") {
@@ -7,14 +8,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const { id } = req.body;
-  if (!id) return res.status(400).json({ error: "ID proizvoda je obavezan" });
 
-  const { error } = await supabase.from("proizvodi").delete().eq("id", id);
+  if (!id) return res.status(400).json({ error: "Missing ID" });
 
-  if (error) {
-    console.error("Greška pri brisanju proizvoda:", error);
-    return res.status(500).json({ error: error.message });
-  }
+  const { error } = await supabaseAdmin.from("proizvodi").delete().eq("id", id);
 
-  res.status(200).json({ message: "Proizvod uspešno obrisan" });
+  if (error) return res.status(500).json({ error: error.message });
+
+  return res.status(200).json({ message: "OK" });
 }
