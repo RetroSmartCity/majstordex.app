@@ -1,3 +1,4 @@
+"use client";
 import { ReactNode, useEffect, useState } from 'react';
 import Head from 'next/head';
 import Header from './Header';
