@@ -145,7 +145,7 @@ export default function HomePage({ posts }) {
 
   {/* POZADINA */}
   <Image
-    src="/images/pozadinaHero.jpg"
+    src="/images/pozadinaHero.webp"
     alt="MajstorDex - elektro usluge"
     fill
     className="object-cover object-center"
