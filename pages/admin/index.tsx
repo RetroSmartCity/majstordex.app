@@ -1,14 +1,10 @@
-import { GetServerSideProps } from "next";
+"use client";
 
-export default function Admin() {
-  return null;
-}
+import dynamic from "next/dynamic";
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  return {
-    redirect: {
-      destination: "/admin-client",
-      permanent: false,
-    },
-  };
-};
+const AdminPage = dynamic(
+  () => import("@/components/admin/AdminClientOnly"),
+  { ssr: false }
+);
+
+export default AdminPage;
