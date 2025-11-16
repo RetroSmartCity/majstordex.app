@@ -1,13 +1,48 @@
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 
 const usluge = [
-  { slug: "servis-bojlera", naziv: "Servis bojlera", ikona: "🚿" },
-  { slug: "pranje-klime", naziv: "Pranje klima uređaja", ikona: "🧊" },
-  { slug: "popravka-ta-peci", naziv: "Popravka TA peći", ikona: "🔥" },
-  { slug: "popravka-elektroinstalacija", naziv: "Popravka elektroinstalacija", ikona: "💡" },
-  { slug: "zamena-osiguraca-i-uticnica", naziv: "Zamena osigurača i utičnica", ikona: "🔌" },
-  { slug: "hitne-intervencije", naziv: "Hitne intervencije 0-24", ikona: "🔧" },
+  {
+    slug: "adaptacija-stana",
+    naziv: "Kompletna adaptacija stana - Ključ u ruke",
+    slika: "/images/adaptacija-stanova.webp",
+  },
+  {
+    slug: "led-rasveta",
+    naziv: "LED rasveta - prodaja i ugradnja",
+    slika: "/images/led-rasveta.webp",
+  },
+  {
+    slug: "servis-bojlera",
+    naziv: "Servis bojlera",
+    slika: "/images/servis-bojlera.webp",
+  },
+  {
+    slug: "pranje-klime",
+    naziv: "Pranje klima uređaja",
+    slika: "/images/ciscenje-klima.webp",
+  },
+  {
+    slug: "popravka-ta-peci",
+    naziv: "Popravka TA peći",
+    slika: "/images/popravka-ta-peci.webp",
+  },
+  {
+    slug: "popravka-elektroinstalacija",
+    naziv: "Popravka elektroinstalacija",
+    slika: "/images/popravka-elektroinstalacija.webp",
+  },
+  {
+    slug: "zamena-osiguraca-i-uticnica",
+    naziv: "Zamena osigurača i utičnica",
+    slika: "/images/zamena-osigraca-i-uticnica.webp",
+  },
+  {
+    slug: "hitne-intervencije",
+    naziv: "Hitne intervencije 0-24",
+    slika: "/images/hitne-intervencije.webp",
+  },
 ];
 
 export default function UslugeIndex() {
@@ -15,55 +50,42 @@ export default function UslugeIndex() {
     <>
       <Head>
         <title>Usluge | MajstorDex</title>
-        <meta name="description" content="Izaberite uslugu koju nudimo u Beogradu." />
+        <meta
+          name="description"
+          content="MajstorDex – sve elektro i adaptacione usluge u Beogradu. Hitne intervencije, servis bojlera, klima, LED rasveta i još mnogo toga. 24/7 dostupnost."
+        />
       </Head>
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 text-gray-800">
-        <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center">Usluge</h1>
+      <main className="max-w-6xl mx-auto px-4 py-12">
+        <h1 className="text-4xl font-bold text-center mb-12">
+          Usluge koje nudimo
+        </h1>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-xl mx-auto mb-16">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {usluge.map((u) => (
-            <li key={u.slug}>
+            <li key={u.slug} className="flex justify-center">
               <Link
                 href={`/usluge/${u.slug}`}
-                className="block bg-gray-100 hover:bg-yellow-100 transition rounded-xl p-6 shadow text-center cursor-pointer"
+                className="block bg-gray-50 hover:bg-yellow-50 transition rounded-xl p-4 shadow text-center w-full"
               >
-                <div className="text-4xl mb-3">{u.ikona}</div>
+
+                {/* Slika bez sečenja */}
+                <div className="relative w-full mb-4 rounded-xl overflow-hidden bg-white shadow">
+                  <Image
+                    src={u.slika}
+                    alt={u.naziv}
+                    width={1600}
+                    height={900}
+                    className="object-contain w-full h-auto rounded-xl"
+                    priority={u.slug === "adaptacija-stana"}
+                  />
+                </div>
+
                 <p className="font-semibold text-lg">{u.naziv}</p>
               </Link>
             </li>
           ))}
         </ul>
-
-        <section className="max-w-xl mx-auto bg-yellow-50 rounded-xl p-6 mb-16 shadow-md text-center">
-          <h2 className="text-2xl font-bold mb-4">Zašto izabrati MajstorDex?</h2>
-          <ul className="text-left list-disc list-inside space-y-2 text-gray-700">
-            <li>Brz i pouzdan dolazak na teren (60-90 minuta)</li>
-            <li>Iskusni i licencirani majstori</li>
-            <li>Dostupnost 24/7, radimo i vikendom</li>
-            <li>Transparentne cene bez skrivenih troškova</li>
-            <li>Garancija kvaliteta na sve usluge</li>
-          </ul>
-        </section>
-
-        <section className="max-w-xl mx-auto text-center mb-16">
-          <h2 className="text-2xl font-bold mb-4">Kontakt</h2>
-          <p className="mb-4 text-gray-700">
-            Pozovite nas ili pošaljite poruku u bilo koje doba – dostupni smo 24/7!
-          </p>
-          <p className="text-lg mb-2">
-            📞{" "}
-            <a href="tel:+38160500063" className="text-blue-600 font-semibold hover:underline">
-              060 0 5000 63
-            </a>
-          </p>
-          <p className="text-lg">
-            ✉️{" "}
-            <a href="mailto:dejan@majstordex.rs" className="text-blue-600 font-semibold hover:underline">
-              dejan@majstordex.rs
-            </a>
-          </p>
-        </section>
       </main>
     </>
   );

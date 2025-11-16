@@ -2,8 +2,11 @@ User-agent: *
 Disallow: /cdn-cgi/
 
 User-agent: AhrefsBot
-Disallow: /
+# Dozvoljeno za sve regularne pretraživače
+User-agent: *
+Allow: /
 
+# Blokirani poznati spam i scraping botovi
 User-agent: SemrushBot
 Disallow: /
 
@@ -40,5 +43,5 @@ Disallow: /
 User-agent: Twitterbot
 Disallow: /
 
+# Link ka sitemap fajlu
 Sitemap: https://majstordex.rs/sitemap.xml
-

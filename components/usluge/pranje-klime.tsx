@@ -2,6 +2,7 @@
 
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import { cene } from "../../src/data/cene";
 
 export default function PranjeKlime() {
@@ -19,36 +20,34 @@ export default function PranjeKlime() {
         <meta property="og:title" content="Pranje klima uređaja u Beogradu | MajstorDex" />
         <meta
           property="og:description"
-          content="Temeljno pranje i dezinfekcija klima uređaja u Beogradu. Brza usluga sa dolaskom majstora u roku od 60–90 minuta. Profesionalno čišćenje unutrašnje i spoljašnje jedinice."
+          content="Temeljno pranje i dezinfekcija klima uređaja u Beogradu. Brza usluga sa dolaskom majstora u roku od 60–90 minuta."
         />
         <meta property="og:url" content="https://majstordex.rs/usluge/pranje-klime" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://majstordex.rs/og-default.jpg" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Pranje klima uređaja u Beogradu | MajstorDex" />
-        <meta
-          name="twitter:description"
-          content="Temeljno pranje i dezinfekcija klima uređaja u Beogradu. Brza usluga sa dolaskom majstora u roku od 60–90 minuta. Profesionalno čišćenje unutrašnje i spoljašnje jedinice."
-        />
-        <meta name="twitter:image" content="https://majstordex.rs/og-default.jpg" />
+        <meta property="og:image" content="https://majstordex.rs/images/pranje-klime.webp" />
       </Head>
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 text-gray-800">
+
+        {/* HERO SLIKA */}
+        <div className="w-full rounded-xl overflow-hidden bg-white shadow mb-10">
+          <Image
+            src="/images/ciscenje-klima.webp"
+            alt="Pranje klima uređaja"
+            width={1600}
+            height={900}
+            className="object-contain w-full h-auto"
+            priority
+          />
+        </div>
+
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="text-sm mb-6 text-gray-500 flex flex-wrap items-center gap-1">
-          <Link href="/" className="hover:underline text-blue-600">
-            Početna
-          </Link>
+          <Link href="/" className="hover:underline text-blue-600">Početna</Link>
           <span>›</span>
-          <Link href="/usluge" className="hover:underline text-blue-600">
-            Usluge
-          </Link>
+          <Link href="/usluge" className="hover:underline text-blue-600">Usluge</Link>
           <span>›</span>
-          <span aria-current="page" className="text-gray-800 font-semibold">
-            Pranje klima uređaja
-          </span>
+          <span aria-current="page" className="text-gray-800 font-semibold">Pranje klima uređaja</span>
         </nav>
 
         {/* Opis usluge */}
@@ -57,9 +56,14 @@ export default function PranjeKlime() {
             Klima uređaji koji nisu redovno čišćeni mogu postati leglo bakterija, buđi i neprijatnih mirisa.
             Zato je važno bar jednom godišnje uraditi temeljno <strong>pranje klima uređaja</strong>.
           </p>
+
           <p className="mt-4">
-            Naš tim iz MajstorDex Beograd vrši profesionalno <strong>pranje i dezinfekciju unutrašnje i spoljašnje jedinice</strong>, sa dolaskom u roku od 60–90 minuta na vašu adresu.
+            Naš tim iz MajstorDex Beograd vrši profesionalno
+            {" "}
+            <strong>pranje i dezinfekciju unutrašnje i spoljašnje jedinice</strong>,
+            sa dolaskom u roku od 60–90 minuta na vašu adresu.
           </p>
+
           <p className="mt-4">
             Koristimo proverena sredstva i opremu koja uklanja prašinu, masnoće, buđ, polen i alergene — kako biste udisali zdrav i svež vazduh.
           </p>

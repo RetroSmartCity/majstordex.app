@@ -2,146 +2,118 @@
 
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import { cene } from "../../src/data/cene";
 
 export default function PopravkaTaPeci() {
+  const title = "Popravka TA peći | MajstorDex";
+  const desc =
+    "Profesionalna popravka TA peći u Beogradu — zamena grejača, termostata, ventilatora i svih električnih delova. Dolazak majstora za 60–90 minuta, dostupno 24/7.";
+  const url = "https://majstordex.rs/usluge/popravka-ta-peci";
+  const ogImage = "/images/popravka-ta-peci.webp";
+
   return (
     <>
       <Head>
-        <title>Popravka TA peći | MajstorDex</title>
-        <meta
-          name="description"
-          content="Profesionalna popravka TA peći u Beogradu. Brza i kvalitetna usluga sa dolaskom u roku od 60–90 minuta. Popravka grejača, termostata, ventilatora i drugih kvarova."
-        />
-        <link rel="canonical" href="https://majstordex.rs/usluge/popravka-ta-peci" />
+        <title>{title}</title>
+        <meta name="description" content={desc} />
+        <link rel="canonical" href={url} />
 
-        {/* Open Graph */}
-        <meta property="og:title" content="Popravka TA peći | MajstorDex" />
-        <meta
-          property="og:description"
-          content="Profesionalna popravka TA peći u Beogradu. Brza i kvalitetna usluga sa dolaskom u roku od 60–90 minuta. Popravka grejača, termostata, ventilatora i drugih kvarova."
-        />
-        <meta property="og:url" content="https://majstordex.rs/usluge/popravka-ta-peci" />
+        {/* OG */}
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={desc} />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://majstordex.rs/og-default.jpg" />
+        <meta property="og:url" content={url} />
+        <meta property="og:image" content={ogImage} />
 
-        {/* Twitter Card */}
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Popravka TA peći | MajstorDex" />
-        <meta
-          name="twitter:description"
-          content="Profesionalna popravka TA peći u Beogradu. Brza i kvalitetna usluga sa dolaskom u roku od 60–90 minuta. Popravka grejača, termostata, ventilatora i drugih kvarova."
-        />
-        <meta name="twitter:image" content="https://majstordex.rs/og-default.jpg" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={desc} />
+        <meta name="twitter:image" content={ogImage} />
       </Head>
 
-      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 text-gray-800">
-        {/* Breadcrumb */}
-        <nav
-          aria-label="Breadcrumb"
-          className="text-sm mb-6 text-gray-500 flex flex-wrap items-center gap-1"
-        >
-          <Link href="/" className="hover:underline text-blue-600">
-            Početna
-          </Link>
+      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-gray-800">
+
+        {/* HERO SLIKA — ispravljen stil, bez sečenja */}
+        <div className="w-full rounded-xl overflow-hidden shadow mb-10 bg-white">
+          <Image
+            src="/images/popravka-ta-peci.webp"
+            alt="Popravka TA peći - MajstorDex"
+            width={1600}
+            height={900}
+            className="object-contain w-full h-auto"
+            priority
+          />
+        </div>
+
+        {/* BREADCRUMB */}
+        <nav className="text-sm mb-6 text-gray-500 flex flex-wrap gap-1">
+          <Link href="/" className="hover:underline text-blue-600">Početna</Link>
           <span>›</span>
-          <Link href="/usluge" className="hover:underline text-blue-600">
-            Usluge
-          </Link>
+          <Link href="/usluge" className="hover:underline text-blue-600">Usluge</Link>
           <span>›</span>
-          <span aria-current="page" className="text-gray-800 font-semibold">
-            Popravka TA peći
-          </span>
+          <span className="font-semibold text-gray-800">Popravka TA peći</span>
         </nav>
 
-        {/* Opis usluge */}
+        {/* NASLOV */}
+        <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
+          Popravka TA peći u Beogradu
+        </h1>
+
+        {/* OPIS USLUGE */}
         <section className="mb-12 text-lg leading-relaxed">
           <p>
-            TA (termoakumulacione) peći su efikasan način grejanja, ali mogu se
-            pokvariti zbog problema sa grejačem, termostatom, osiguračima ili
-            ventilatorom. Naš stručni tim vrši dijagnostiku i popravku svih kvarova
-            na TA pećima, bilo kog modela i proizvođača, brzo i profesionalno.
+            TA peći su jedan od najisplativijih načina grejanja, ali mogu doći
+            do kvarova poput pregorelih grejača, lošeg termostata, neispravnih
+            sklopki ili ventilatora.
           </p>
+
+          <p className="mt-4">
+            MajstorDex vrši kompletnu dijagnostiku i popravku svih modela —
+            Magnohrom, Elind, Alfa, MBS i druge.
+          </p>
+
           <div className="mt-4">
-            <p>Popravke koje radimo uključuju:</p>
-            <ul className="list-disc list-inside mt-2">
-              <li>Zamenu i popravku grejača</li>
-              <li>Popravku i zamenu termostata</li>
-              <li>Zamenu pregorelih sklopki i osigurača</li>
-              <li>Popravku i zamenu ventilatora</li>
-              <li>Popravku električnih kablova i priključaka</li>
-              <li>Rešavanje problema sa punjenjem i grejanjem</li>
+            <p className="font-semibold">Najčešće intervencije:</p>
+            <ul className="list-disc list-inside mt-2 space-y-1">
+              <li>Zamena i popravka grejača</li>
+              <li>Popravka termostata i bimetala</li>
+              <li>Zamena sklopki i osigurača</li>
+              <li>Popravka ventilatora, ležajeva i turbina</li>
+              <li>Rešavanje problema punjenja i grejanja</li>
             </ul>
           </div>
+
           <p className="mt-4">
-            Radimo na teritoriji celog Beograda, uključujući Zemun, Novi Beograd,
-            Voždovac, Zvezdaru, Palilulu i druga naselja. Dolazak majstora je
-            moguć u roku od 60–90 minuta ili prema dogovoru.
-          </p>
-          <p className="mt-4">
-            Neispravna TA peć može dovesti do povećane potrošnje električne
-            energije i sigurnosnih problema. Ne čekajte da problem postane veći –
-            pozovite MajstorDex odmah.
+            Dolazak majstora u Beogradu — najčešće u roku od{" "}
+            <strong>60–90 minuta</strong>. Radimo 24/7.
           </p>
         </section>
 
-        {/* Zašto odabrati MajstorDex? */}
-        <section className="bg-yellow-50 rounded-xl p-6 shadow-md">
+        {/* BENEFITI */}
+        <section className="bg-yellow-50 rounded-xl p-6 shadow-md mb-10">
           <h2 className="text-2xl font-semibold mb-4 text-center">
-            Zašto odabrati MajstorDex?
+            Zašto izabrati MajstorDex?
           </h2>
-          <ul className="list-disc list-inside space-y-2 text-gray-700 text-base max-w-xl mx-auto">
-            <li>✅ Dolazak u roku od 60–90 minuta širom Beograda</li>
-            <li>✅ Iskusni i pouzdani majstori sa višegodišnjim iskustvom</li>
-            <li>✅ Transparentne cene i bez skrivenih troškova</li>
-            <li>✅ Garancija na ugrađene delove i rad</li>
-            <li>✅ Dostupnost 24/7 za hitne intervencije</li>
+          <ul className="list-disc list-inside space-y-2 max-w-xl mx-auto text-gray-700">
+            <li>Dolazak za 60–90 minuta</li>
+            <li>Iskusni i licencirani električari</li>
+            <li>Garancija na rad i ugrađene delove</li>
+            <li>Transparentne cene</li>
+            <li>Dostupnost 24/7</li>
           </ul>
         </section>
 
-        {/* Cena usluge */}
-<section className="bg-yellow-50 rounded-xl p-6 shadow-md mt-10 text-center">
-  <h2 className="text-2xl font-bold mb-3 text-yellow-800">Cena usluge</h2>
-  <p className="text-gray-700 mb-2 text-lg">
-    Orijentaciona cena za popravku TA peći:
-  </p>
-  <p className="text-3xl font-bold text-yellow-600 mb-2">{cene.popravkaTaPeci}</p>
-  <p className="text-sm text-gray-600">
-    Za preciznu cenu i termin dolaska, pozovite nas — dostupni smo 0-24!
-  </p>
-</section>
-
-
-        {/* JSON-LD Breadcrumb */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              itemListElement: [
-                {
-                  "@type": "ListItem",
-                  position: 1,
-                  name: "Početna",
-                  item: "https://majstordex.rs",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 2,
-                  name: "Usluge",
-                  item: "https://majstordex.rs/usluge",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 3,
-                  name: "Popravka TA peći",
-                  item: "https://majstordex.rs/usluge/popravka-ta-peci",
-                },
-              ],
-            }),
-          }}
-        />
+        {/* CENA */}
+        <section className="bg-yellow-50 rounded-xl p-6 shadow-md text-center">
+          <h2 className="text-2xl font-bold mb-3 text-yellow-800">Cena usluge</h2>
+          <p className="text-lg text-gray-700 mb-2">Orijentaciona cena popravke TA peći:</p>
+          <p className="text-3xl font-bold text-yellow-600 mb-3">{cene.popravkaTaPeci}</p>
+          <p className="text-sm text-gray-600">
+            Za preciznu cenu pozovite — dostupni smo 0–24!
+          </p>
+        </section>
       </article>
     </>
   );
