@@ -66,22 +66,19 @@ export default function UslugeIndex() {
             <li key={u.slug} className="flex justify-center">
               <Link
                 href={`/usluge/${u.slug}`}
-                className="block bg-gray-50 hover:bg-yellow-50 transition rounded-xl p-4 shadow text-center w-full"
+                className="block bg-white hover:bg-yellow-50 transition rounded-xl p-5 shadow-md hover:shadow-xl duration-300 w-full"
               >
-
-                {/* Slika bez sečenja */}
-                <div className="relative w-full mb-4 rounded-xl overflow-hidden bg-white shadow">
+                {/* SLIKA – PREMIUM CONTAIN FIX */}
+                <div className="relative w-full h-40 sm:h-44 md:h-48 lg:h-52 mb-4 rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center">
                   <Image
                     src={u.slika}
                     alt={u.naziv}
-                    width={1600}
-                    height={900}
-                    className="object-contain w-full h-auto rounded-xl"
-                    priority={u.slug === "adaptacija-stana"}
+                    fill
+                    className="object-contain p-2 pointer-events-none select-none"
                   />
                 </div>
 
-                <p className="font-semibold text-lg">{u.naziv}</p>
+                <p className="font-semibold text-lg text-center">{u.naziv}</p>
               </Link>
             </li>
           ))}

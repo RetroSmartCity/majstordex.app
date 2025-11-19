@@ -12,13 +12,6 @@ const Benefits = dynamic(() => import("@/components/Benefits"), { ssr: false });
 
 const heroUsluge = [
   {
-    key: "led",
-    title: "LED rasveta",
-    desc: "Profesionalna ugradnja LED rasvete — plafonske, zidne, trake, profili.",
-    slug: "led-rasveta",
-    icon: "💡",
-  },
-  {
     key: "ta",
     title: "Popravka TA peći",
     desc: "Brza dijagnostika i zamena grejača, termostata, sklopki i ventilatora.",
@@ -38,6 +31,13 @@ const heroUsluge = [
     desc: "Dolazak majstora za 60–90 minuta. Dostupno 24/7.",
     slug: "hitne-intervencije",
     icon: "⚡",
+  },
+   {
+    key: "led",
+    title: "LED rasveta",
+    desc: "Profesionalna ugradnja LED rasvete — plafonske, zidne, trake, profili.",
+    slug: "led-rasveta",
+    icon: "💡",
   },
   {
     key: "struja",

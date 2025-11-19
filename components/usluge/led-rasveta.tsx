@@ -3,6 +3,22 @@ import Head from "next/head";
 import Link from "next/link";
 
 export default function LedRasveta() {
+  const kategorije = [
+    { naziv: "Lusteri", slug: "lusteri", slika: "luster.webp" },
+    { naziv: "Plafonjere", slug: "plafonjere", slika: "plafonjera.webp" },
+    { naziv: "Zidne lampe", slug: "zidne-lampe", slika: "zidna-lampa.webp" },
+    {
+      naziv: "LED aluminijumski profili",
+      slug: "aluminijumski-profili-za-led",
+      slika: "al-led-profil.webp",
+    },
+    {
+      naziv: "Spoljna LED rasveta",
+      slug: "spoljna-rasveta",
+      slika: "kandilaber.webp",
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -13,19 +29,28 @@ export default function LedRasveta() {
         />
         <link rel="canonical" href="https://majstordex.rs/usluge/led-rasveta" />
 
-        {/* Open Graph */}
-        <meta property="og:title" content="LED rasveta - prodaja i ugradnja | MajstorDex" />
+        {/* OG */}
+        <meta
+          property="og:title"
+          content="LED rasveta - prodaja i ugradnja | MajstorDex"
+        />
         <meta
           property="og:description"
           content="LED rasveta u Beogradu - prodaja i profesionalna ugradnja. Energetski efikasna i moderna rešenja za vaš dom ili poslovni prostor."
         />
         <meta property="og:url" content="https://majstordex.rs/usluge/led-rasveta" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://majstordex.rs/images/led-rasveta.webp" />
+        <meta
+          property="og:image"
+          content="https://majstordex.rs/images/led-rasveta.webp"
+        />
 
-        {/* Twitter Card */}
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="LED rasveta - prodaja i ugradnja | MajstorDex" />
+        <meta
+          name="twitter:title"
+          content="LED rasveta - prodaja i ugradnja | MajstorDex"
+        />
         <meta
           name="twitter:description"
           content="LED rasveta u Beogradu - prodaja i profesionalna ugradnja. Energetski efikasna i moderna rešenja za vaš dom ili poslovni prostor."
@@ -34,25 +59,22 @@ export default function LedRasveta() {
       </Head>
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 text-gray-800">
+
         {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
           className="text-sm mb-6 text-gray-500 flex flex-wrap items-center gap-1"
         >
-          <Link href="/" className="hover:underline text-blue-600">
-            Početna
-          </Link>
+          <Link href="/" className="hover:underline text-blue-600">Početna</Link>
           <span>›</span>
-          <Link href="/usluge" className="hover:underline text-blue-600">
-            Usluge
-          </Link>
+          <Link href="/usluge" className="hover:underline text-blue-600">Usluge</Link>
           <span>›</span>
           <span aria-current="page" className="text-gray-800 font-semibold">
             LED rasveta - prodaja i ugradnja
           </span>
         </nav>
 
-        {/* Opis usluge */}
+        {/* Tekst + slika */}
         <section className="mb-12 text-lg leading-relaxed">
           <div className="mb-6">
             <img
@@ -72,34 +94,44 @@ export default function LedRasveta() {
           </p>
         </section>
 
-        {/* Kategorije LED rasvete */}
+        {/* Kategorije – ISTE KARTICE KAO STRANICA PROIZVODI */}
         <section className="mb-14">
           <h2 className="text-2xl font-semibold mb-6 text-center text-gray-900">
             Naša ponuda LED rasvete
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {[
-              { naziv: "Lusteri", slug: "/proizvodi/lusteri", emoji: "💎" },
-              { naziv: "Plafonjere", slug: "/proizvodi/plafonjere", emoji: "💡" },
-              { naziv: "Zidne lampe", slug: "/proizvodi/zidne-lampe", emoji: "🪔" },
-              { naziv: "LED aluminijumski profili", slug: "/proizvodi/led-profili", emoji: "📏" },
-              { naziv: "LED za spoljnu upotrebu", slug: "/proizvodi/led-spoljna", emoji: "🌳" },
-            ].map((p) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            {kategorije.map((kat) => (
               <Link
-                key={p.slug}
-                href={p.slug}
-                className="block bg-white border border-gray-200 hover:border-yellow-400 hover:shadow-lg transition rounded-xl p-6 text-center"
+                key={kat.slug}
+                href={`/proizvodi/${kat.slug}`}
+                legacyBehavior
               >
-                <div className="text-4xl mb-3">{p.emoji}</div>
-                <h3 className="text-lg font-semibold text-gray-900">{p.naziv}</h3>
-                <p className="text-sm text-gray-600 mt-1">Pogledaj ponudu</p>
+                <a className="flex flex-col bg-white border border-gray-200 hover:border-yellow-400 hover:shadow-xl transition rounded-xl overflow-hidden">
+
+                  {/* Slika – ista logika kao na shop stranici */}
+                  <div className="bg-gray-100 flex items-center justify-center h-40">
+                    <img
+                      src={`/images/${kat.slika}`}
+                      alt={kat.naziv}
+                      className="max-h-full max-w-full object-contain p-2"
+                    />
+                  </div>
+
+                  <div className="p-4 text-center mt-auto">
+                    <h3 className="text-lg font-semibold text-gray-900">{kat.naziv}</h3>
+                    <p className="text-sm text-gray-600">Pogledaj ponudu</p>
+                  </div>
+
+                </a>
               </Link>
             ))}
+
           </div>
         </section>
 
-        {/* Zašto odabrati MajstorDex? */}
+        {/* Zasto mi */}
         <section className="bg-yellow-50 rounded-xl p-6 shadow-md">
           <h2 className="text-2xl font-semibold mb-4 text-center">
             Zašto odabrati MajstorDex?
@@ -113,7 +145,7 @@ export default function LedRasveta() {
           </ul>
         </section>
 
-        {/* Kontakt sekcija */}
+        {/* Kontakt */}
         <section className="max-w-xl mx-auto text-center mt-10">
           <h2 className="text-2xl font-bold mb-4">Kontakt</h2>
           <p className="mb-4 text-gray-700">
@@ -121,25 +153,19 @@ export default function LedRasveta() {
           </p>
           <p className="text-lg mb-2">
             📞{" "}
-            <a
-              href="tel:+38160500063"
-              className="text-blue-600 font-semibold hover:underline"
-            >
+            <a href="tel:+38160500063" className="text-blue-600 font-semibold hover:underline">
               060 0 5000 63
             </a>
           </p>
           <p className="text-lg">
             ✉️{" "}
-            <a
-              href="mailto:dejan@majstordex.rs"
-              className="text-blue-600 font-semibold hover:underline"
-            >
+            <a href="mailto:dejan@majstordex.rs" className="text-blue-600 font-semibold hover:underline">
               dejan@majstordex.rs
             </a>
           </p>
         </section>
 
-        {/* JSON-LD Breadcrumb */}
+        {/* Breadcrumb JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -147,24 +173,9 @@ export default function LedRasveta() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                {
-                  "@type": "ListItem",
-                  position: 1,
-                  name: "Početna",
-                  item: "https://majstordex.rs",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 2,
-                  name: "Usluge",
-                  item: "https://majstordex.rs/usluge",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 3,
-                  name: "LED rasveta - prodaja i ugradnja",
-                  item: "https://majstordex.rs/usluge/led-rasveta",
-                },
+                { "@type": "ListItem", position: 1, name: "Početna", item: "https://majstordex.rs" },
+                { "@type": "ListItem", position: 2, name: "Usluge", item: "https://majstordex.rs/usluge" },
+                { "@type": "ListItem", position: 3, name: "LED rasveta - prodaja i ugradnja", item: "https://majstordex.rs/usluge/led-rasveta" },
               ],
             }),
           }}

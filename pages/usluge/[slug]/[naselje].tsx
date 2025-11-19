@@ -1,23 +1,25 @@
-// pages/usluge/[slug].tsx
+// pages/usluge/[slug]/[naselje].tsx
 
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import Image from "next/image";
+import type { ComponentType } from "react";
+
 import { sveUsluge } from "@/data/usluge";
 import { uslugeMap } from "@/components/uslugeMap";
-import type { ComponentType } from "react";
 
 type UslugaProps = {
   isNaseljePage: boolean;
-  naselje?: string;
+  naselje: string;
 };
 
-export default function UslugaPage() {
+export default function UslugaNaseljePage() {
   const router = useRouter();
-  const { slug } = router.query;
+  const { slug, naselje } = router.query;
 
-  if (!slug || typeof slug !== "string") return null;
+  if (!slug || typeof slug !== "string" || !naselje || typeof naselje !== "string") {
+    return null;
+  }
 
   const info = sveUsluge.find((u) => u.slug === slug);
   const importFn = uslugeMap[slug];
@@ -32,52 +34,117 @@ export default function UslugaPage() {
     );
   }
 
-  const UslugaComponent = dynamic(importFn, { ssr: false }) as ComponentType<UslugaProps>;
+  const UslugaComponent = dynamic(importFn, {
+    ssr: false,
+    loading: () => (
+      <div className="text-center py-10">
+        <p className="text-gray-500 text-lg">Učitavanje sadržaja…</p>
+      </div>
+    ),
+  }) as ComponentType<UslugaProps>;
+
+  const ogImage = `/images/${slug}.webp`;
+  const capitalNaselje = naselje
+    .split("-")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+
+  const title = `${info.naziv} – ${capitalNaselje} | MajstorDex`;
+  const description = `${info.naziv} u naselju ${capitalNaselje}. Profesionalne hitne elektro intervencije 24/7, dolazak za 60–90 minuta.`;
+  const canonical = `https://majstordex.rs/usluge/${slug}/${naselje}`;
 
   return (
     <>
       <Head>
-        <title>{info.naziv} | MajstorDex</title>
-        <meta
-          name="description"
-          content={`Profesionalna usluga: ${info.naziv.toLowerCase()} u Beogradu. Dostupni 24/7.`}
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonical} />
+
+        {/* OG tags */}
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:alt" content={info.naziv} />
+
+        {/* JSON-LD */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              name: info.naziv,
+              areaServed: capitalNaselje,
+              provider: {
+                "@type": "LocalBusiness",
+                name: "MajstorDex",
+              },
+              image: ogImage,
+              description,
+              url: canonical,
+            }),
+          }}
         />
-        <link rel="canonical" href={`https://majstordex.rs/usluge/${slug}`} />
       </Head>
 
-      {/* HERO SLIKA — PREMIUM LETTERBOX */}
-      <div className="relative w-full h-64 md:h-80 lg:h-96 overflow-hidden">
+      {/* =============== PREMIUM HERO V2 =============== */}
+      <section className="relative w-full bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white py-20 px-6 overflow-hidden">
 
-        {/* BLUR POZADINA */}
-        <Image
-          src={info.slika}
-          alt={info.naziv}
-          fill
-          className="object-cover blur-xl scale-110 opacity-40"
-        />
+        {/* Mesh background */}
+        <div className="absolute inset-0 pointer-events-none opacity-25 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-yellow-500/30 via-transparent to-transparent"></div>
 
-        {/* ORIGINAL SLIKA */}
-        <div className="relative z-10 w-full h-full flex items-center justify-center">
-          <Image
-            src={info.slika}
-            alt={info.naziv}
-            width={1200}
-            height={800}
-            className="object-contain drop-shadow-lg"
-            priority
-          />
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
+
+          {/* Automatska ikonica */}
+          <div className="text-6xl mb-6 drop-shadow-2xl">
+            {{
+              "servis-bojlera": "🚿",
+              "popravka-ta-peci": "🔥",
+              "led-rasveta": "💡",
+              "pranje-klime": "🧊",
+              "popravka-elektroinstalacija": "🔌",
+              "zamena-osiguraca-i-uticnica": "🔧",
+              "adaptacija-stana": "🏠",
+              "hitne-intervencije": "⚡",
+            }[slug] || "🔧"}
+          </div>
+
+          {/* H1 naslov */}
+          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4 text-white">
+            {info.naziv} – {capitalNaselje}
+          </h1>
+
+          {/* SEO opis */}
+          <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto mb-10">
+            Usluga {info.naziv.toLowerCase()} u naselju {capitalNaselje}.  
+            Dostupni 24/7 — dolazak za 60–90 minuta bilo gde u Beogradu.
+          </p>
+
+          {/* CTA dugmići */}
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+
+            <a
+              href="tel:+381600500063"
+              className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-4 px-10 rounded-xl transition shadow-xl text-lg"
+            >
+              📞 Pozovi odmah
+            </a>
+
+            <a
+              href="#detalji"
+              className="border border-white/40 hover:bg-white/10 text-white py-4 px-10 rounded-xl transition shadow-xl text-lg"
+            >
+              Pogledaj detalje
+            </a>
+
+          </div>
         </div>
+      </section>
 
-        {/* GRADIENT */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40"></div>
-      </div>
-
-      <main className="max-w-4xl mx-auto px-4 py-10 text-gray-800">
-        <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
-          {info.naziv}
-        </h1>
-
-        <UslugaComponent isNaseljePage={false} />
+      {/* =============== SADRŽAJ STRANICE =============== */}
+      <main id="detalji" className="max-w-4xl mx-auto px-4 py-12 text-gray-800">
+        <UslugaComponent isNaseljePage={true} naselje={naselje} />
       </main>
     </>
   );
