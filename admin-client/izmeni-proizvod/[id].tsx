@@ -1,48 +1,60 @@
 "use client";
+
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
-import { useRouter } from "next/router";
+import ProizvodCard from "@/components/admin/ProizvodCard";
 
-export default function EditProizvod() {
-  const router = useRouter();
-  const { id } = router.query;
-  const [form, setForm] = useState<any>(null);
-
-  useEffect(() => {
-    if (id) load();
-  }, [id]);
+export default function AdminListaProizvoda() {
+  const [proizvodi, setProizvodi] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const load = async () => {
-    const { data } = await supabase.from("proizvodi").select("*").eq("id", id).single();
-    setForm(data);
+    setLoading(true);
+
+    const { data, error } = await supabase
+      .from("proizvodi")
+      .select("*")
+      .order("id", { ascending: false });
+
+    if (!error && data) setProizvodi(data);
+    setLoading(false);
   };
 
-  const handleSave = async () => {
-    await supabase.from("proizvodi").update(form).eq("id", id);
-    router.push("/admin");
-  };
-
-  if (!form) return <div className="p-6">Učitavanje...</div>;
+  useEffect(() => {
+    load();
+  }, []);
 
   return (
-    <div className="p-6 max-w-lg mx-auto">
-      <h1 className="text-2xl mb-4 font-bold">Izmena proizvoda</h1>
+    <div className="max-w-5xl mx-auto p-6">
+      <h1 className="text-3xl font-bold mb-6">Svi proizvodi</h1>
 
-      {Object.keys(form).map((key) =>
-        key === "id" ? null : (
-          <input
-            key={key}
-            placeholder={key}
-            className="w-full p-2 mb-3 border rounded"
-            value={form[key] ?? ""}
-            onChange={(e) => setForm({ ...form, [key]: e.target.value })}
-          />
-        )
+      <Link
+        href="/admin-client/novi-proizvod"
+        className="inline-block mb-6 px-4 py-2 bg-green-600 text-white rounded"
+      >
+        + Dodaj novi proizvod
+      </Link>
+
+      {loading ? (
+        <p>Učitavanje...</p>
+      ) : proizvodi.length === 0 ? (
+        <p className="text-gray-600">Nema proizvoda.</p>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {proizvodi.map((p) => (
+            <div key={p.id}>
+              <ProizvodCard proizvod={p} />
+              <Link
+                href={`/admin-client/izmeni-proizvod/${p.id}`}
+                className="block mt-2 text-blue-600 hover:underline"
+              >
+                ✏️ Izmeni proizvod
+              </Link>
+            </div>
+          ))}
+        </div>
       )}
-
-      <button onClick={handleSave} className="bg-blue-600 text-white px-4 py-2 rounded">
-        Sačuvaj izmene
-      </button>
     </div>
   );
 }

@@ -1,49 +1,42 @@
 "use client";
-import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabaseClient";
+
 import Link from "next/link";
 
-export default function AdminHome() {
-  const [proizvodi, setProizvodi] = useState<any[]>([]);
-
-  useEffect(() => {
-    loadData();
-  }, []);
-
-  const loadData = async () => {
-    const { data } = await supabase.from("proizvodi").select("*");
-    setProizvodi(data || []);
-  };
-
-  const handleDelete = async (id: string) => {
-    if (!confirm("Obrisati?")) return;
-    await supabase.from("proizvodi").delete().eq("id", id);
-    loadData();
-  };
-
+export default function AdminDashboard() {
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Admin panel</h1>
+    <div className="max-w-3xl mx-auto p-6">
 
-      <Link href="/admin/novi-proizvod" className="bg-blue-600 text-white px-4 py-2 rounded">
-        + Novi proizvod
-      </Link>
+      <h1 className="text-3xl font-bold mb-6 text-gray-900">
+        Admin Panel – Proizvodi
+      </h1>
 
-      <ul className="mt-6 space-y-3">
-        {proizvodi.map((p) => (
-          <li key={p.id} className="flex justify-between border p-3 rounded">
-            <span>{p.naziv}</span>
-            <div className="flex gap-3">
-              <Link href={`/admin/izmeni-proizvod/${p.id}`} className="text-blue-600">
-                Izmeni
-              </Link>
-              <button className="text-red-600" onClick={() => handleDelete(p.id)}>
-                Obriši
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <p className="text-gray-600 mb-8">
+        Upravljaj svim proizvodima na sajtu – dodavanje, izmena i brisanje.
+      </p>
+
+      <div className="space-y-4">
+
+        <Link
+          href="/admin-client/proizvodi"
+          className="block p-5 border rounded-lg bg-white hover:bg-gray-100 shadow transition"
+        >
+          📦 <span className="font-semibold">Lista proizvoda</span>
+          <p className="text-sm text-gray-500 mt-1">
+            Pregled, izmena i brisanje svih proizvoda.
+          </p>
+        </Link>
+
+        <Link
+          href="/admin-client/novi-proizvod"
+          className="block p-5 border rounded-lg bg-white hover:bg-gray-100 shadow transition"
+        >
+          ➕ <span className="font-semibold">Dodaj novi proizvod</span>
+          <p className="text-sm text-gray-500 mt-1">
+            Kreiraj novi proizvod i otpremi slike.
+          </p>
+        </Link>
+
+      </div>
     </div>
   );
 }

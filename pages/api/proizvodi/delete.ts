@@ -6,18 +6,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { id } = req.body;
+  try {
+    const { id } = req.body;
 
-  if (!id) return res.status(400).json({ error: "Missing ID" });
+    if (!id) return res.status(400).json({ error: "Missing ID" });
 
-  const { error } = await supabaseAdmin
-    .from("proizvodi")
-    .delete()
-    .eq("id", id);
+    const { error } = await supabaseAdmin
+      .from("proizvodi")
+      .delete()
+      .eq("id", id);
 
-  if (error) {
-    return res.status(500).json({ error: error.message });
+    if (error) throw error;
+
+    return res.status(200).json({ message: "OK" });
+  } catch (e: any) {
+    return res.status(500).json({ error: e.message });
   }
-
-  return res.status(200).json({ message: "OK" });
 }
