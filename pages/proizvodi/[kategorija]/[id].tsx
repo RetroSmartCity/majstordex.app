@@ -12,7 +12,6 @@ interface Proizvod {
   opis: string;
   cena: number;
   kategorija: string;
-  slug: string;
   slike: string[] | string | null;
 }
 
@@ -28,11 +27,10 @@ export default function ProizvodPage() {
     supabase
       .from("proizvodi")
       .select("*")
-      .eq("slug", id)
+      .eq("id", id)            // ← OVO JE GLAVNA IZMJENA (pre je bio slug)
       .single()
       .then(({ data }) => {
         if (data) {
-          // normalize images
           let slikeArray: string[] = [];
 
           if (Array.isArray(data.slike)) slikeArray = data.slike;
@@ -56,88 +54,53 @@ export default function ProizvodPage() {
     return <p className="p-6">Učitavanje...</p>;
   }
 
-  const url = `https://majstordex.rs/proizvodi/${kategorija}/${proizvod.slug}`;
   const mainImage =
     proizvod.slike && proizvod.slike.length > 0
       ? proizvod.slike[0]
       : "/placeholder.webp";
 
-  // SEO JSON-LD
-  const productJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: proizvod.naziv,
-    image: proizvod.slike,
-    description: proizvod.opis,
-    sku: proizvod.slug,
-    offers: {
-      "@type": "Offer",
-      url: url,
-      priceCurrency: "RSD",
-      price: proizvod.cena,
-      availability: "https://schema.org/InStock",
-    },
-  };
-
   return (
     <>
       <Head>
-        {/* TITLE */}
         <title>{proizvod.naziv} | MajstorDex</title>
-
-        {/* META DESCRIPTION */}
-        <meta
-          name="description"
-          content={`${proizvod.naziv} – ${proizvod.opis.substring(0, 150)}... Cena: ${proizvod.cena} RSD`}
-        />
-
-        {/* CANONICAL */}
-        <link rel="canonical" href={url} />
-
-        {/* OPEN GRAPH */}
-        <meta property="og:title" content={proizvod.naziv} />
-        <meta property="og:description" content={proizvod.opis} />
-        <meta property="og:image" content={mainImage} />
-        <meta property="og:url" content={url} />
-        <meta property="og:type" content="product" />
-
-        {/* JSON-LD */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
-        />
+        <meta name="description" content={proizvod.opis.slice(0, 150) + "..."} />
+        <link rel="canonical" href={`https://majstordex.rs/proizvodi/${kategorija}/${id}`} />
       </Head>
 
       <main className="max-w-4xl mx-auto p-6">
+        {/* Dugme za povratak */}
+        <button
+          onClick={() => router.push(`/proizvodi/${kategorija}`)}
+          className="mb-4 px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+        >
+          ← Nazad na {kategorija}
+        </button>
+
         <h1 className="text-3xl font-bold mb-4">{proizvod.naziv}</h1>
 
-        {/* GLAVNA SLIKA */}
+        {/* Glavna slika */}
         <img
           src={mainImage}
           alt={proizvod.naziv}
           className="w-full h-96 object-cover rounded shadow mb-6"
         />
 
-        {/* OSTALe SLIKE */}
+        {/* Ostale slike */}
         {proizvod.slike.length > 1 && (
           <div className="grid grid-cols-3 gap-4 mb-6">
-            {proizvod.slike.slice(1).map((sl: string, i: number) => (
+            {proizvod.slike.slice(1).map((sl, i) => (
               <img
                 key={i}
                 src={sl}
-                alt={`${proizvod.naziv} slika ${i + 2}`}
-                className="w-full h-32 object-cover rounded border"
+                alt={`${proizvod.naziv} ${i + 2}`}
+                className="w-full h-32 object-cover rounded"
               />
             ))}
           </div>
         )}
 
-        {/* OPIS */}
-        <p className="text-lg text-gray-700 whitespace-pre-line mb-4">
-          {proizvod.opis}
-        </p>
+        <p className="text-lg text-gray-700 mb-4">{proizvod.opis}</p>
 
-        {/* CENA */}
         <p className="text-2xl font-bold text-green-700">
           {proizvod.cena.toLocaleString()} RSD
         </p>
