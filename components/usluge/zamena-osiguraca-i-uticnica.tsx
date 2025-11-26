@@ -1,20 +1,25 @@
 // pages/usluge/zamena-osiguraca-i-uticnica.tsx
 
+// pages/usluge/zamena-osiguraca-i-uticnica.tsx
+
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-import { cene } from "../../src/data/cene";
+import { cene } from "@/data/cene";
 
 export default function ZamenaOsiguracaIUticnica() {
-  const title = "Zamena osigurača i utičnica u Beogradu | MajstorDex";
+  const title =
+    "Zamena osigurača i utičnica Beograd | Električar 24/7 | MajstorDex";
   const desc =
-    "Stručna i brza zamena osigurača i utičnica u Beogradu. Sigurnost i pouzdan rad elektro instalacija uz dolazak majstora za 60–90 minuta.";
+    "Profesionalna zamena osigurača, automatskih sklopki, utičnica i prekidača u Beogradu. Brz dolazak majstora za 60–90 min, dostupni 24/7. Sigurne i pouzdane elektroinstalacije.";
   const url = "https://majstordex.rs/usluge/zamena-osiguraca-i-uticnica";
-  const ogImage = "/images/zamena-osigraca-i-uticnica.webp";
 
   return (
     <>
       <Head>
+        {/* ----------------------------------------- */}
+        {/* SEO */}
+        {/* ----------------------------------------- */}
         <title>{title}</title>
         <meta name="description" content={desc} />
         <link rel="canonical" href={url} />
@@ -22,101 +27,329 @@ export default function ZamenaOsiguracaIUticnica() {
         {/* OG */}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={desc} />
+        <meta
+          property="og:image"
+          content="https://majstordex.rs/images/zamena-osigraca-i-uticnica.webp"
+        />
         <meta property="og:url" content={url} />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content={ogImage} />
+        <meta property="og:type" content="service" />
 
-        {/* Twitter */}
+        {/* TWITTER */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={desc} />
-        <meta name="twitter:image" content={ogImage} />
+        <meta
+          name="twitter:image"
+          content="https://majstordex.rs/images/zamena-osigraca-i-uticnica.webp"
+        />
       </Head>
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-gray-800">
-
-        {/* HERO SLIKA – ista visina, bez sečenja */}
-        <div className="w-full rounded-xl overflow-hidden shadow mb-10 bg-white">
+        {/* ------------------------------------------------ */}
+        {/* HERO SLIKA – identičan stil kao TA/bojler */}
+        {/* ------------------------------------------------ */}
+        <div className="w-full mb-8 rounded-2xl overflow-hidden shadow-lg bg-white">
           <Image
             src="/images/zamena-osigraca-i-uticnica.webp"
-            alt="Zamena osigurača i utičnica - MajstorDex"
+            alt="Zamena osigurača i utičnica Beograd - MajstorDex"
             width={1600}
             height={900}
-            className="object-contain w-full h-auto"
+            className="w-full h-auto object-contain"
             priority
           />
         </div>
 
-        {/* BREADCRUMB */}
-        <nav aria-label="Breadcrumb" className="text-sm mb-6 text-gray-500 flex flex-wrap items-center gap-1">
-          <Link href="/" className="hover:underline text-blue-600">Početna</Link>
+        {/* ------------------------------------------------ */}
+        {/* Breadcrumb */}
+        {/* ------------------------------------------------ */}
+        <nav
+          aria-label="Breadcrumb"
+          className="text-sm mb-6 text-gray-500 flex flex-wrap items-center gap-1"
+        >
+          <Link href="/" className="hover:underline text-blue-600">
+            Početna
+          </Link>
           <span>›</span>
-          <Link href="/usluge" className="hover:underline text-blue-600">Usluge</Link>
+          <Link href="/usluge" className="hover:underline text-blue-600">
+            Usluge
+          </Link>
           <span>›</span>
-          <span className="text-gray-800 font-semibold">Zamena osigurača i utičnica</span>
+          <span aria-current="page" className="text-gray-800 font-semibold">
+            Zamena osigurača i utičnica
+          </span>
         </nav>
 
-        {/* NASLOV */}
-        <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
-          Zamena osigurača i utičnica u Beogradu
-        </h1>
-
+        {/* ------------------------------------------------ */}
         {/* OPIS USLUGE */}
+        {/* ------------------------------------------------ */}
         <section className="mb-12 text-lg leading-relaxed">
+          <h1 className="text-3xl font-bold mb-4">
+            Zamena osigurača i utičnica u Beogradu — sigurne elektroinstalacije
+          </h1>
+
           <p>
-            Zamena osigurača i utičnica je ključna za bezbedno i pravilno
-            funkcionisanje elektroinstalacija. Mnogi kvarovi nastaju zbog
-            dotrajalih ili pregorelih komponenti.
+            Dotrajali osigurači, labave utičnice i stari prekidači su čest uzrok
+            pregorevanja instalacija, varničenja ili potpunog nestanka struje u
+            stanu. MajstorDex obavlja kompletnu zamenu osigurača, utičnica i
+            prekidača uz poštovanje svih elektro standarda.
           </p>
 
-          <p className="mt-4">
-            MajstorDex obavlja profesionalnu zamenu osigurača, automatskih
-            sklopki, utičnica i prekidača — brzo, sigurno i uz poštovanje svih
-            elektro standarda.
-          </p>
+          <h2 className="text-2xl font-semibold mt-8 mb-3">
+            Najčešće usluge zamene osigurača i utičnica
+          </h2>
 
-          <p className="mt-4 font-semibold">Najčešće intervencije:</p>
-          <ul className="list-disc list-inside mt-2 space-y-1">
-            <li>Zamena svih tipova osigurača (automatski, keramički, automativi)</li>
-            <li>Montaža i zamena utičnica (šuko, uzemljenje, modularne)</li>
-            <li>Zamena prekidača i kombinovanih tastera</li>
-            <li>Rešavanje oštećenih kablova i izvoda</li>
-            <li>Modernizacija elektro instalacije</li>
+          <ul className="list-disc list-inside space-y-1">
+            <li>
+              Zamena svih tipova osigurača (automatski, keramički, nožasti…)
+            </li>
+            <li>
+              Ugradnja novih automatskih sklopki i pregrađivanje postojeće
+              razvodne table
+            </li>
+            <li>
+              Zamena utičnica (šuko, uzemljenje, trofazne, modularne utičnice)
+            </li>
+            <li>
+              Zamena prekidača, tastera i kombinovanih sklopki za svetlo i
+              ventilatore
+            </li>
+            <li>Rešavanje lošeg kontakta, varničenja i pregrevanja priključaka</li>
+            <li>
+              Modernizacija starih tabli i priprema instalacije za FID sklopke
+            </li>
           </ul>
 
-          <p className="mt-4">
-            Dolazak majstora u Beogradu je u roku od{" "}
-            <strong>60–90 minuta</strong>, a intervencije su dostupne 24/7.
+          <h2 className="text-2xl font-semibold mt-8 mb-3">Gde radimo?</h2>
+          <p>
+            Dolazak radimo na celoj teritoriji Beograda — Novi Beograd, Zemun,
+            Vračar, Stari Grad, Rakovica, Voždovac, Čukarica, Palilula,
+            Zvezdara i ostala naselja.
+          </p>
+
+          <h2 className="text-2xl font-semibold mt-8 mb-3">
+            Zašto je važna pravovremena zamena?
+          </h2>
+          <p>
+            Neispravan osigurač ili loša utičnica mogu dovesti do varničenja,
+            pregrevanja i u najgorem slučaju požara. Pravovremena zamena
+            osigurača, utičnica i prekidača povećava bezbednost, stabilnost
+            instalacije i smanjuje rizik od većih kvarova.
           </p>
         </section>
 
-        {/* BENEFITI */}
-        <section className="bg-yellow-50 rounded-xl p-6 shadow-md mb-10">
+        {/* ------------------------------------------------ */}
+        {/* 3 MINI KARTICE – Povezane usluge (identično kao TA) */}
+        {/* ------------------------------------------------ */}
+        <section className="mt-10">
+          <h2 className="text-2xl font-semibold mb-4 text-center">
+            Povezane usluge
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <Link href="/usluge/popravka-elektroinstalacija">
+              <div className="bg-gray-50 p-5 rounded-xl shadow hover:shadow-lg transition cursor-pointer text-center">
+                <Image
+                  src="/images/popravka-elektroinstalacija.webp"
+                  width={300}
+                  height={200}
+                  alt="Popravka elektroinstalacija"
+                  className="rounded-lg mb-3"
+                />
+                <h3 className="font-semibold text-lg">
+                  Popravka elektroinstalacija
+                </h3>
+              </div>
+            </Link>
+
+            <Link href="/usluge/servis-bojlera">
+              <div className="bg-gray-50 p-5 rounded-xl shadow hover:shadow-lg transition cursor-pointer text-center">
+                <Image
+                  src="/images/servis-bojlera.webp"
+                  width={300}
+                  height={200}
+                  alt="Servis bojlera"
+                  className="rounded-lg mb-3"
+                />
+                <h3 className="font-semibold text-lg">Servis bojlera</h3>
+              </div>
+            </Link>
+
+            <Link href="/usluge/hitne-intervencije">
+              <div className="bg-gray-50 p-5 rounded-xl shadow hover:shadow-lg transition cursor-pointer text-center">
+                <Image
+                  src="/images/hitne-intervencije.webp"
+                  width={300}
+                  height={200}
+                  alt="Hitne intervencije"
+                  className="rounded-lg mb-3"
+                />
+                <h3 className="font-semibold text-lg">
+                  Hitne intervencije 24/7
+                </h3>
+              </div>
+            </Link>
+          </div>
+        </section>
+
+        {/* ------------------------------------------------ */}
+        {/* ZAŠTO MAJSTORDEX – isti blok kao TA/bojler */}
+        {/* ------------------------------------------------ */}
+        <section className="bg-yellow-50 rounded-xl p-6 shadow-md mt-14">
           <h2 className="text-2xl font-semibold mb-4 text-center">
             Zašto izabrati MajstorDex?
           </h2>
-          <ul className="list-disc list-inside max-w-xl mx-auto space-y-2 text-gray-700">
-            <li>Kvalitetni i sigurni materijali</li>
-            <li>Stručna i brza ugradnja</li>
+
+          <ul className="list-disc list-inside space-y-2 text-gray-700 max-w-xl mx-auto">
             <li>Dolazak u roku od 60–90 minuta</li>
+            <li>Iskusni i licencirani električari</li>
             <li>Garancija na rad i delove</li>
-            <li>Transparentna cena bez skrivenih troškova</li>
+            <li>Transparentne i fer cene</li>
+            <li>Dostupnost 24/7 — radimo i praznicima</li>
           </ul>
         </section>
 
-        {/* CENA */}
-        <section className="bg-yellow-50 rounded-xl p-6 shadow-md text-center">
-          <h2 className="text-2xl font-bold mb-3 text-yellow-800">Cena usluge</h2>
-          <p className="text-gray-700 text-lg mb-2">
-            Orijentaciona cena za zamenu osigurača i utičnica:
+        {/* ------------------------------------------------ */}
+        {/* CENA USLUGE – identičan stil kao TA/bojler */}
+        {/* ------------------------------------------------ */}
+        <section className="bg-yellow-50 rounded-xl p-6 shadow-md mt-10 text-center">
+          <h2 className="text-2xl font-bold mb-3 text-yellow-800">
+            Cena zamene osigurača i utičnica
+          </h2>
+
+          <p className="text-gray-700 mb-2 text-lg">
+            Orijentaciona cena usluge:
           </p>
-          <p className="text-3xl font-bold text-yellow-600 mb-3">
+          <p className="text-3xl font-bold text-yellow-600 mb-2">
             {cene.zamenaOsiguraca}
           </p>
+
           <p className="text-sm text-gray-600">
-            Za preciznu cenu i termin dolaska — pozovite nas, dostupni smo 24/7!
+            Tačna cena se određuje nakon pregleda instalacije — pozovite nas
+            0–24!
           </p>
         </section>
+
+        {/* ------------------------------------------------ */}
+        {/* FAQ – isti dizajn kao TA/bojler templejt */}
+        {/* ------------------------------------------------ */}
+        <section className="mt-12">
+          <h2 className="text-2xl font-semibold mb-4">
+            Često postavljana pitanja
+          </h2>
+
+          <div className="space-y-4">
+            <details className="p-4 border rounded-lg bg-gray-50">
+              <summary className="font-semibold cursor-pointer">
+                Kada treba zameniti osigurač?
+              </summary>
+              <p className="mt-2">
+                Ako često pregoreva, ako je deformisan, crn, topi se ili ne
+                drži kontakt, vreme je da se zameni novim ispravnim osiguračem
+                odgovarajuće jačine.
+              </p>
+            </details>
+
+            <details className="p-4 border rounded-lg bg-gray-50">
+              <summary className="font-semibold cursor-pointer">
+                Da li je opasno koristiti labavu utičnicu?
+              </summary>
+              <p className="mt-2">
+                Da. Labava utičnica može da varniči, pregreva se i predstavlja
+                rizik od požara. Preporuka je zamena čim primetite da se utikač
+                klima ili da gubi kontakt.
+              </p>
+            </details>
+
+            <details className="p-4 border rounded-lg bg-gray-50">
+              <summary className="font-semibold cursor-pointer">
+                Da li radite hitnu zamenu osigurača i utičnica?
+              </summary>
+              <p className="mt-2">
+                Da, MajstorDex radi 24/7. U hitnim slučajevima dolazimo u roku
+                od 60–90 minuta na teritoriji celog Beograda.
+              </p>
+            </details>
+          </div>
+        </section>
+
+        {/* ------------------------------------------------ */}
+        {/* JSON-LD SCHEMA (Breadcrumb + Service + FAQPage) */}
+        {/* ------------------------------------------------ */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Početna",
+                    item: "https://majstordex.rs",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Usluge",
+                    item: "https://majstordex.rs/usluge",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: "Zamena osigurača i utičnica",
+                    item: url,
+                  },
+                ],
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                name: "Zamena osigurača i utičnica Beograd",
+                provider: {
+                  "@type": "LocalBusiness",
+                  name: "MajstorDex",
+                  telephone: "+381600500063",
+                  areaServed: "Beograd",
+                  url: "https://majstordex.rs",
+                },
+                description: desc,
+                serviceType: "Zamena osigurača i utičnica",
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: [
+                  {
+                    "@type": "Question",
+                    name: "Kada treba zameniti osigurač?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Osigurač treba zameniti ako često pregoreva, deformisan je, crn ili se topi.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Da li je opasno koristiti labavu utičnicu?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Da, labava utičnica može da varniči i pregreva se, što predstavlja rizik od požara.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Da li radite hitnu zamenu osigurača i utičnica?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Da, dostupni smo 24/7 i dolazimo u roku od 60–90 minuta na teritoriji Beograda.",
+                    },
+                  },
+                ],
+              },
+            ]),
+          }}
+        />
       </article>
     </>
   );
