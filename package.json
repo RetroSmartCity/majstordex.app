@@ -2,14 +2,13 @@
   "name": "majstordex-app",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "prebuild": "next-sitemap",
-    "build": "next build",
-    "dev": "next dev",
-    "start": "next start",
-    "lint": "next lint",
-    "analyze": "cross-env ANALYZE=true next build"
-  },
+"scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint",
+  "prebuild": "next build && next-sitemap"
+},
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
