@@ -1,43 +1,59 @@
-const withMDX = require('@next/mdx')({
-  extension: /\.(md|mdx)$/,
-  options: {
-    remarkPlugins: [],
-    rehypePlugins: [],
-  },
-});
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
 
-  // 🚀 IGNORIŠE ESLINT I TS GREŠKE DA VERCEL NE PUCA
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
+  // ⚡ Brži build + manji JS bundle
+  swcMinify: true,
+
+  // ⚡ Uklanja legacy polyfills koje Lighthouse detektuje
+  experimental: {
+    legacyBrowsers: false,
+    optimizeCss: true,
+    scrollRestoration: true,
+    serverActions: true,
   },
 
-  // 🚀 Obezbeđuje da Next prihvata i MDX fajlove
-  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  // ⚡ Optimizacija slika
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
 
-  // 🚀 API rewriting za sitemap i RSS
-  async rewrites() {
+  // ⚡ Poboljšanje cache-a na statički generisanim stranicama
+  compress: true,
+
+  // ⚡ Strict security headers (podiže Best Practices SEO score)
+  async headers() {
     return [
       {
-        source: '/sitemap.xml',
-        destination: '/api/sitemap',
-      },
-      {
-        source: '/rss.xml',
-        destination: '/api/rss',
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains; preload",
+          },
+          {
+            key: "X-Content-Type-Options",
+            value: "nosniff",
+          },
+          {
+            key: "X-Frame-Options",
+            value: "DENY",
+          },
+          {
+            key: "X-XSS-Protection",
+            value: "1; mode=block",
+          },
+          {
+            key: "Referrer-Policy",
+            value: "strict-origin-when-cross-origin",
+          },
+        ],
       },
     ];
   },
 
-  experimental: {
-    mdxRs: true,
-  },
+  // ⚡ Ako koristiš next-sitemap — obavezno ovo
+  output: "standalone",
 };
 
-module.exports = withMDX(nextConfig);
+module.exports = nextConfig;
