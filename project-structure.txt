@@ -1,84 +1,142 @@
 Folder PATH listing for volume OS
 Volume serial number is 3AA5-F1FE
 C:.
+³   .env.local
 ³   .eslintrc.json
 ³   .gitignore
 ³   global.d.ts
 ³   next-env.d.ts
 ³   next-sitemap.config.js
+³   next-sitemap.js
 ³   next.config.js
 ³   package-lock.json
 ³   package.json
 ³   postcss.config.js
+³   project-structure.txt
 ³   README.md
-³   struktura.txt
 ³   tailwind.config.js
 ³   tsconfig.json
-³   {
 ³   
 ÃÄÄÄ.next
 ³   ³   build-manifest.json
+³   ³   BUILD_ID
+³   ³   dynamic-css-manifest.json
+³   ³   export-marker.json
+³   ³   images-manifest.json
+³   ³   next-minimal-server.js.nft.json
+³   ³   next-server.js.nft.json
 ³   ³   package.json
+³   ³   prerender-manifest.json
 ³   ³   react-loadable-manifest.json
+³   ³   required-server-files.json
+³   ³   routes-manifest.json
 ³   ³   trace
 ³   ³   
 ³   ÃÄÄÄcache
 ³   ³   ³   .rscinfo
 ³   ³   ³   
 ³   ³   ÃÄÄÄimages
+³   ³   ³   ÃÄÄÄ0bi56XyYlTctt9EzfkKIfbDoZS7Kkmvqr7n3zbqyvDs
+³   ³   ³   ³       60.1764570443613.zYVonAsBncd7MSFLTFZVswri5vHO53DrybCNyieB0cc.Vy8iMTVjNjYtMTlhYTdkZTA0Yjgi.webp
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄ0uLlQxbolymw7svqgvU2CflVsUytm8689_3QIukeLcA
+³   ³   ³   ³       30.1764572141241.YtPd15p1Fo54Pp02fhbEf--X-j75gwg0EBIw-HpCTBQ.Vy8iMjUwNTItMTlhYTdkZTA0YzMi.webp
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄ0yVW_ZVnYAPHZCfZORVUwYp7hwoORBiTpFjBEMXahSE
+³   ³   ³   ³       60.1764469561916.aZyA0uKieZ8p1Vo9Y96PcqHI5fomjKyMsjkl6hoT3Fc.Vy8iMTdjYTAtMTlhYTdkZTA0YjUi.webp
+³   ³   ³   ³       
 ³   ³   ³   ÃÄÄÄ1KkXZIDWEPP0dhwxtdl_HMHar5j80pSxodMU5nJVZX0
-³   ³   ³   ³       60.1763753091198.AyHn37yzlHbjQhvUeT1l5My-D8XS8rIrxqHZeQPBkMc.Vy8iMTQ5ZDItMTlhYTdkZTA0YmYi.webp
+³   ³   ³   ³       60.1764408081995.AyHn37yzlHbjQhvUeT1l5My-D8XS8rIrxqHZeQPBkMc.Vy8iMTQ5ZDItMTlhYTdkZTA0YmYi.webp
 ³   ³   ³   ³       
 ³   ³   ³   ÃÄÄÄ3dFrTouAJg671MXek4OR5FcGuvAubYRGWDuHMU1QFqU
-³   ³   ³   ³       60.1763755552340.zYVonAsBncd7MSFLTFZVswri5vHO53DrybCNyieB0cc.Vy8iMTVjNjYtMTlhYTdkZTA0Yjgi.webp
+³   ³   ³   ³       60.1764572024167.zYVonAsBncd7MSFLTFZVswri5vHO53DrybCNyieB0cc.Vy8iMTVjNjYtMTlhYTdkZTA0Yjgi.webp
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄ4WTzbIQNf3psqkEh-Y5NH0LIM5L8BCVH7eq_YY0FAEI
+³   ³   ³   ³       60.1764471903037.kqgsuzFP6gb-wEgoR8ElBQqGbSgme6_DbqrVhIwHOPw.Vy8iMTE2MTBlLTE5YWNlNWIyOWI2Ig.webp
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄ5JYSFOaaCtHQmSmfwo1KE3oO3Lz1WTtMsR_55D7Fqxs
+³   ³   ³   ³       60.1764460640620.M7OHcXr7dEN3EKf9gZA32k6NS-8sttTbkbEgBOFKZxA.Vy8iMjUwNTItMTlhYTdkZTA0YzMi.webp
 ³   ³   ³   ³       
 ³   ³   ³   ÃÄÄÄAZabQcR9SsvHvx75wCL9hlta01Z6-QMGaoov7VcQtb8
-³   ³   ³   ³       60.1763753093091.IoOFIwjRZxMfspFumqfo0sxTwxUJQi1PlqHbN0FHqLw.Vy8iMTVmZWUtMTlhYTdkZTA0YzAi.webp
+³   ³   ³   ³       60.1764572036862.IoOFIwjRZxMfspFumqfo0sxTwxUJQi1PlqHbN0FHqLw.Vy8iMTVmZWUtMTlhYTdkZTA0YzAi.webp
 ³   ³   ³   ³       
 ³   ³   ³   ÃÄÄÄb2vYW3W1k0v-1EhVWiOq-fErvyrN8bYoXs6wUgPX9zc
-³   ³   ³   ³       60.1763753092858.jTrEdjv_GbPeDDKqt21x-BiFtvGyz1Rpt1tWKw11nhw.Vy8iMTVjNjYtMTlhYTdkZTA0Yjgi.webp
+³   ³   ³   ³       60.1764534066908.jTrEdjv_GbPeDDKqt21x-BiFtvGyz1Rpt1tWKw11nhw.Vy8iMTVjNjYtMTlhYTdkZTA0Yjgi.webp
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄCpFNMRtZmF1pnPnIXBWek0Nq5JpMjB6QFbqUbYm0A1c
+³   ³   ³   ³       60.1764194156781.GBL8d961mbkHHEuNkpjaHezrUCw75OKKQN-V9m9ouf4.Vy8iMTM1NGEtMTlhYTdkZTA0YWQi.webp
 ³   ³   ³   ³       
 ³   ³   ³   ÃÄÄÄd9vI-czFRINPBNOtPFVLymTnlB8cBQuJFkolNhiIeYc
-³   ³   ³   ³       60.1763755552338.GBL8d961mbkHHEuNkpjaHezrUCw75OKKQN-V9m9ouf4.Vy8iMTM1NGEtMTlhYTdkZTA0YWQi.webp
+³   ³   ³   ³       60.1763822746548.GBL8d961mbkHHEuNkpjaHezrUCw75OKKQN-V9m9ouf4.Vy8iMTM1NGEtMTlhYTdkZTA0YWQi.webp
 ³   ³   ³   ³       
 ³   ³   ³   ÃÄÄÄemrtldRq8JKnniA03OXzuDUX7DomhvrdU6Xt9_nxJN8
-³   ³   ³   ³       60.1763755552344.8uGqm0fM8TNu3g3rHfODJ_DfxCXVaxLrs_OnImPDxUM.Vy8iMWE1MGMtMTlhYTdkZTA0YjQi.webp
+³   ³   ³   ³       60.1764572024137.8uGqm0fM8TNu3g3rHfODJ_DfxCXVaxLrs_OnImPDxUM.Vy8iMWE1MGMtMTlhYTdkZTA0YjQi.webp
 ³   ³   ³   ³       
 ³   ³   ³   ÃÄÄÄEY0wChxtUkVVGMYIfncsRaxUgyAgZPBFPROf7CUajVo
-³   ³   ³   ³       60.1763753092904.NEvGHJDqp4soMSiXJohKSYZ3lZyxYsd_lE_m-h_1qJM.Vy8iMTM1NGEtMTlhYTdkZTA0YWQi.webp
+³   ³   ³   ³       60.1764406046555.NEvGHJDqp4soMSiXJohKSYZ3lZyxYsd_lE_m-h_1qJM.Vy8iMTM1NGEtMTlhYTdkZTA0YWQi.webp
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄGsuSwg7w-U6gHnwKDx09usPk-ZPS8xHXkNxxCBfk3tM
+³   ³   ³   ³       60.1764571570723.czPWhVTIxv-WmphE2hnvVy91UPribAnjNrgGzWUSkTI.Vy8iMTVmZWUtMTlhYTdkZTA0YzAi.webp
 ³   ³   ³   ³       
 ³   ³   ³   ÃÄÄÄj1jEKEYMueQ3VZtZd7l8bvEaOVsCAhMgfLLvjWz0TX4
-³   ³   ³   ³       60.1763753093355.M7OHcXr7dEN3EKf9gZA32k6NS-8sttTbkbEgBOFKZxA.Vy8iMjUwNTItMTlhYTdkZTA0YzMi.webp
+³   ³   ³   ³       30.1764534072838.M7OHcXr7dEN3EKf9gZA32k6NS-8sttTbkbEgBOFKZxA.Vy8iMjUwNTItMTlhYTdkZTA0YzMi.webp
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄJ5RMUBAUOgtxBCsm-oMeubWamp9Vyqfx-i1jgbJGvFs
+³   ³   ³   ³       60.1764544276513.8uGqm0fM8TNu3g3rHfODJ_DfxCXVaxLrs_OnImPDxUM.Vy8iMWE1MGMtMTlhYTdkZTA0YjQi.webp
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄjT6ghb6Y0ZO7jVs_rah3O4zkRXe4C2yWjy58PKm9v4g
+³   ³   ³   ³       60.1764574131863.sIdFuRCqMV3eTPyKFJPcZ1v2NC12MnTGRpsQNvKW3-w.Vy8iM2M0OC0xOWFkNjkxZGVhNSI.webp
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄjWyApn2s9qpELRvRMqtXHkDVY3JBxryUjaYAiJrH1Yo
+³   ³   ³   ³       60.1764389512080.35UaVK9yZMnKM3_GbXk2BaSc20pLqGgw0P6-0pyPZbo.Vy8iMWE3Ni0xOWFhN2RlMDRiNyI.webp
 ³   ³   ³   ³       
 ³   ³   ³   ÃÄÄÄK3PmRhZpNQ-XPdYR8P8K9Z1T4yHoaqb19GHnMAJVNK8
-³   ³   ³   ³       60.1763755552342.czPWhVTIxv-WmphE2hnvVy91UPribAnjNrgGzWUSkTI.Vy8iMTVmZWUtMTlhYTdkZTA0YzAi.webp
+³   ³   ³   ³       60.1764572024122.czPWhVTIxv-WmphE2hnvVy91UPribAnjNrgGzWUSkTI.Vy8iMTVmZWUtMTlhYTdkZTA0YzAi.webp
 ³   ³   ³   ³       
 ³   ³   ³   ÃÄÄÄlHVlTMvq4ZVYe9HiDyxT_K1BSI8FlfcEQbGA6e9QpGU
-³   ³   ³   ³       60.1763753093240.jadKV12u4fVQ1wmi59jZXdys3GBXl2eBEtHZuyca1R0.Vy8iMWE1MGMtMTlhYTdkZTA0YjQi.webp
+³   ³   ³   ³       60.1764534066913.jadKV12u4fVQ1wmi59jZXdys3GBXl2eBEtHZuyca1R0.Vy8iMWE1MGMtMTlhYTdkZTA0YjQi.webp
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄlKfZcJFU4LmDhboNkaJy2aylirlq3x9u4ohKJy9VicQ
+³   ³   ³   ³       60.1764569656318.Y0k3znGUJ-kHkHyW4ItYk8TkKeuaNhbgjV5fZMGQmzg.Vy8iMWFjZjItMTlhYTdkZTA0YmMi.webp
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄm2MCgEi78ObOD0onWOeEsikGGZSFa3VxgazHtLqUuVs
+³   ³   ³   ³       60.1764535238904.Vy8iMjBjYjEtMTlhZDI4NjExODIi.Vy8iMjBjYjEtMTlhZDI4NjExODIi.ico
 ³   ³   ³   ³       
 ³   ³   ³   ÃÄÄÄm8h1o4SgfTgyfW7sAmqaEsJIbfcr00zvzY6EzZQD7ek
-³   ³   ³   ³       60.1763755552377.YtPd15p1Fo54Pp02fhbEf--X-j75gwg0EBIw-HpCTBQ.Vy8iMjUwNTItMTlhYTdkZTA0YzMi.webp
+³   ³   ³   ³       30.1764572026209.YtPd15p1Fo54Pp02fhbEf--X-j75gwg0EBIw-HpCTBQ.Vy8iMjUwNTItMTlhYTdkZTA0YzMi.webp
 ³   ³   ³   ³       
 ³   ³   ³   ÃÄÄÄn1HjkIdeXPLxBEfaEDCNg9SB8QvGxEYthhWnyCwefPo
-³   ³   ³   ³       60.1763755552348.Y0k3znGUJ-kHkHyW4ItYk8TkKeuaNhbgjV5fZMGQmzg.Vy8iMWFjZjItMTlhYTdkZTA0YmMi.webp
+³   ³   ³   ³       60.1764572024139.Y0k3znGUJ-kHkHyW4ItYk8TkKeuaNhbgjV5fZMGQmzg.Vy8iMWFjZjItMTlhYTdkZTA0YmMi.webp
 ³   ³   ³   ³       
 ³   ³   ³   ÃÄÄÄN5CfqNLZOuEf4jbskQtaItRKt80XPbblBH59gmKWf5M
-³   ³   ³   ³       60.1763753093188.JTagi5xgv5hLnId6hWRyaVm5FfkjDnXinezr8OG_GRw.Vy8iMTkwNTgtMTlhYTdkZTA0YmUi.webp
+³   ³   ³   ³       60.1764571570746.JTagi5xgv5hLnId6hWRyaVm5FfkjDnXinezr8OG_GRw.Vy8iMTkwNTgtMTlhYTdkZTA0YmUi.webp
 ³   ³   ³   ³       
 ³   ³   ³   ÃÄÄÄNKnZMFvu4zjAgAXi1m2AJeqG_K4-HYbZY9pEEjIaxfw
-³   ³   ³   ³       60.1763755552346.OPuR6jPXQaJER8FS6mTb963FyrQ_w-B0RDtWC9n1VTM.Vy8iMTkwNTgtMTlhYTdkZTA0YmUi.webp
+³   ³   ³   ³       60.1764570512994.OPuR6jPXQaJER8FS6mTb963FyrQ_w-B0RDtWC9n1VTM.Vy8iMTkwNTgtMTlhYTdkZTA0YmUi.webp
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄPSIqCf4ms0qp59UAnP4Pxttx31qgWJx2V8OI82f7KrY
+³   ³   ³   ³       60.1764572014512.OPuR6jPXQaJER8FS6mTb963FyrQ_w-B0RDtWC9n1VTM.Vy8iMTkwNTgtMTlhYTdkZTA0YmUi.webp
 ³   ³   ³   ³       
 ³   ³   ³   ÃÄÄÄr_eU_sM1zdlXTs4xPVycUW8CGLAMdBdSjNuONpSRPKU
-³   ³   ³   ³       60.1763753093322.2fTkxzsUJMyi6qAN18ZFZ_siiZbyZ7nDEjLT_rr7_Fg.Vy8iMTdjYTAtMTlhYTdkZTA0YjUi.webp
+³   ³   ³   ³       60.1764572036866.2fTkxzsUJMyi6qAN18ZFZ_siiZbyZ7nDEjLT_rr7_Fg.Vy8iMTdjYTAtMTlhYTdkZTA0YjUi.webp
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄSdGlbRangg-zlyrHHY-dY3jm8DBBahux5YE_AaPbUI8
+³   ³   ³   ³       60.1764389254219.wgSiOIUuANO_mlJ6pucBcCnwrudfSb5j_eAof8v95iQ.Vy8iMWE3Ni0xOWFhN2RlMDRiNyI.webp
 ³   ³   ³   ³       
 ³   ³   ³   ÃÄÄÄvoQxES72feNKCo_ZcSz_apZLSKJg2DKsGybJmMhDUJU
-³   ³   ³   ³       60.1763755552365.aZyA0uKieZ8p1Vo9Y96PcqHI5fomjKyMsjkl6hoT3Fc.Vy8iMTdjYTAtMTlhYTdkZTA0YjUi.webp
+³   ³   ³   ³       60.1764572024146.aZyA0uKieZ8p1Vo9Y96PcqHI5fomjKyMsjkl6hoT3Fc.Vy8iMTdjYTAtMTlhYTdkZTA0YjUi.webp
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄXRl0Bowtet-e1IPz848cc6tbSZzUOQccI8-oum1gxLI
+³   ³   ³   ³       60.1764534522758.53ZlWT2y134eJEF01hWgO2iFVSekRaZAJhcAa0Lqv-0.Vy8iMTE2MTBlLTE5YWNlNWIyOWI2Ig.webp
 ³   ³   ³   ³       
 ³   ³   ³   ÃÄÄÄzieK3N5GFFDs5en38tSMQAS8mHqw0UhQVtheO9L2_Dg
-³   ³   ³   ³       60.1763753092923.nFLuambZ3mpDsaLQ12D6aZWGJ1z_DY5YD_L5GoQOHr8.Vy8iMWFjZjItMTlhYTdkZTA0YmMi.webp
+³   ³   ³   ³       60.1764572036865.nFLuambZ3mpDsaLQ12D6aZWGJ1z_DY5YD_L5GoQOHr8.Vy8iMWFjZjItMTlhYTdkZTA0YmMi.webp
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄzlgFu1qZ6zP3gFE6ay12OubTxhKyuZFcM2r1OCNcixc
+³   ³   ³   ³       60.1764408295250.OAXOeSMhmtsQgqK2xy3lC3QSfVf4WsDnJY8aOChx_RI.Vy8iMTQ5ZDItMTlhYTdkZTA0YmYi.webp
 ³   ³   ³   ³       
 ³   ³   ³   ÀÄÄÄ_bfqOaSE4f46lfyXIHdefAgfsqbn9t0ImUAMpWXivUQ
-³   ³   ³           60.1763753095675._BXyBt9drcZKIsM3Go9HGLEhWMXD9Wsrs_751HOixHQ.Vy8iMWE3Ni0xOWFhN2RlMDRiNyI.webp
+³   ³   ³           60.1764574131868._BXyBt9drcZKIsM3Go9HGLEhWMXD9Wsrs_751HOixHQ.Vy8iMWE3Ni0xOWFhN2RlMDRiNyI.webp
 ³   ³   ³           
 ³   ³   ÃÄÄÄswc
 ³   ³   ³   ÀÄÄÄplugins
@@ -87,20 +145,75 @@ C:.
 ³   ³       ÃÄÄÄclient-development
 ³   ³       ³       0.pack.gz
 ³   ³       ³       1.pack.gz
+³   ³       ³       10.pack.gz
+³   ³       ³       11.pack.gz
+³   ³       ³       12.pack.gz
+³   ³       ³       13.pack.gz
+³   ³       ³       14.pack.gz
+³   ³       ³       15.pack.gz
+³   ³       ³       16.pack.gz
+³   ³       ³       17.pack.gz
+³   ³       ³       18.pack.gz
 ³   ³       ³       2.pack.gz
 ³   ³       ³       3.pack.gz
 ³   ³       ³       4.pack.gz
+³   ³       ³       5.pack.gz
+³   ³       ³       6.pack.gz
+³   ³       ³       7.pack.gz
+³   ³       ³       8.pack.gz
+³   ³       ³       9.pack.gz
 ³   ³       ³       index.pack.gz
 ³   ³       ³       index.pack.gz.old
 ³   ³       ³       
-³   ³       ÀÄÄÄserver-development
-³   ³               0.pack.gz
-³   ³               1.pack.gz
-³   ³               2.pack.gz
-³   ³               index.pack.gz
-³   ³               index.pack.gz.old
+³   ³       ÃÄÄÄclient-development-fallback
+³   ³       ³       0.pack.gz
+³   ³       ³       index.pack.gz
+³   ³       ³       
+³   ³       ÃÄÄÄclient-production
+³   ³       ³       0.pack
+³   ³       ³       index.pack
+³   ³       ³       
+³   ³       ÃÄÄÄedge-server-production
+³   ³       ³       0.pack
+³   ³       ³       index.pack
+³   ³       ³       
+³   ³       ÃÄÄÄserver-development
+³   ³       ³       0.pack.gz
+³   ³       ³       1.pack.gz
+³   ³       ³       10.pack.gz
+³   ³       ³       11.pack.gz
+³   ³       ³       12.pack.gz
+³   ³       ³       13.pack.gz
+³   ³       ³       14.pack.gz
+³   ³       ³       15.pack.gz
+³   ³       ³       16.pack.gz
+³   ³       ³       17.pack.gz
+³   ³       ³       18.pack.gz
+³   ³       ³       19.pack.gz
+³   ³       ³       2.pack.gz
+³   ³       ³       20.pack.gz
+³   ³       ³       21.pack.gz
+³   ³       ³       3.pack.gz
+³   ³       ³       4.pack.gz
+³   ³       ³       5.pack.gz
+³   ³       ³       6.pack.gz
+³   ³       ³       7.pack.gz
+³   ³       ³       8.pack.gz
+³   ³       ³       9.pack.gz
+³   ³       ³       index.pack.gz
+³   ³       ³       index.pack.gz.old
+³   ³       ³       
+³   ³       ÀÄÄÄserver-production
+³   ³               0.pack
+³   ³               index.pack
 ³   ³               
+³   ÃÄÄÄdiagnostics
+³   ³       build-diagnostics.json
+³   ³       framework.json
+³   ³       
 ³   ÃÄÄÄserver
+³   ³   ³   dynamic-css-manifest.js
+³   ³   ³   functions-config-manifest.json
 ³   ³   ³   interception-route-rewrite-manifest.js
 ³   ³   ³   middleware-build-manifest.js
 ³   ³   ³   middleware-manifest.json
@@ -108,96 +221,175 @@ C:.
 ³   ³   ³   next-font-manifest.js
 ³   ³   ³   next-font-manifest.json
 ³   ³   ³   pages-manifest.json
+³   ³   ³   webpack-api-runtime.js
 ³   ³   ³   webpack-runtime.js
-³   ³   ³   _pages-dir-node_components_Benefits_tsx.js
-³   ³   ³   _pages-dir-node_components_products_ProizvodiKategorijaClientOnly_tsx.js
-³   ³   ³   _pages-dir-node_components_usluge_adaptacija-stana_tsx.js
-³   ³   ³   _pages-dir-node_components_usluge_hitne-intervencije_tsx.js
-³   ³   ³   _pages-dir-node_components_usluge_led-rasveta_tsx.js
-³   ³   ³   _pages-dir-node_components_usluge_popravka-elektroinstalacija_tsx.js
-³   ³   ³   _pages-dir-node_components_usluge_popravka-ta-peci_tsx.js
-³   ³   ³   _pages-dir-node_components_usluge_pranje-klime_tsx.js
-³   ³   ³   _pages-dir-node_components_usluge_servis-bojlera_tsx.js
-³   ³   ³   _pages-dir-node_components_usluge_zamena-osiguraca-i-uticnica_tsx.js
 ³   ³   ³   
-³   ³   ÃÄÄÄpages
-³   ³   ³   ³   index.js
-³   ³   ³   ³   usluge.js
-³   ³   ³   ³   _app.js
-³   ³   ³   ³   _document.js
-³   ³   ³   ³   _error.js
-³   ³   ³   ³   
-³   ³   ³   ÃÄÄÄproizvodi
-³   ³   ³   ³       [kategorija].js
-³   ³   ³   ³       
-³   ³   ³   ÀÄÄÄusluge
-³   ³   ³           [slug].js
-³   ³   ³           
-³   ³   ÀÄÄÄvendor-chunks
-³   ³           @swc.js
-³   ³           lucide-react.js
-³   ³           next.js
-³   ³           react-icons.js
-³   ³           
+³   ³   ÃÄÄÄchunks
+³   ³   ³       159.js
+³   ³   ³       165.js
+³   ³   ³       192.js
+³   ³   ³       24.js
+³   ³   ³       242.js
+³   ³   ³       297.js
+³   ³   ³       341.js
+³   ³   ³       425.js
+³   ³   ³       542.js
+³   ³   ³       680.js
+³   ³   ³       790.js
+³   ³   ³       89.js
+³   ³   ³       964.js
+³   ³   ³       969.js
+³   ³   ³       
+³   ³   ÀÄÄÄpages
+³   ³       ³   404.html
+³   ³       ³   500.html
+³   ³       ³   admin.html
+³   ³       ³   admin.js.nft.json
+³   ³       ³   blog.html
+³   ³       ³   blog.js
+³   ³       ³   blog.js.nft.json
+³   ³       ³   blog.json
+³   ³       ³   cene.html
+³   ³       ³   cene.js.nft.json
+³   ³       ³   index.html
+³   ³       ³   index.js.nft.json
+³   ³       ³   kontakt.html
+³   ³       ³   kontakt.js.nft.json
+³   ³       ³   login.html
+³   ³       ³   login.js.nft.json
+³   ³       ³   lokacije.html
+³   ³       ³   lokacije.js.nft.json
+³   ³       ³   proizvodi.html
+³   ³       ³   proizvodi.js.nft.json
+³   ³       ³   usluge.html
+³   ³       ³   usluge.js.nft.json
+³   ³       ³   [naselje].html
+³   ³       ³   [naselje].js.nft.json
+³   ³       ³   _app.js
+³   ³       ³   _app.js.nft.json
+³   ³       ³   _document.js
+³   ³       ³   _document.js.nft.json
+³   ³       ³   _error.js
+³   ³       ³   _error.js.nft.json
+³   ³       ³   
+³   ³       ÃÄÄÄapi
+³   ³       ³   ³   cron.js
+³   ³       ³   ³   cron.js.nft.json
+³   ³       ³   ³   deploy-hook-ping.js
+³   ³       ³   ³   deploy-hook-ping.js.nft.json
+³   ³       ³   ³   ping-sitemap.js
+³   ³       ³   ³   ping-sitemap.js.nft.json
+³   ³       ³   ³   
+³   ³       ³   ÀÄÄÄproizvodi
+³   ³       ³           create.js
+³   ³       ³           create.js.nft.json
+³   ³       ³           delete.js
+³   ³       ³           delete.js.nft.json
+³   ³       ³           update.js
+³   ³       ³           update.js.nft.json
+³   ³       ³           
+³   ³       ÃÄÄÄblog
+³   ³       ³       pranje-klime.html
+³   ³       ³       pranje-klime.json
+³   ³       ³       [slug].js
+³   ³       ³       [slug].js.nft.json
+³   ³       ³       
+³   ³       ÃÄÄÄnaselje
+³   ³       ³       [naselje].html
+³   ³       ³       [naselje].js.nft.json
+³   ³       ³       
+³   ³       ÃÄÄÄproizvodi
+³   ³       ³   ³   [kategorija].html
+³   ³       ³   ³   [kategorija].js.nft.json
+³   ³       ³   ³   
+³   ³       ³   ÀÄÄÄ[kategorija]
+³   ³       ³           [id].html
+³   ³       ³           [id].js.nft.json
+³   ³       ³           
+³   ³       ÀÄÄÄusluge
+³   ³           ³   [slug].html
+³   ³           ³   [slug].js.nft.json
+³   ³           ³   
+³   ³           ÀÄÄÄ[slug]
+³   ³                   [naselje].html
+³   ³                   [naselje].js.nft.json
+³   ³                   
 ³   ÀÄÄÄstatic
 ³       ÃÄÄÄchunks
-³       ³   ³   main.js
-³       ³   ³   polyfills.js
-³       ³   ³   react-refresh.js
-³       ³   ³   webpack.js
-³       ³   ³   _pages-dir-browser_components_Benefits_tsx.js
-³       ³   ³   _pages-dir-browser_components_products_ProizvodiKategorijaClientOnly_tsx.js
-³       ³   ³   _pages-dir-browser_components_usluge_adaptacija-stana_tsx.js
-³       ³   ³   _pages-dir-browser_components_usluge_hitne-intervencije_tsx.js
-³       ³   ³   _pages-dir-browser_components_usluge_led-rasveta_tsx.js
-³       ³   ³   _pages-dir-browser_components_usluge_popravka-elektroinstalacija_tsx.js
-³       ³   ³   _pages-dir-browser_components_usluge_popravka-ta-peci_tsx.js
-³       ³   ³   _pages-dir-browser_components_usluge_pranje-klime_tsx.js
-³       ³   ³   _pages-dir-browser_components_usluge_servis-bojlera_tsx.js
-³       ³   ³   _pages-dir-browser_components_usluge_zamena-osiguraca-i-uticnica_tsx.js
-³       ³   ³   _pages-dir-browser_node_modules_next_dist_pages__app_js.js
-³       ³   ³   _pages-dir-browser_node_modules_next_dist_pages__error_js.js
+³       ³   ³   100.f07bf88dd2a89b54.js
+³       ³   ³   256-95a1e51beca990d9.js
+³       ³   ³   327.2d0f4dca2b902ee3.js
+³       ³   ³   382.a70b74096054b89a.js
+³       ³   ³   413.79991fc2792f8dde.js
+³       ³   ³   417.20847d76f52a9859.js
+³       ³   ³   502.ea16048ed6e02a74.js
+³       ³   ³   567.fc29aef1c5f2b31d.js
+³       ³   ³   57.268c8c590d7f2802.js
+³       ³   ³   606.953a244ef935e2a3.js
+³       ³   ³   781.5c6c85611a52357c.js
+³       ³   ³   971.7e7f38790070ae90.js
+³       ³   ³   982.2a6f1b4e9e0d778b.js
+³       ³   ³   framework-f75312fc4004b783.js
+³       ³   ³   main-54283483aefd8b3e.js
+³       ³   ³   polyfills-42372ed130431b0a.js
+³       ³   ³   webpack-8a79ce3bd366826a.js
 ³       ³   ³   
 ³       ³   ÀÄÄÄpages
-³       ³       ³   index.js
-³       ³       ³   usluge.js
-³       ³       ³   _app.js
-³       ³       ³   _error.js
+³       ³       ³   admin-e778e5d4e6842c4e.js
+³       ³       ³   blog-5a4c2d92cf2d60eb.js
+³       ³       ³   cene-40befecf65cded36.js
+³       ³       ³   index-dbd032e177380230.js
+³       ³       ³   kontakt-a5deb7bd7a7d987d.js
+³       ³       ³   login-403e33e2b251be80.js
+³       ³       ³   lokacije-34a83749ce862cd6.js
+³       ³       ³   proizvodi-394276fa74f3820f.js
+³       ³       ³   usluge-3ddb35dab0aa66f6.js
+³       ³       ³   [naselje]-9fe0327a855aa8d1.js
+³       ³       ³   _app-9c96223d367fc2b2.js
+³       ³       ³   _error-b41dbd85229d9331.js
 ³       ³       ³   
-³       ³       ÃÄÄÄproizvodi
-³       ³       ³       [kategorija].js
+³       ³       ÃÄÄÄblog
+³       ³       ³       [slug]-ee9b64dc15b43ed4.js
 ³       ³       ³       
+³       ³       ÃÄÄÄnaselje
+³       ³       ³       [naselje]-f18764e2bd0f1ebf.js
+³       ³       ³       
+³       ³       ÃÄÄÄproizvodi
+³       ³       ³   ³   [kategorija]-e2b9b2566ede97df.js
+³       ³       ³   ³   
+³       ³       ³   ÀÄÄÄ[kategorija]
+³       ³       ³           [id]-fe4ad00a444e0668.js
+³       ³       ³           
 ³       ³       ÀÄÄÄusluge
-³       ³               [slug].js
-³       ³               
-³       ÃÄÄÄdevelopment
-³       ³       _buildManifest.js
-³       ³       _ssgManifest.js
+³       ³           ³   [slug]-a3dd2c58eabb8e6d.js
+³       ³           ³   
+³       ³           ÀÄÄÄ[slug]
+³       ³                   [naselje]-871ad50090bb0c6f.js
+³       ³                   
+³       ÃÄÄÄcss
+³       ³       25c845674702792c.css
 ³       ³       
-³       ÀÄÄÄwebpack
-³               185c1f01e271d922.webpack.hot-update.json
-³               633457081244afec._.hot-update.json
-³               abe94e588034ecf7.webpack.hot-update.json
-³               c3f608284a475c4b.webpack.hot-update.json
-³               webpack.185c1f01e271d922.hot-update.js
-³               webpack.abe94e588034ecf7.hot-update.js
-³               webpack.c3f608284a475c4b.hot-update.js
+³       ÀÄÄÄMVKOYPZyP87GiqBZJY4lf
+³               _buildManifest.js
+³               _ssgManifest.js
 ³               
 ÃÄÄÄadmin-client
 ³   ³   index.tsx
 ³   ³   novi-proizvod.tsx
+³   ³   NoviProizvodClientOnly.tsx
 ³   ³   proizvodi.tsx
 ³   ³   
 ³   ÀÄÄÄizmeni-proizvod
 ³           [id].tsx
 ³           
 ÃÄÄÄcomponents
-³   ³   Benefits.tsx
+³   ³   BenefitsPro.tsx
 ³   ³   BlogImage.tsx
 ³   ³   CallToAction.mdx.md
 ³   ³   CallToAction.tsx
 ³   ³   Footer.tsx
 ³   ³   Header.tsx
+³   ³   Hero.tsx
 ³   ³   index.tsx
 ³   ³   kategorije.ts
 ³   ³   Layout.tsx
@@ -206,6 +398,7 @@ C:.
 ³   ³   SEO.tsx
 ³   ³   SezonskeAkcije.tsx
 ³   ³   SocialBar.tsx
+³   ³   TrustBar.tsx
 ³   ³   uslugeMap.tsx
 ³   ³   
 ³   ÃÄÄÄadmin
@@ -217,6 +410,11 @@ C:.
 ³   ÃÄÄÄblog
 ³   ³       blog.ts
 ³   ³       pranje-klime.md
+³   ³       
+³   ÃÄÄÄhome
+³   ³       CTAblok.tsx
+³   ³       LokacijeIndex.tsx
+³   ³       UslugeIndex.tsx
 ³   ³       
 ³   ÃÄÄÄproducts
 ³   ³       ProizvodClientOnly.tsx
@@ -230,6 +428,7 @@ C:.
 ³           popravka-ta-peci.tsx
 ³           pranje-klime.tsx
 ³           servis-bojlera.tsx
+³           UslugaTemplate.tsx
 ³           zamena-osiguraca-i-uticnica.tsx
 ³           
 ÃÄÄÄlib
@@ -37814,28 +38013,33 @@ C:.
 ³           readme.md
 ³           
 ÃÄÄÄpages
+³   ³   admin.tsx
 ³   ³   cene.tsx
 ³   ³   index.tsx
+³   ³   kontakt.tsx
 ³   ³   login.tsx
-³   ³   sitemap.xml.ts
+³   ³   lokacije.tsx
 ³   ³   [naselje].tsx
 ³   ³   _app.tsx
 ³   ³   _document.tsx
 ³   ³   
-³   ÃÄÄÄadmin
-³   ³   ³   index.tsx
-³   ³   ³   
-³   ³   ÀÄÄÄizmeni-proizvod
-³   ³           [id].tsx
-³   ³           
 ³   ÃÄÄÄapi
+³   ³   ³   cron.ts
+³   ³   ³   deploy-hook-ping.ts
+³   ³   ³   ping-sitemap.ts
+³   ³   ³   vercel.json
+³   ³   ³   
 ³   ³   ÀÄÄÄproizvodi
+³   ³           create.ts
 ³   ³           delete.ts
 ³   ³           update.ts
 ³   ³           
 ³   ÃÄÄÄblog
 ³   ³       index.tsx
 ³   ³       [slug].tsx
+³   ³       
+³   ÃÄÄÄnaselje
+³   ³       [naselje].tsx
 ³   ³       
 ³   ÃÄÄÄproizvodi
 ³   ³   ³   index.tsx
@@ -37855,10 +38059,15 @@ C:.
 ³       pranje-klime.mdx
 ³       
 ÃÄÄÄpublic
+³   ³   1111.webp
+³   ³   android-chrome-192x192.png
+³   ³   android-chrome-512x512.png
 ³   ³   apple-touch-icon.png
 ³   ³   favicon-16x16.png
 ³   ³   favicon-32x32.png
 ³   ³   favicon.ico
+³   ³   logo-mdex-white.png
+³   ³   logo1.webp
 ³   ³   next.svg
 ³   ³   robots.txt
 ³   ³   site.webmanifest
@@ -37868,6 +38077,7 @@ C:.
 ³       ³   adaptacija-stanova.webp
 ³       ³   al-led-profil.webp
 ³       ³   ciscenje-klima.webp
+³       ³   favicon1.jpg
 ³       ³   hitne-intervencije.webp
 ³       ³   kandilaber.webp
 ³       ³   kp-logo.webp
@@ -37879,7 +38089,7 @@ C:.
 ³       ³   popravka-ta-peci.webp
 ³       ³   pozadinaHero.webp
 ³       ³   servis-bojlera.webp
-³       ³   zamena-osigraca-i-uticnica.webp
+³       ³   zamena-osiguraca-i-uticnica.webp
 ³       ³   zidna-lampa.webp
 ³       ³   
 ³       ÀÄÄÄblog
@@ -37890,6 +38100,8 @@ C:.
 ÃÄÄÄsrc
 ³   ÀÄÄÄdata
 ³           cene.ts
+³           LokacijeIndex.tsx
+³           naselja.ts
 ³           usluge.ts
 ³           
 ÀÄÄÄstyles

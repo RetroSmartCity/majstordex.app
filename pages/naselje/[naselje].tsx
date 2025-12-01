@@ -1,5 +1,5 @@
 // pages/naselje/[naselje].tsx
-
+// pages/naselje/[naselje].tsx
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
@@ -28,10 +28,10 @@ export default function NaseljePage() {
   const naziv = item.naziv;
 
   /* ============================================================
-     SEO PODACI
+     SEO AUTO PODACI
   ============================================================ */
-  const seoTitle = `Električar ${naziv} – Hitne elektro intervencije 60–90 min`;
-  const seoDesc = `Najbolje ocenjeni električar u naselju ${naziv}. Dolazak 60–90 minuta, rad 0–24, preko 800 zadovoljnih korisnika. Pogledajte sve elektro usluge dostupne u naselju ${naziv}.`;
+  const seoTitle = `Električar ${naziv} – Dolazak 60–90 min | MajstorDex`;
+  const seoDesc = `Pouzdan električar u naselju ${naziv}. Hitne intervencije 0–24, dolazak 60–90 min. Servis bojlera, TA peći, elektro instalacije, osigurači, utičnice, LED rasveta i klima uređaji.`;
 
   const canonicalUrl = `https://majstordex.rs/naselje/${naselje}`;
 
@@ -41,15 +41,15 @@ export default function NaseljePage() {
   const faq = [
     {
       question: `Koliko brzo dolazite u naselje ${naziv}?`,
-      answer: `Dolazak u naselje ${naziv} najčešće je 60–90 minuta.`,
+      answer: `Dolazak u naselje ${naziv} najčešće je 60–90 minuta, 0–24h.`,
     },
     {
       question: `Da li radite hitne intervencije u ${naziv}?`,
-      answer: `Da, dostupni smo 24/7 za sve hitne intervencije u naselju ${naziv}.`,
+      answer: `Da, MajstorDex pokriva sve hitne elektro intervencije u naselju ${naziv}.`,
     },
     {
       question: `Koje usluge pružate u ${naziv}?`,
-      answer: `U naselju ${naziv} radimo sve usluge: bojleri, TA peći, instalacije, osigurači, utičnice, klima uređaji, LED rasveta i hitne intervencije.`,
+      answer: `U naselju ${naziv} radimo sve elektro usluge – servis bojlera, TA peći, osigurače, utičnice, elektro instalacije, LED rasvetu i čišćenje klima uređaja.`,
     },
   ];
 
@@ -76,9 +76,9 @@ export default function NaseljePage() {
   };
 
   /* ============================================================
-     JSON-LD — LOCAL BUSINESS
+     JSON-LD — LocalBusiness
   ============================================================ */
-  const jsonLdLocalBusiness = {
+  const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "MajstorDex",
@@ -91,11 +91,17 @@ export default function NaseljePage() {
       addressLocality: "Beograd",
       addressCountry: "RS",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "44.7866",
+      longitude: "20.4489",
+    },
     openingHours: "Mo-Su 00:00-24:00",
+    image: "https://majstordex.rs/images/og-default.webp",
   };
 
   /* ============================================================
-     JSON-LD — SERVICE AREA SCHEMA  (ONO ŠTO SI TRAŽIO)
+     JSON-LD — SERVICE AREA (premium)
   ============================================================ */
   const serviceAreaSchema = {
     "@context": "https://schema.org",
@@ -105,6 +111,12 @@ export default function NaseljePage() {
     areaServed: {
       "@type": "City",
       name: naziv,
+    },
+    provider: {
+      "@type": "LocalBusiness",
+      name: "MajstorDex",
+      telephone: "+381600500063",
+      url: "https://majstordex.rs/",
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -118,18 +130,22 @@ export default function NaseljePage() {
         },
       })),
     },
-    provider: {
-      "@type": "LocalBusiness",
-      name: "MajstorDex",
-      url: "https://majstordex.rs/",
-      telephone: "+381600500063",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Beograd",
-        addressCountry: "RS",
-      },
-    },
     url: canonicalUrl,
+  };
+
+  /* ============================================================
+      JSON-LD — WEB SITE + SEARCH ACTION
+  ============================================================ */
+  const webSiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "MajstorDex",
+    url: "https://majstordex.rs",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "https://majstordex.rs/search?q={search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
   };
 
   return (
@@ -139,35 +155,45 @@ export default function NaseljePage() {
         <meta name="description" content={seoDesc} />
         <link rel="canonical" href={canonicalUrl} />
 
-        {/* Breadcrumb schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(breadcrumbList),
-          }}
-        />
+        {/* Hreflang */}
+        <link rel="alternate" hrefLang="sr" href={canonicalUrl} />
 
-        {/* LocalBusiness schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLdLocalBusiness),
-          }}
+        {/* Open Graph */}
+        <meta property="og:title" content={seoTitle} />
+        <meta property="og:description" content={seoDesc} />
+        <meta property="og:type" content="article" />
+        <meta
+          property="og:image"
+          content="https://majstordex.rs/images/og-default.webp"
         />
+        <meta property="og:url" content={canonicalUrl} />
 
-        {/* SERVICE AREA SCHEMA */}
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+
+        {/* Schema */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(serviceAreaSchema),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbList) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceAreaSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
         />
       </Head>
 
       {/* ============================================================
           BREADCRUMB UI
       ============================================================ */}
-      <nav className="max-w-4xl mx-auto px-4 pt-8 pb-2 text-sm text-gray-600">
+      <nav className="max-w-4xl mx-auto px-4 pt-8 pb-3 text-sm text-gray-600">
         <ol className="flex items-center gap-1">
           <li>
             <Link
@@ -185,10 +211,10 @@ export default function NaseljePage() {
       </nav>
 
       {/* ============================================================
-          HERO ZA NASELJE
+          HERO
       ============================================================ */}
-      <section className="max-w-4xl mx-auto px-4 pt-6 pb-8">
-        <h1 className="text-4xl font-extrabold text-gray-900 mb-4">
+      <section className="max-w-4xl mx-auto px-4 pt-4 pb-10">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
           Električar {naziv}
         </h1>
 
@@ -200,20 +226,20 @@ export default function NaseljePage() {
             className="inline-block bg-yellow-400 hover:bg-yellow-300 text-black 
             font-bold px-8 py-4 rounded-xl shadow-md text-lg transition"
           >
-            📞 Pozovi odmah – 060 0500 063
+            📞 Pozovi odmah – 060 0 5000 63
           </a>
         </div>
       </section>
 
       {/* ============================================================
-          USLUGE — PREMIUM KARTICE
+          USLUGE — KARTICE
       ============================================================ */}
       <section className="max-w-6xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+        <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">
           Usluge dostupne u naselju {naziv}
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {sveUsluge.map((u) => (
             <Link
               key={u.slug}
@@ -222,7 +248,7 @@ export default function NaseljePage() {
               hover:shadow-xl hover:-translate-y-1 transition p-8 text-center"
             >
               <div className="text-5xl mb-4">{u.icon || "💡"}</div>
-              <p className="font-semibold text-gray-900 text-lg mb()-1">
+              <p className="font-semibold text-gray-900 text-lg mb-1">
                 {u.naziv}
               </p>
               <p className="text-gray-500 text-sm">Pogledaj detalje →</p>
@@ -232,7 +258,7 @@ export default function NaseljePage() {
       </section>
 
       {/* ============================================================
-          OSTALA NASELJA
+          DRUGA NASELJA
       ============================================================ */}
       <section className="max-w-6xl mx-auto px-4 py-16">
         <h3 className="text-2xl font-bold text-gray-900 mb-6">

@@ -2,15 +2,13 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 
+/* ============================================
+   LISTA USLUGA — PREMIUM KATEGORIJE
+============================================ */
 const usluge = [
   {
-    slug: "adaptacija-stana",
-    naziv: "Kompletna adaptacija stana - Ključ u ruke",
-    slika: "/images/adaptacija-stanova.webp",
-  },
-  {
     slug: "led-rasveta",
-    naziv: "LED rasveta - prodaja i ugradnja",
+    naziv: "LED rasveta – prodaja i ugradnja",
     slika: "/images/led-rasveta.webp",
   },
   {
@@ -40,7 +38,7 @@ const usluge = [
   },
   {
     slug: "hitne-intervencije",
-    naziv: "Hitne intervencije 0-24",
+    naziv: "Hitne intervencije 0–24",
     slika: "/images/hitne-intervencije.webp",
   },
 ];
@@ -52,33 +50,55 @@ export default function UslugeIndex() {
         <title>Usluge | MajstorDex</title>
         <meta
           name="description"
-          content="MajstorDex – sve elektro i adaptacione usluge u Beogradu. Hitne intervencije, servis bojlera, klima, LED rasveta i još mnogo toga. 24/7 dostupnost."
+          content="MajstorDex – hitne elektro intervencije, servis bojlera, TA peći, klima uređaja i popravka elektroinstalacija. Dolazak 60–90 min širom Beograda. Pogledajte sve usluge."
         />
+        <link rel="canonical" href="https://majstordex.rs/usluge" />
       </Head>
 
-      <main className="max-w-6xl mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold text-center mb-12">
-          Usluge koje nudimo
+      {/* ============================================
+                  PREMIUM LISTA USLUGA
+      ============================================ */}
+      <main className="max-w-6xl mx-auto px-4 py-16">
+        <h1 className="text-4xl font-extrabold text-center mb-6 text-gray-900">
+          Sve elektro usluge na jednom mestu
         </h1>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <p className="text-center text-gray-600 max-w-xl mx-auto mb-14 text-lg">
+          MajstorDex pruža kompletne elektro usluge u Beogradu — od popravke TA peći
+          i servisa bojlera, do čišćenja klima uređaja i hitnih intervencija 0–24.
+        </p>
+
+        {/* PREMIUM GRID */}
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {usluge.map((u) => (
-            <li key={u.slug} className="flex justify-center">
+            <li key={u.slug}>
               <Link
                 href={`/usluge/${u.slug}`}
-                className="block bg-white hover:bg-yellow-50 transition rounded-xl p-5 shadow-md hover:shadow-xl duration-300 w-full"
+                className="
+                  group block bg-white rounded-2xl shadow-md hover:shadow-2xl
+                  transition duration-300 border border-gray-100
+                  hover:border-yellow-400/50 hover:-translate-y-1
+                "
               >
-                {/* SLIKA – PREMIUM CONTAIN FIX */}
-                <div className="relative w-full h-40 sm:h-44 md:h-48 lg:h-52 mb-4 rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center">
+                {/* PREMIUM IMAGE BOX */}
+                <div className="relative w-full h-48 rounded-t-2xl overflow-hidden bg-gray-50">
                   <Image
                     src={u.slika}
                     alt={u.naziv}
                     fill
-                    className="object-contain p-2 pointer-events-none select-none"
+                    className="object-contain p-6 transition-transform duration-300 group-hover:scale-105"
                   />
+
+                  {/* Glow efekat */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-80 transition bg-[radial-gradient(circle_at_center,rgba(255,210,0,0.25),transparent_70%)]"></div>
                 </div>
 
-                <p className="font-semibold text-lg text-center">{u.naziv}</p>
+                {/* Naziv usluge */}
+                <div className="p-6 text-center">
+                  <p className="font-semibold text-lg text-gray-900 group-hover:text-black">
+                    {u.naziv}
+                  </p>
+                </div>
               </Link>
             </li>
           ))}

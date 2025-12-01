@@ -1,43 +1,59 @@
+// pages/usluge/servis-bojlera.tsx
+
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { cene } from "@/data/cene";
 
 export default function ServisBojlera() {
-  const title = "Servis bojlera Beograd | Zamena grejača i termostata | MajstorDex 24/7";
+  const title =
+    "Servis bojlera Beograd | Zamena grejača i termostata | MajstorDex 24/7";
   const desc =
-    "Profesionalan servis bojlera u Beogradu – zamena grejača, termostata, ventila i čišćenje. Dolazak majstora za 60–90 min. Dostupni 24/7.";
+    "Servis bojlera u Beogradu – zamena grejača, termostata, sigurnosnog ventila i čišćenje kamenca. Brz dolazak majstora 60–90 min, radimo 24/7. Profesionalan i pouzdan servis.";
   const url = "https://majstordex.rs/usluge/servis-bojlera";
 
   return (
     <>
       <Head>
-        {/* SEO */}
+        {/* ---------------------- SEO ---------------------- */}
         <title>{title}</title>
         <meta name="description" content={desc} />
+        <meta name="robots" content="index,follow" />
         <link rel="canonical" href={url} />
 
-        {/* OG */}
+        {/* ---------------------- OG ----------------------- */}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={desc} />
-        <meta property="og:image" content="https://majstordex.rs/images/servis-bojlera.webp" />
-        <meta property="og:url" content={url} />
+        <meta
+          property="og:image"
+          content="https://majstordex.rs/images/servis-bojlera.webp"
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:type" content="service" />
+        <meta property="og:url" content={url} />
+        <meta property="og:locale" content="sr_RS" />
 
-        {/* Twitter */}
+        {/* -------------------- Twitter --------------------- */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={desc} />
-        <meta name="twitter:image" content="https://majstordex.rs/images/servis-bojlera.webp" />
+        <meta
+          name="twitter:image"
+          content="https://majstordex.rs/images/servis-bojlera.webp"
+        />
+        <meta
+          name="twitter:image:alt"
+          content="Servis bojlera u Beogradu – zamena grejača i termostata"
+        />
       </Head>
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-gray-800">
-
-        {/* HERO SLIKA */}
+        {/* ---------------------- HERO ---------------------- */}
         <div className="w-full mb-8 rounded-2xl overflow-hidden shadow-lg bg-white">
           <Image
             src="/images/servis-bojlera.webp"
-            alt="Servis bojlera Beograd - zamena grejača i termostata"
+            alt="Servis bojlera u Beogradu – zamena grejača i termostata - MajstorDex"
             width={1600}
             height={900}
             className="w-full h-auto object-contain"
@@ -45,73 +61,84 @@ export default function ServisBojlera() {
           />
         </div>
 
-        {/* Breadcrumb */}
+        {/* -------------------- Breadcrumb ------------------ */}
         <nav
           aria-label="Breadcrumb"
           className="text-sm mb-6 text-gray-500 flex flex-wrap items-center gap-1"
         >
-          <Link href="/" className="hover:underline text-blue-600">Početna</Link>
+          <Link href="/" className="hover:underline text-blue-600">
+            Početna
+          </Link>
           <span>›</span>
-          <Link href="/usluge" className="hover:underline text-blue-600">Usluge</Link>
+          <Link href="/usluge" className="hover:underline text-blue-600">
+            Usluge
+          </Link>
           <span>›</span>
-          <span aria-current="page" className="text-gray-800 font-semibold">
-            Servis bojlera
-          </span>
+          <span className="text-gray-800 font-semibold">Servis bojlera</span>
         </nav>
 
-        {/* OPIS USLUGE */}
+        {/* ------------------- OPIS USLUGE ------------------ */}
         <section className="mb-12 text-lg leading-relaxed">
-
           <h1 className="text-3xl font-bold mb-4">
-            Servis bojlera u Beogradu — zamena grejača i termostata
+            Servis bojlera u Beogradu – zamena grejača i termostata
           </h1>
 
           <p>
-            Bojleri često prestanu da greju zbog pregorelog grejača, lošeg termostata,
-            previše kamenca ili curenja vode. MajstorDex vrši kompletan servis bojlera
-            svih modela uz brz dolazak na adresu.
+            MajstorDex vrši profesionalan servis bojlera svih modela – Atlantic,
+            Elit, Termorad, Ariston i drugi. Najčešći kvarovi su pregoreo grejač,
+            neispravan termostat, istopljeni kablovi, curenje vode ili sabijen
+            kamenac.
           </p>
 
-          <h2 className="text-2xl font-semibold mt-8 mb-3">Najčešće usluge servisa bojlera</h2>
+          <p className="mt-3">
+            Dolazimo na teritoriji celog Beograda u roku od{" "}
+            <strong>60–90 minuta</strong>. Radimo 0–24, vikendom i praznicima.
+          </p>
+
+          <h2 className="text-2xl font-semibold mt-8 mb-3">
+            Najčešće intervencije na bojlerima
+          </h2>
 
           <ul className="list-disc list-inside space-y-1">
-            <li>Zamena grejača (flanš ili suvog grejača)</li>
-            <li>Popravka ili zamena termostata</li>
-            <li>Zamena sigurnosnog ventila</li>
-            <li>Rešavanje curenja i hidro kvarova</li>
-            <li>Kompletno čišćenje kamenca</li>
-            <li>Dijagnostika električnih elemenata</li>
+            <li>Zamena grejača (flanša) – 1.5kW / 2kW / 2.5kW</li>
+            <li>Zamena termostata</li>
+            <li>Čišćenje kamenca i ispiranje bojlera</li>
+            <li>Popravka sigurnosnog ventila</li>
+            <li>Zamena cevi, kablova i kontakata</li>
+            <li>Provera instalacije i zaštitnih elemenata</li>
           </ul>
 
-          <h2 className="text-2xl font-semibold mt-8 mb-3">Gde radimo?</h2>
-          <p>
-            Dolazak na teritoriji celog Beograda — Novi Beograd, Stari Grad, Zemun,
-            Rakovica, Voždovac, Zvezdara, Cukarica i ostala naselja.
-          </p>
+          <h2 className="text-2xl font-semibold mt-8 mb-3">
+            Kada je vreme za servis?
+          </h2>
 
-          <h2 className="text-2xl font-semibold mt-8 mb-3">Koliko je važan redovan servis?</h2>
           <p>
-            Redovan servis sprečava pucanje bojlera, štedite struju i izbegavate velike kvarove.
-            Preporuka je barem jednom godišnje izvršiti čišćenje kamenca i pregled elemenata.
+            Ako bojler sporije greje, čuje se šuštanje, izbija sigurnosni
+            ventil, curi voda ili izbacuje osigurač – vreme je za dijagnostiku i
+            popravku. Kamenac je najčešći uzrok problema i treba ga čistiti
+            jednom godišnje.
           </p>
         </section>
 
-        {/* 3 MINI KARTICE */}
+        {/* ---------------- POVEZANE USLUGE ---------------- */}
         <section className="mt-10">
-          <h2 className="text-2xl font-semibold mb-4 text-center">Povezane usluge</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-center">
+            Povezane usluge
+          </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-
             <Link href="/usluge/popravka-elektroinstalacija">
               <div className="bg-gray-50 p-5 rounded-xl shadow hover:shadow-lg transition cursor-pointer text-center">
                 <Image
                   src="/images/popravka-elektroinstalacija.webp"
                   width={300}
                   height={200}
-                  alt="Popravka elektroinstalacija"
+                  alt="Popravka elektroinstalacija u Beogradu"
                   className="rounded-lg mb-3"
                 />
-                <h3 className="font-semibold text-lg">Popravka elektroinstalacija</h3>
+                <h3 className="font-semibold text-lg">
+                  Popravka elektroinstalacija
+                </h3>
               </div>
             </Link>
 
@@ -121,7 +148,7 @@ export default function ServisBojlera() {
                   src="/images/popravka-ta-peci.webp"
                   width={300}
                   height={200}
-                  alt="Popravka TA peći"
+                  alt="Popravka TA peći u Beogradu"
                   className="rounded-lg mb-3"
                 />
                 <h3 className="font-semibold text-lg">Popravka TA peći</h3>
@@ -134,76 +161,73 @@ export default function ServisBojlera() {
                   src="/images/hitne-intervencije.webp"
                   width={300}
                   height={200}
-                  alt="Hitne intervencije"
+                  alt="Hitne elektro intervencije Beograd 24/7"
                   className="rounded-lg mb-3"
                 />
-                <h3 className="font-semibold text-lg">Hitne intervencije 24/7</h3>
+                <h3 className="font-semibold text-lg">
+                  Hitne elektro intervencije 24/7
+                </h3>
               </div>
             </Link>
-
           </div>
         </section>
 
-        {/* ZAŠTO MAJSTORDEX */}
-        <section className="bg-yellow-50 rounded-xl p-6 shadow-md mt-14">
-          <h2 className="text-2xl font-semibold mb-4 text-center">
-            Zašto izabrati MajstorDex?
+        {/* ---------------------- CENA ---------------------- */}
+        <section className="bg-yellow-50 rounded-xl p-6 shadow-md mt-10 text-center">
+          <h2 className="text-2xl font-bold mb-3 text-yellow-800">
+            Cena servisa bojlera
           </h2>
 
-          <ul className="list-disc list-inside space-y-2 text-gray-700 max-w-xl mx-auto">
-            <li>Dolazak za 60–90 minuta</li>
-            <li>Iskusni i licencirani majstori</li>
-            <li>Garancija na rad i delove</li>
-            <li>Transparentne cene</li>
-            <li>Dostupni 24/7 — radimo i praznicima</li>
-          </ul>
-        </section>
-
-        {/* CENA USLUGE */}
-        <section className="bg-yellow-50 rounded-xl p-6 shadow-md mt-10 text-center">
-          <h2 className="text-2xl font-bold mb-3 text-yellow-800">Cena servisa bojlera</h2>
-
-          <p className="text-gray-700 mb-2 text-lg">Orijentaciona cena:</p>
-          <p className="text-3xl font-bold text-yellow-600 mb-2">{cene.servisBojlera}</p>
+          <p className="text-gray-700 mb-2 text-lg">
+            Orijentaciona cena servisa:
+          </p>
+          <p className="text-3xl font-bold text-yellow-600 mb-2">
+            {cene.servisBojlera}
+          </p>
 
           <p className="text-sm text-gray-600">
-            Tačna cena se određuje nakon dijagnostike — pozovite nas 0–24!
+            Tačna cena se određuje nakon pregleda, u zavisnosti od potrebe za
+            čišćenjem i zamenom delova.
           </p>
         </section>
 
-        {/* FAQ — identičan templejtu */}
+        {/* ----------------------- FAQ ---------------------- */}
         <section className="mt-12">
-          <h2 className="text-2xl font-semibold mb-4">Često postavljana pitanja</h2>
+          <h2 className="text-2xl font-semibold mb-4">
+            Često postavljana pitanja
+          </h2>
 
           <div className="space-y-4">
-
             <details className="p-4 border rounded-lg bg-gray-50">
               <summary className="font-semibold cursor-pointer">
                 Koliko traje servis bojlera?
               </summary>
-              <p className="mt-2">Najčešće 30–60 minuta, zavisno od kvara.</p>
-            </details>
-
-            <details className="p-4 border rounded-lg bg-gray-50">
-              <summary className="font-semibold cursor-pointer">
-                Kada treba zameniti grejač na bojleru?
-              </summary>
               <p className="mt-2">
-                Ako bojler ne greje, izbija osigurač ili se čuje šuštanje — vreme je za zamenu.
+                U proseku 30–60 minuta, ako je u pitanju zamena grejača ili
+                čišćenje kamenca.
               </p>
             </details>
 
             <details className="p-4 border rounded-lg bg-gray-50">
               <summary className="font-semibold cursor-pointer">
-                Da li radite hitne intervencije?
+                Zašto bojler izbacuje osigurač?
               </summary>
-              <p className="mt-2">Da, dostupni smo 24/7 i dolazimo u roku od 60–90 minuta.</p>
+              <p className="mt-2">
+                Najčešći uzrok je pregoreo grejač, oštećen kabl ili loš kontakt
+                unutar bojlera.
+              </p>
             </details>
 
+            <details className="p-4 border rounded-lg bg-gray-50">
+              <summary className="font-semibold cursor-pointer">
+                Koliko često treba čistiti bojler?
+              </summary>
+              <p className="mt-2">Preporučeno je jednom godišnje.</p>
+            </details>
           </div>
         </section>
 
-        {/* JSON-LD */}
+        {/* -------------------- JSON-LD --------------------- */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -212,24 +236,39 @@ export default function ServisBojlera() {
                 "@context": "https://schema.org",
                 "@type": "BreadcrumbList",
                 itemListElement: [
-                  { "@type": "ListItem", position: 1, name: "Početna", item: "https://majstordex.rs" },
-                  { "@type": "ListItem", position: 2, name: "Usluge", item: "https://majstordex.rs/usluge" },
-                  { "@type": "ListItem", position: 3, name: "Servis bojlera", item: url }
-                ]
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Početna",
+                    item: "https://majstordex.rs",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Usluge",
+                    item: "https://majstordex.rs/usluge",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: "Servis bojlera",
+                    item: url,
+                  },
+                ],
               },
               {
                 "@context": "https://schema.org",
                 "@type": "Service",
                 name: "Servis bojlera Beograd",
+                description: desc,
+                serviceType: "Servis bojlera",
+                areaServed: "Beograd",
                 provider: {
                   "@type": "LocalBusiness",
                   name: "MajstorDex",
                   telephone: "+381600500063",
-                  areaServed: "Beograd",
-                  url: "https://majstordex.rs"
+                  url: "https://majstordex.rs",
                 },
-                description: desc,
-                serviceType: "Servis bojlera"
               },
               {
                 "@context": "https://schema.org",
@@ -240,28 +279,28 @@ export default function ServisBojlera() {
                     name: "Koliko traje servis bojlera?",
                     acceptedAnswer: {
                       "@type": "Answer",
-                      text: "Najčešći servis traje 30–60 minuta."
-                    }
+                      text: "U proseku 30–60 minuta, u zavisnosti od kvara.",
+                    },
                   },
                   {
                     "@type": "Question",
-                    name: "Kada treba zameniti grejač?",
+                    name: "Zašto bojler izbacuje osigurač?",
                     acceptedAnswer: {
                       "@type": "Answer",
-                      text: "Kada bojler ne greje, izbija osigurač ili ima puno kamenca."
-                    }
+                      text: "Najčešći uzrok je pregoreo grejač ili loš kontakt unutar bojlera.",
+                    },
                   },
                   {
                     "@type": "Question",
-                    name: "Da li radite hitne intervencije?",
+                    name: "Koliko često treba čistiti bojler?",
                     acceptedAnswer: {
                       "@type": "Answer",
-                      text: "Da, dostupni smo 24/7 i dolazimo za 60–90 minuta."
-                    }
-                  }
-                ]
-              }
-            ])
+                      text: "Preporučeno je jednom godišnje radi efikasnog rada.",
+                    },
+                  },
+                ],
+              },
+            ]),
           }}
         />
       </article>

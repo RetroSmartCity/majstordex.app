@@ -2,14 +2,112 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Možeš obrisati ovo ako ti smeta dizajn */
+/* ============================================
+   ROOT – BOJE I OSNOVA
+============================================ */
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 255, 255, 255;
+
+  /* Brendirane boje */
+  --brand-yellow: #facc15;
+  --brand-dark: #0f0f0f;
 }
 
+/* ============================================
+   GLOBAL BODY STYLING
+============================================ */
 body {
   @apply text-gray-800 bg-white;
   font-family: sans-serif;
+  -webkit-tap-highlight-color: transparent; /* mobile tap fix */
+}
+
+/* ============================================
+   SMOOTH SCROLL
+============================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ============================================
+   LINKS — GLATKE TRANSICIJE
+============================================ */
+a {
+  transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+/* ============================================
+   BUTTONS — PREMIUM TAP ANIMACIJA
+============================================ */
+button,
+a.call-btn,
+a.btn {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:active,
+a.call-btn:active,
+a.btn:active {
+  transform: scale(0.96);
+}
+
+/* ============================================
+   FADE-IN ANIMACIJA ZA LEP ULAZ SADRŽAJA
+============================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.55s ease-out;
+}
+
+/* ============================================
+   LOADING BAR – YouTube stil
+============================================ */
+@keyframes loadingPulse {
+  0% { opacity: 0.35; }
+  50% { opacity: 1; }
+  100% { opacity: 0.35; }
+}
+
+.loading-bar {
+  animation: loadingPulse 1s infinite;
+}
+
+/* ============================================
+   HERO DARK OVERLAY FIX
+============================================ */
+.hero-darken::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: -1;
+}
+
+/* ============================================
+   IMAGE OPTIMIZATION PREVENTS DRAGGING
+============================================ */
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+/* ============================================
+   TEXT SELECTION COLORS
+============================================ */
+::selection {
+  background: var(--brand-yellow);
+  color: #000;
 }

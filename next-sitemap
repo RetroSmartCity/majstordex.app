@@ -1,0 +1,12 @@
+/** @type {import('next-sitemap').IConfig} */
+
+module.exports = {
+  siteUrl: "https://majstordex.rs",
+  generateRobotsTxt: true,
+  generateIndexSitemap: true,
+  changefreq: "weekly",
+  priority: 0.8,
+  sitemapSize: 7000,
+
+  exclude: ["/admin/*", "/api/*", "/404", "/500"],
+};

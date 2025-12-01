@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "prebuild": "next-sitemap",
     "build": "next build",
+    "dev": "next dev",
     "start": "next start",
     "lint": "next lint",
-    "sitemap": "next-sitemap",
     "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
