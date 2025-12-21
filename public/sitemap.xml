@@ -1,18 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <url><loc>https://majstordex.rs/</loc><priority>1.0</priority></url>
-
-  <!-- ✅ GLAVNI SATELITLINKOVI -->
-  <url><loc>https://majstordex.rs/usluge/popravka-ta-peci</loc><priority>0.99</priority></url>
-  <url><loc>https://majstordex.rs/usluge/servis-bojlera</loc><priority>0.98</priority></url>
-
-  <!-- ✅ SEKUNDARNI -->
-  <url><loc>https://majstordex.rs/usluge/hitne-intervencije</loc><priority>0.95</priority></url>
-  <url><loc>https://majstordex.rs/usluge</loc><priority>0.90</priority></url>
-
-  <url><loc>https://majstordex.rs/lokacije</loc><priority>0.85</priority></url>
-  <url><loc>https://majstordex.rs/cene</loc><priority>0.80</priority></url>
-  <url><loc>https://majstordex.rs/kontakt</loc><priority>0.80</priority></url>
-
-</urlset>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<sitemap><loc>https://majstordex.rs/sitemap-0.xml</loc></sitemap>
+</sitemapindex>
