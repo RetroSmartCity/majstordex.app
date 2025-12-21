@@ -51,7 +51,7 @@ export default function ZamenaOsiguracaIUticnica() {
         {/* ------------------------------------------------ */}
         <div className="w-full mb-8 rounded-2xl overflow-hidden shadow-lg bg-white">
           <Image
-            src="/images/zamena-osigraca-i-uticnica.webp"
+            src="/images/zamena-osiguraca-i-uticnica.webp"
             alt="Zamena osigurača i utičnica u Beogradu – MajstorDex električar 24/7"
             width={1600}
             height={900}
