@@ -13,21 +13,22 @@ declare global {
   }
 }
 
-const GA_ID = "G-JF0XYKPFKP";       // GA4
-const ADS_ID = "AW-17726843589";    // Google Ads Destination ID
-// const ADS_TAG_ID = "GT-KVH24SZP"; // (info) Google tag id shown in Ads UI, not required in code
+const GA_ID = "G-JF0XYKPFKP"; // GA4
+const ADS_ID = "AW-17726843589"; // Google Ads Destination ID
 
-// Safe wrapper (works even if gtag loads a bit later)
+// OPTIONAL: ubaci kad napraviš Ads konverziju "Calls from website"
+// const ADS_CONV_LABEL = "PASTE_LABEL_HERE";
+
 const gtagSafe = (...args: any[]) => {
   if (typeof window !== "undefined" && typeof window.gtag === "function") {
     window.gtag(...args);
   }
 };
 
-// Pageview on route change (GA4)
 const sendPageview = (url: string) => {
+  // GA4 page_view
   gtagSafe("config", GA_ID, { page_path: url });
-  // Optional: also send page_view to Ads (not mandatory, but ok)
+  // Ads config (ok da stoji)
   gtagSafe("config", ADS_ID);
 };
 
@@ -38,7 +39,6 @@ type GAEventParams = {
   value?: number;
 };
 
-// Custom event (GA4)
 const sendEvent = ({ action, category, label, value }: GAEventParams) => {
   gtagSafe("event", action, {
     event_category: category,
@@ -50,11 +50,11 @@ const sendEvent = ({ action, category, label, value }: GAEventParams) => {
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
-  // Track SPA navigation (GA4 pageviews)
+  // SPA pageviews
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    // First load
+    // initial
     sendPageview(window.location.pathname);
 
     const handleRouteChange = (url: string) => sendPageview(url);
@@ -65,7 +65,7 @@ export default function App({ Component, pageProps }: AppProps) {
     };
   }, [router.events]);
 
-  // Track click on tel: links
+  // tel: click tracking
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
       const target = event.target as HTMLElement | null;
@@ -74,23 +74,18 @@ export default function App({ Component, pageProps }: AppProps) {
       const link = target.closest('a[href^="tel:"]') as HTMLAnchorElement | null;
       if (!link) return;
 
-      // GA event (you'll see this in GA4)
+      // GA4 event (vidi se u GA4 -> Events)
       sendEvent({
-        action: "click",
+        action: "call_click",
         category: "Telefon",
         label: link.href,
+        value: 1,
       });
 
-      /**
-       * OPTIONAL (later): If you create a Google Ads conversion action "Calls from website"
-       * you’ll get a LABEL like "AbCdEfGhIjK".
-       * Then uncomment and set LABEL to send real Ads conversions.
-       *
-       * const ADS_CONV_LABEL = "PASTE_LABEL_HERE";
-       * gtagSafe("event", "conversion", {
-       *   send_to: `${ADS_ID}/${ADS_CONV_LABEL}`,
-       * });
-       */
+      // ✅ Google Ads conversion (odkomentariši kad imaš label)
+      // gtagSafe("event", "conversion", {
+      //   send_to: `${ADS_ID}/${ADS_CONV_LABEL}`,
+      // });
     };
 
     document.addEventListener("click", handleClick);
@@ -99,13 +94,13 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      {/* Load gtag.js once. You can load by GA_ID; we also configure ADS_ID below. */}
+      {/* Load gtag.js once */}
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
       />
 
-      {/* Init Google tag for GA4 + Google Ads */}
+      {/* Init GA4 + Ads */}
       <Script id="gtag-init" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
@@ -113,10 +108,7 @@ export default function App({ Component, pageProps }: AppProps) {
           window.gtag = gtag;
           gtag('js', new Date());
 
-          // GA4
           gtag('config', '${GA_ID}', { page_path: window.location.pathname });
-
-          // Google Ads Destination
           gtag('config', '${ADS_ID}');
         `}
       </Script>

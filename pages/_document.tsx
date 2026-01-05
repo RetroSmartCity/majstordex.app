@@ -1,8 +1,6 @@
 // pages/_document.tsx
 import { Html, Head, Main, NextScript } from "next/document";
 
-const GA_ID = "G-JF0XYKPFKP";
-
 export default function Document() {
   const siteUrl = "https://majstordex.rs";
   const logoUrl = "https://majstordex.rs/logo.webp";
@@ -29,7 +27,6 @@ export default function Document() {
           addressCountry: "RS",
         },
       },
-
       {
         "@type": "LocalBusiness",
         "@id": `${siteUrl}#localbusiness`,
@@ -49,7 +46,6 @@ export default function Document() {
         url: siteUrl,
         priceRange: "$$",
       },
-
       {
         "@type": "WebSite",
         "@id": `${siteUrl}#website`,
@@ -70,21 +66,6 @@ export default function Document() {
   return (
     <Html lang="sr">
       <Head>
-        {/* ✅ Google Analytics GA4 */}
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${GA_ID}', {
-                page_path: window.location.pathname,
-              });
-            `,
-          }}
-        />
-
         {/* ✅ PWA + Ikone */}
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="shortcut icon" href="/favicon.ico" />
@@ -93,7 +74,7 @@ export default function Document() {
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#facc15" />
 
-        {/* ✅ MAX SEO SCHEMA — ORGANIZATION + WEBSITE + SEARCH BOX */}
+        {/* ✅ SEO Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
