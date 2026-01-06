@@ -20,7 +20,7 @@ function pushToDataLayer(event: Record<string, any>) {
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
-  // SPA page_view
+  // ✅ SPA page_view
   useEffect(() => {
     const sendPageView = (url: string) => {
       pushToDataLayer({
@@ -36,10 +36,12 @@ export default function App({ Component, pageProps }: AppProps) {
     const handleRouteChange = (url: string) => sendPageView(url);
     router.events.on("routeChangeComplete", handleRouteChange);
 
-    return () => router.events.off("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
   }, [router.events]);
 
-  // tel click => call_click
+  // ✅ tel: click tracking -> "call_click"
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;

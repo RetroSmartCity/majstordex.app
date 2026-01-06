@@ -63,7 +63,7 @@ export default function Document() {
   return (
     <Html lang="sr">
       <Head>
-        {/* ✅ GTM (script) */}
+        {/* ✅ Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -90,7 +90,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </Head>
 
       <body>
-        {/* ✅ GTM (noscript) – mora ODMAH posle <body> */}
+        {/* ✅ Google Tag Manager (noscript) */}
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
