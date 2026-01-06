@@ -2,6 +2,8 @@
 import type { AppProps } from "next/app";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import Layout from "@/components/Layout";
+import "@/styles/globals.css";
 
 declare global {
   interface Window {
@@ -9,48 +11,70 @@ declare global {
   }
 }
 
+const GTM_ID = "GTM-WTHBXKHS";
+
+function pushToDataLayer(event: Record<string, any>) {
+  if (typeof window === "undefined") return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(event);
+}
+
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
+  // ✅ SPA pageview (Next router)
   useEffect(() => {
-    // osiguraj dataLayer (GTM je ubacuje, ali nek bude sigurno)
-    window.dataLayer = window.dataLayer || [];
-
-    // ✅ SPA page_view na svaku promenu rute (Next.js client-side navigation)
-    const handleRoute = (url: string) => {
-      window.dataLayer?.push({
+    const sendPageView = (url: string) => {
+      pushToDataLayer({
         event: "page_view",
         page_path: url,
+        page_location: window.location.href,
+        page_title: document.title,
+        gtm_id: GTM_ID,
       });
     };
-    router.events.on("routeChangeComplete", handleRoute);
 
-    // ✅ automatski hvata SVAKI klik na tel: link (bez menjanja komponenti)
-    const onDocClick = (e: MouseEvent) => {
+    // initial
+    sendPageView(window.location.pathname);
+
+    // route changes
+    const handleRouteChange = (url: string) => sendPageView(url);
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
+
+  // ✅ tel: click tracking -> dataLayer event "call_click"
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
       const a = target.closest('a[href^="tel:"]') as HTMLAnchorElement | null;
       if (!a) return;
 
-      const href = a.getAttribute("href") || "";
-      const phone = href.replace(/^tel:/, "").trim();
+      const telHref = a.getAttribute("href") || "";
+      const phoneNumber = telHref.replace("tel:", "");
 
-      window.dataLayer?.push({
+      pushToDataLayer({
         event: "call_click",
-        phone,
-        link_url: href,
+        phone_number: phoneNumber,
+        link_url: telHref,
         page_path: window.location.pathname,
+        page_location: window.location.href,
+        page_title: document.title,
       });
     };
 
-    document.addEventListener("click", onDocClick, true);
+    document.addEventListener("click", handler, true);
+    return () => document.removeEventListener("click", handler, true);
+  }, []);
 
-    return () => {
-      router.events.off("routeChangeComplete", handleRoute);
-      document.removeEventListener("click", onDocClick, true);
-    };
-  }, [router.events]);
-
-  return <Component {...pageProps} />;
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  );
 }

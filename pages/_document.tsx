@@ -1,10 +1,11 @@
 // pages/_document.tsx
 import { Html, Head, Main, NextScript } from "next/document";
 
+const GTM_ID = "GTM-WTHBXKHS";
+
 export default function Document() {
   const siteUrl = "https://majstordex.rs";
   const logoUrl = "https://majstordex.rs/logo.webp";
-  const GTM_ID = "GTM-WTHBXKHS";
 
   const schema = {
     "@context": "https://schema.org",
@@ -62,7 +63,15 @@ export default function Document() {
   return (
     <Html lang="sr">
       <Head>
-        {/* ✅ Google Tag Manager (HEAD) */}
+        {/* ✅ PWA + Ikone */}
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <meta name="theme-color" content="#facc15" />
+
+        {/* ✅ Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -73,14 +82,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
 
-        {/* ✅ PWA + Ikone */}
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <meta name="theme-color" content="#facc15" />
-
         {/* ✅ SEO Schema */}
         <script
           type="application/ld+json"
@@ -89,7 +90,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </Head>
 
       <body>
-        {/* ✅ Google Tag Manager (noscript) — mora odmah posle <body> */}
+        {/* ✅ Google Tag Manager (noscript) */}
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
