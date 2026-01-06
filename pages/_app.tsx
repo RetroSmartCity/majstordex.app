@@ -11,18 +11,16 @@ declare global {
   }
 }
 
-const GTM_ID = "GTM-WTHBXKHS";
-
-function pushToDataLayer(event: Record<string, any>) {
+function pushToDataLayer(payload: Record<string, any>) {
   if (typeof window === "undefined") return;
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push(event);
+  window.dataLayer.push(payload);
 }
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
-  // ✅ SPA pageview (Next router)
+  // ✅ SPA page view (za Next router)
   useEffect(() => {
     const sendPageView = (url: string) => {
       pushToDataLayer({
@@ -30,7 +28,6 @@ export default function App({ Component, pageProps }: AppProps) {
         page_path: url,
         page_location: window.location.href,
         page_title: document.title,
-        gtm_id: GTM_ID,
       });
     };
 
@@ -68,6 +65,7 @@ export default function App({ Component, pageProps }: AppProps) {
       });
     };
 
+    // capture=true da uhvati klik i kad ima nested elemenata
     document.addEventListener("click", handler, true);
     return () => document.removeEventListener("click", handler, true);
   }, []);
