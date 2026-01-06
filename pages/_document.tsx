@@ -26,6 +26,7 @@ export default function Document() {
         "@type": "LocalBusiness",
         "@id": `${siteUrl}#localbusiness`,
         name: "MajstorDex – Električar Beograd 0–24",
+        image: logoUrl,
         telephone: "+381600500063",
         address: {
           "@type": "PostalAddress",
@@ -60,23 +61,20 @@ export default function Document() {
   return (
     <Html lang="sr">
       <Head>
-        {/* 🔥 GOOGLE TAG MANAGER */}
+        {/* ================= GTM (HEAD) ================= */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              (function(w,d,s,l,i){w[l]=w[l]||[];
-              w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
-              var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-              j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;
-              f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-WTHBXKHS');
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WTHBXKHS');
             `,
           }}
         />
 
-        {/* PWA */}
+        {/* PWA + Ikone */}
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -92,7 +90,7 @@ export default function Document() {
       </Head>
 
       <body>
-        {/* 🔥 GOOGLE TAG MANAGER (noscript) */}
+        {/* ============== GTM (NOSCRIPT) ============== */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-WTHBXKHS"
@@ -101,7 +99,6 @@ export default function Document() {
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-        {/* End Google Tag Manager (noscript) */}
 
         <Main />
         <NextScript />
