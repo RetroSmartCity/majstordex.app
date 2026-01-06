@@ -21,6 +21,11 @@ export default function Document() {
           areaServed: "RS",
           availableLanguage: ["sr"],
         },
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Beograd",
+          addressCountry: "RS",
+        },
       },
       {
         "@type": "LocalBusiness",
@@ -61,7 +66,9 @@ export default function Document() {
   return (
     <Html lang="sr">
       <Head>
-        {/* ================= GTM (HEAD) ================= */}
+        {/* ===================== */}
+        {/* Google Tag Manager */}
+        {/* ===================== */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -74,7 +81,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
 
-        {/* PWA + Ikone */}
+        {/* ✅ PWA + Ikone */}
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -82,7 +89,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#facc15" />
 
-        {/* SEO Schema */}
+        {/* ✅ SEO Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -90,7 +97,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </Head>
 
       <body>
-        {/* ============== GTM (NOSCRIPT) ============== */}
+        {/* ===================== */}
+        {/* Google Tag Manager (noscript) */}
+        {/* ===================== */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-WTHBXKHS"
