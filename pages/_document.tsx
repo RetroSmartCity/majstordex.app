@@ -1,10 +1,11 @@
 // pages/_document.tsx
 import { Html, Head, Main, NextScript } from "next/document";
 
+const GTM_ID = "GTM-WTHBXKHS";
+
 export default function Document() {
   const siteUrl = "https://majstordex.rs";
   const logoUrl = "https://majstordex.rs/logo.webp";
-  const GTM_ID = "GTM-WTHBXKHS";
 
   const schema = {
     "@context": "https://schema.org",
@@ -39,10 +40,7 @@ export default function Document() {
           addressLocality: "Beograd",
           addressCountry: "RS",
         },
-        areaServed: {
-          "@type": "City",
-          name: "Beograd",
-        },
+        areaServed: { "@type": "City", name: "Beograd" },
         openingHours: "Mo-Su 00:00-24:00",
         url: siteUrl,
         priceRange: "$$",
@@ -52,9 +50,7 @@ export default function Document() {
         "@id": `${siteUrl}#website`,
         url: siteUrl,
         name: "MajstorDex",
-        publisher: {
-          "@id": `${siteUrl}#organization`,
-        },
+        publisher: { "@id": `${siteUrl}#organization` },
         potentialAction: {
           "@type": "SearchAction",
           target: `${siteUrl}/pretraga?q={search_term_string}`,
@@ -94,7 +90,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </Head>
 
       <body>
-        {/* ✅ GTM (noscript) – mora odmah posle <body> */}
+        {/* ✅ GTM (noscript) – mora ODMAH posle <body> */}
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}

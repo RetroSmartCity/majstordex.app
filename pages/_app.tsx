@@ -11,16 +11,16 @@ declare global {
   }
 }
 
-function pushToDataLayer(payload: Record<string, any>) {
+function pushToDataLayer(event: Record<string, any>) {
   if (typeof window === "undefined") return;
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push(payload);
+  window.dataLayer.push(event);
 }
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
-  // ✅ SPA page view (za Next router)
+  // SPA page_view
   useEffect(() => {
     const sendPageView = (url: string) => {
       pushToDataLayer({
@@ -31,19 +31,15 @@ export default function App({ Component, pageProps }: AppProps) {
       });
     };
 
-    // initial
     sendPageView(window.location.pathname);
 
-    // route changes
     const handleRouteChange = (url: string) => sendPageView(url);
     router.events.on("routeChangeComplete", handleRouteChange);
 
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
+    return () => router.events.off("routeChangeComplete", handleRouteChange);
   }, [router.events]);
 
-  // ✅ tel: click tracking -> dataLayer event "call_click"
+  // tel click => call_click
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
@@ -65,7 +61,6 @@ export default function App({ Component, pageProps }: AppProps) {
       });
     };
 
-    // capture=true da uhvati klik i kad ima nested elemenata
     document.addEventListener("click", handler, true);
     return () => document.removeEventListener("click", handler, true);
   }, []);
