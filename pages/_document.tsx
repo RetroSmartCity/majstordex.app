@@ -32,8 +32,27 @@ export default function Document() {
           addressLocality: "Beograd",
           addressCountry: "RS",
         },
+        areaServed: {
+          "@type": "City",
+          name: "Beograd",
+        },
         openingHours: "Mo-Su 00:00-24:00",
         url: siteUrl,
+        priceRange: "$$",
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteUrl}#website`,
+        url: siteUrl,
+        name: "MajstorDex",
+        publisher: {
+          "@id": `${siteUrl}#organization`,
+        },
+        potentialAction: {
+          "@type": "SearchAction",
+          target: `${siteUrl}/pretraga?q={search_term_string}`,
+          "query-input": "required name=search_term_string",
+        },
       },
     ],
   };
@@ -59,6 +78,10 @@ export default function Document() {
 
         {/* PWA */}
         <link rel="manifest" href="/site.webmanifest" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#facc15" />
 
         {/* SEO Schema */}
@@ -69,7 +92,7 @@ export default function Document() {
       </Head>
 
       <body>
-        {/* GTM NOSCRIPT */}
+        {/* 🔥 GOOGLE TAG MANAGER (noscript) */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-WTHBXKHS"
@@ -78,6 +101,7 @@ export default function Document() {
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
+        {/* End Google Tag Manager (noscript) */}
 
         <Main />
         <NextScript />
