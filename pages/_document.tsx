@@ -51,9 +51,7 @@ export default function Document() {
         "@id": `${siteUrl}#website`,
         url: siteUrl,
         name: "MajstorDex",
-        publisher: {
-          "@id": `${siteUrl}#organization`,
-        },
+        publisher: { "@id": `${siteUrl}#organization` },
         potentialAction: {
           "@type": "SearchAction",
           target: `${siteUrl}/pretraga?q={search_term_string}`,
@@ -66,21 +64,6 @@ export default function Document() {
   return (
     <Html lang="sr">
       <Head>
-        {/* ===================== */}
-        {/* Google Tag Manager */}
-        {/* ===================== */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WTHBXKHS');
-            `,
-          }}
-        />
-
         {/* ✅ PWA + Ikone */}
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="shortcut icon" href="/favicon.ico" />
@@ -88,6 +71,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#facc15" />
+
+        {/* ✅ Google Tag Manager (HEAD) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WTHBXKHS');`,
+          }}
+        />
 
         {/* ✅ SEO Schema */}
         <script
@@ -97,9 +91,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </Head>
 
       <body>
-        {/* ===================== */}
-        {/* Google Tag Manager (noscript) */}
-        {/* ===================== */}
+        {/* ✅ Google Tag Manager (noscript) - ODMAH posle <body> */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-WTHBXKHS"
