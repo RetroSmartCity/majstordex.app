@@ -4,6 +4,34 @@ import Link from "next/link";
 import { brziDolazakNaseljaObj } from "@/data/naselja";
 
 export default function Footer() {
+  const PHONE_E164 = "+381600500063";
+  const TEL_HREF = `tel:${PHONE_E164}`;
+
+  const trackCallClick = (placement: string) => {
+    try {
+      const gtag = (window as any).gtag;
+      if (typeof gtag === "function") {
+        gtag("event", "call_click", {
+          phone_number: PHONE_E164,
+          link_url: TEL_HREF,
+          placement,
+          transport_type: "beacon",
+        });
+        return;
+      }
+
+      const dataLayer = (window as any).dataLayer;
+      if (Array.isArray(dataLayer)) {
+        dataLayer.push({
+          event: "call_click",
+          phone_number: PHONE_E164,
+          link_url: TEL_HREF,
+          placement,
+        });
+      }
+    } catch {}
+  };
+
   return (
     <footer className="bg-[#071221] text-white mt-20">
       <div className="max-w-6xl mx-auto px-4 py-12 grid gap-10 md:grid-cols-4">
@@ -99,7 +127,8 @@ export default function Footer() {
 
           <p className="text-sm text-gray-300">Telefon:</p>
           <a
-            href="tel:+381600500063"
+            href={TEL_HREF}
+            onClick={() => trackCallClick("Footer")}
             className="inline-block mt-1 text-yellow-400 font-bold text-lg hover:brightness-110 transition"
           >
             060 0 5000 63

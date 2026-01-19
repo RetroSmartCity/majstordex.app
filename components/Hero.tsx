@@ -1,6 +1,34 @@
 "use client";
 
 export default function Hero() {
+  const PHONE_E164 = "+381600500063";
+  const TEL_HREF = `tel:${PHONE_E164}`;
+
+  const trackCallClick = (placement: string) => {
+    try {
+      const gtag = (window as any).gtag;
+      if (typeof gtag === "function") {
+        gtag("event", "call_click", {
+          phone_number: PHONE_E164,
+          link_url: TEL_HREF,
+          placement,
+          transport_type: "beacon",
+        });
+        return;
+      }
+
+      const dataLayer = (window as any).dataLayer;
+      if (Array.isArray(dataLayer)) {
+        dataLayer.push({
+          event: "call_click",
+          phone_number: PHONE_E164,
+          link_url: TEL_HREF,
+          placement,
+        });
+      }
+    } catch {}
+  };
+
   return (
     <section className="bg-[#0B1221] text-white pt-36 pb-20 text-center">
       <div className="max-w-3xl mx-auto px-4">
@@ -12,17 +40,14 @@ export default function Hero() {
           Hitne elektro intervencije sa dolaskom za <span className="font-bold">60–90 minuta.</span>
         </p>
 
-        <p className="text-lg md:text-xl mb-4">
-          Najbolje ocenjen električar u Beogradu.
-        </p>
+        <p className="text-lg md:text-xl mb-4">Najbolje ocenjen električar u Beogradu.</p>
 
-        <p className="text-lg md:text-xl font-bold text-yellow-400 mb-8">
-          800+ pozitivnih recenzija.
-        </p>
+        <p className="text-lg md:text-xl font-bold text-yellow-400 mb-8">800+ pozitivnih recenzija.</p>
 
         {/* POZOVI BUTTON */}
         <a
-          href="tel:0600500063"
+          href={TEL_HREF}
+          onClick={() => trackCallClick("Hero")}
           className="inline-flex items-center justify-center gap-2 bg-yellow-400 text-black font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transform transition hover:-translate-y-0.5 mb-6"
         >
           📞 Pozovi odmah – 060 0 5000 63
