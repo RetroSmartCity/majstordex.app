@@ -9,31 +9,6 @@ export default function Header() {
   const PHONE_E164 = "+381600500063";
   const TEL_HREF = `tel:${PHONE_E164}`;
 
-  const trackCallClick = (placement: string) => {
-    try {
-      const gtag = (window as any).gtag;
-      if (typeof gtag === "function") {
-        gtag("event", "call_click", {
-          phone_number: PHONE_E164,
-          link_url: TEL_HREF,
-          placement,
-          transport_type: "beacon",
-        });
-        return;
-      }
-
-      const dataLayer = (window as any).dataLayer;
-      if (Array.isArray(dataLayer)) {
-        dataLayer.push({
-          event: "call_click",
-          phone_number: PHONE_E164,
-          link_url: TEL_HREF,
-          placement,
-        });
-      }
-    } catch {}
-  };
-
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -231,9 +206,9 @@ export default function Header() {
             Kontakt
           </Link>
 
+          {/* TEL link - BEZ onClick tracking-a (to radi _app.tsx globalno) */}
           <a
             href={TEL_HREF}
-            onClick={() => trackCallClick("HeaderDesktop")}
             className="bg-yellow-400 text-black px-4 py-2 rounded-xl font-bold hover:brightness-95 transition"
           >
             📞 060 0 5000 63
@@ -246,6 +221,7 @@ export default function Header() {
           className="md:hidden text-white p-2"
           aria-label="Otvori meni"
           aria-expanded={open}
+          type="button"
         >
           {open ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -288,9 +264,9 @@ export default function Header() {
               Kontakt
             </Link>
 
+            {/* TEL link - BEZ onClick tracking-a (to radi _app.tsx globalno) */}
             <a
               href={TEL_HREF}
-              onClick={() => trackCallClick("HeaderMobile")}
               className="mt-3 bg-yellow-400 text-black px-4 py-3 rounded-xl font-bold text-center hover:brightness-95 transition"
             >
               📞 Pozovi odmah — 060 0 5000 63
