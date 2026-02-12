@@ -47,7 +47,7 @@ export default function Hero() {
         {/* POZOVI BUTTON */}
         <a
           href={TEL_HREF}
-          onClick={() => trackCallClick("Hero")}
+       //   onClick={() => trackCallClick("Hero")}
           className="inline-flex items-center justify-center gap-2 bg-yellow-400 text-black font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transform transition hover:-translate-y-0.5 mb-6"
         >
           📞 Pozovi odmah – 060 0 5000 63
