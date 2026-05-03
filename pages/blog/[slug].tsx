@@ -1,15 +1,13 @@
-// pages/blog/[slug].tsx
+import { GetStaticPaths, GetStaticProps } from "next";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
+import Head from "next/head";
+import BlogImage from "@/components/BlogImage";
 
-import { GetStaticPaths, GetStaticProps } from 'next';
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
-import { serialize } from 'next-mdx-remote/serialize';
-import BlogImage from '@/components/BlogImage';
-import Head from 'next/head';
-
-const postsDirectory = path.join(process.cwd(), 'posts');
+const postsDirectory = path.join(process.cwd(), "posts");
 
 type FrontMatter = {
   title: string;
@@ -26,10 +24,10 @@ const components = {
 };
 
 export default function PostPage({ source, frontMatter }: PostProps) {
-  const title = frontMatter.title || 'Naslov nije dostupan';
+  const title = frontMatter.title || "Naslov nije dostupan";
   const excerpt =
     frontMatter.excerpt ||
-    'MajstorDex blog post o elektro uslugama u Beogradu. Saznajte više o servisima i stručnim savetima.';
+    "Stručni saveti i rešavanje kvarova – MajstorDex.";
 
   return (
     <>
@@ -38,41 +36,61 @@ export default function PostPage({ source, frontMatter }: PostProps) {
         <meta name="description" content={excerpt} />
         <meta name="robots" content="index, follow" />
 
-        {/* Social meta */}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={excerpt} />
       </Head>
 
       <main className="max-w-3xl mx-auto px-4 py-12">
-        {/* Optional breadcrumb */}
-        {/* <div className="text-sm text-gray-500 mb-4">
-          <a href="/blog" className="hover:underline">← Nazad na blog</a>
-        </div> */}
+        {/* HEADER – NORMALAN, LEVO */}
+        <main className="max-w-3xl mx-auto px-4 pt-20 pb-12">
+  <header className="mb-12">
+    <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white leading-tight mb-6">
+      {title}
+    </h1>
 
-        <h1 className="text-4xl sm:text-5xl font-bold text-center text-gray-900 dark:text-white mb-6">
-          {title}
-        </h1>
+    {excerpt && (
+      <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">
+        {excerpt}
+      </p>
+    )}
+  </header>
 
-        {excerpt && (
-          <p className="text-lg sm:text-xl text-center text-gray-700 dark:text-gray-300 mb-10">
-            {excerpt}
-          </p>
-        )}
+  <article className="prose prose-neutral dark:prose-invert max-w-none">
+    <MDXRemote {...source} components={components} />
+  </article>
+</main>
 
-        <article className="prose prose-neutral dark:prose-invert max-w-none">
+        {/* ARTICLE */}
+        <article className="prose prose-neutral dark:prose-invert max-w-none prose-headings:mt-8 prose-headings:mb-3 prose-p:mb-4 prose-ul:mb-5 prose-li:mb-1">
           <MDXRemote {...source} components={components} />
         </article>
+
+        {/* CTA – diskretan */}
+        <div className="mt-12 p-5 rounded-lg bg-gray-100 dark:bg-gray-800">
+          <p className="mb-3 font-medium">
+            Sumnjaš da uređaj ne radi kako treba?
+          </p>
+
+          <a
+            href="tel:0600500063"
+            className="inline-block bg-yellow-400 text-black font-semibold px-5 py-2 rounded hover:bg-yellow-300 transition"
+          >
+            Pozovi – 060 0 5000 63
+          </a>
+        </div>
       </main>
     </>
   );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const filenames = fs.readdirSync(postsDirectory).filter((name) => name.endsWith('.mdx'));
+  const filenames = fs
+    .readdirSync(postsDirectory)
+    .filter((name) => name.endsWith(".mdx"));
 
   const paths = filenames.map((filename) => ({
     params: {
-      slug: filename.replace(/\.mdx$/, ''),
+      slug: filename.replace(/\.mdx$/, ""),
     },
   }));
 
@@ -86,19 +104,16 @@ export const getStaticProps: GetStaticProps<PostProps> = async (context) => {
   const slug = context.params?.slug;
 
   if (!slug || Array.isArray(slug)) {
-    return {
-      notFound: true,
-    };
+    return { notFound: true };
   }
 
   const fullPath = path.join(postsDirectory, `${slug}.mdx`);
+
   if (!fs.existsSync(fullPath)) {
-    return {
-      notFound: true,
-    };
+    return { notFound: true };
   }
 
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data: frontMatter, content } = matter(fileContents);
 
   const mdxSource = await serialize(content, {
