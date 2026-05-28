@@ -1,7 +1,5 @@
 // pages/usluge/pranje-klime.tsx
 
-// pages/usluge/pranje-klime.tsx
-
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
@@ -11,26 +9,23 @@ export default function PranjeKlime() {
   const title =
     "Pranje klima uređaja Beograd | Profesionalna dezinfekcija | MajstorDex 24/7";
   const desc =
-    "Profesionalno pranje i dezinfekcija klima uređaja u Beogradu – unutrašnja i spoljašnja jedinica. Dolazak majstora za 60–90 minuta. MajstorDex 24/7.";
+    "Profesionalno pranje i dezinfekcija klima uređaja u Beogradu. Dubinsko čišćenje unutrašnje jedinice, turbine i uklanjanje neprijatnih mirisa. Dolazak za 60–90 minuta.";
   const url = "https://majstordex.rs/usluge/pranje-klime";
   const ogImage = "https://majstordex.rs/images/ciscenje-klima.webp";
 
   return (
     <>
       <Head>
-        {/* SEO */}
         <title>{title}</title>
         <meta name="description" content={desc} />
         <link rel="canonical" href={url} />
 
-        {/* OG */}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={desc} />
         <meta property="og:url" content={url} />
         <meta property="og:type" content="service" />
         <meta property="og:image" content={ogImage} />
 
-        {/* TWITTER */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={desc} />
@@ -38,8 +33,6 @@ export default function PranjeKlime() {
       </Head>
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-gray-800">
-
-        {/* HERO SLIKA – templejt style */}
         <div className="w-full mb-8 rounded-2xl overflow-hidden shadow-lg bg-white">
           <Image
             src="/images/ciscenje-klima.webp"
@@ -51,7 +44,6 @@ export default function PranjeKlime() {
           />
         </div>
 
-        {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
           className="text-sm mb-6 text-gray-500 flex flex-wrap items-center gap-1"
@@ -67,9 +59,7 @@ export default function PranjeKlime() {
           <span className="text-gray-800 font-semibold">Pranje klime</span>
         </nav>
 
-        {/* OPIS USLUGE */}
         <section className="mb-12 text-lg leading-relaxed">
-
           <h1 className="text-3xl font-bold mb-4">
             Pranje klima uređaja u Beogradu — profesionalna dezinfekcija
           </h1>
@@ -77,7 +67,7 @@ export default function PranjeKlime() {
           <p>
             Klima uređaji nakupljaju prašinu, buđ, bakterije i alergene, pogotovo kada se
             redovno ne održavaju. MajstorDex pruža profesionalno
-            <strong> pranje i dezinfekciju unutrašnje i spoljašnje jedinice</strong>,
+            <strong> dubinsko pranje i dezinfekciju unutrašnje jedinice</strong>,
             uz dolazak na vašu adresu u roku od 60–90 minuta.
           </p>
 
@@ -88,17 +78,17 @@ export default function PranjeKlime() {
           <ul className="list-disc list-inside space-y-1">
             <li>Temeljno hemijsko pranje unutrašnje jedinice</li>
             <li>Dezinfekcija turbine, isparivača i tacne za kondenz</li>
-            <li>Uklanjanje buđi, prašine i bakterija</li>
-            <li>Čišćenje spoljne jedinice pod pritiskom</li>
-            <li>Neutralisanje neprijatnih mirisa</li>
-            <li>Provera ispravnosti ventilatora i senzora</li>
+            <li>Uklanjanje buđi, prašine i neprijatnih mirisa</li>
+            <li>Detaljno ispiranje unutrašnje jedinice pod pritiskom</li>
+            <li>Provera odvoda kondenzacije</li>
+            <li>Provera ispravnosti rada klime nakon čišćenja</li>
           </ul>
 
           <h2 className="text-2xl font-semibold mt-8 mb-3">Gde radimo?</h2>
 
           <p>
-            Dolazak širom Beograda — Novi Beograd, Zemun, Voždovac, Rakovica, Vračar,
-            Palilula, Zvezdara i ostala naselja.
+            Dolazak širom Beograda — Novi Beograd, Zemun, Voždovac, Rakovica,
+            Vračar, Palilula, Zvezdara, Borča, Karaburma i ostala naselja.
           </p>
 
           <h2 className="text-2xl font-semibold mt-8 mb-3">
@@ -106,18 +96,47 @@ export default function PranjeKlime() {
           </h2>
 
           <p>
-            Redovno čišćenje klime poboljšava kvalitet vazduha, sprečava kvarove,
-            smanjuje potrošnju struje i produžava vek uređaja.  
-            Preporučuje se jednom godišnje.
+            Redovno čišćenje klime poboljšava kvalitet vazduha, smanjuje neprijatne
+            mirise, poboljšava protok vazduha i produžava vek uređaja.
+            Preporučuje se najmanje jednom godišnje, posebno pre letnje sezone.
           </p>
         </section>
 
-        {/* 3 MINI KARTICE – templejt identično */}
+        <section className="bg-blue-50 rounded-xl p-6 shadow-md mt-10">
+          <h2 className="text-2xl font-semibold mb-4 text-center">
+            Korisni saveti o čišćenju klime
+          </h2>
+
+          <div className="space-y-4 text-gray-700">
+            <p>
+              Ako klima ima neprijatan miris, slabije duva ili dugo nije čišćena,
+              pogledajte detaljno objašnjenje:
+              {" "}
+              <Link
+                href="/blog/pranje-klime"
+                className="text-blue-600 font-semibold hover:underline"
+              >
+                zašto klima ima neprijatan miris i kada je vreme za dubinsko pranje
+              </Link>.
+            </p>
+
+            <p>
+              Ako razmišljate o spreju, peni ili kućnom čišćenju, pročitajte:
+              {" "}
+              <Link
+                href="/blog/sprej-za-klimu-vs-dubinsko-pranje"
+                className="text-blue-600 font-semibold hover:underline"
+              >
+                sprej za klimu ili pravo dubinsko pranje — šta stvarno rešava problem
+              </Link>.
+            </p>
+          </div>
+        </section>
+
         <section className="mt-10">
           <h2 className="text-2xl font-semibold mb-4 text-center">Povezane usluge</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-
             <Link href="/usluge/servis-bojlera">
               <div className="bg-gray-50 p-5 rounded-xl shadow hover:shadow-lg transition text-center cursor-pointer">
                 <Image
@@ -156,11 +175,9 @@ export default function PranjeKlime() {
                 <h3 className="font-semibold text-lg">Hitne intervencije 24/7</h3>
               </div>
             </Link>
-
           </div>
         </section>
 
-        {/* ZAŠTO MAJSTORDEX */}
         <section className="bg-yellow-50 rounded-xl p-6 shadow-md mt-14">
           <h2 className="text-2xl font-semibold mb-4 text-center">
             Zašto izabrati MajstorDex?
@@ -169,13 +186,12 @@ export default function PranjeKlime() {
           <ul className="list-disc list-inside space-y-2 text-gray-700 max-w-xl mx-auto">
             <li>Dolazak za 60–90 minuta</li>
             <li>Profesionalna Wipcool oprema za dubinsko pranje</li>
-            <li>Garancija na sve radove</li>
+            <li>Detaljno čišćenje turbine i unutrašnje jedinice</li>
             <li>Bezbedno i higijenski ispravno čišćenje</li>
             <li>Dostupni 24/7 — radimo i praznicima</li>
           </ul>
         </section>
 
-        {/* CENA */}
         <section className="bg-yellow-50 rounded-xl p-6 shadow-md mt-10 text-center">
           <h2 className="text-2xl font-bold mb-3 text-yellow-800">
             Cena pranja klima uređaja
@@ -192,12 +208,10 @@ export default function PranjeKlime() {
           </p>
         </section>
 
-        {/* FAQ – templejt 100% */}
         <section className="mt-12">
           <h2 className="text-2xl font-semibold mb-4">Često postavljana pitanja</h2>
 
           <div className="space-y-4">
-
             <details className="p-4 border rounded-lg bg-gray-50">
               <summary className="font-semibold cursor-pointer">
                 Koliko traje pranje klima uređaja?
@@ -207,10 +221,11 @@ export default function PranjeKlime() {
 
             <details className="p-4 border rounded-lg bg-gray-50">
               <summary className="font-semibold cursor-pointer">
-                Da li je hemijsko pranje bezbedno?
+                Da li je sprej za klimu dovoljan?
               </summary>
               <p className="mt-2">
-                Da, koriste se profesionalna sredstva koja nisu štetna za ljude i kućne ljubimce.
+                Sprej može kratko da ublaži miris, ali ne može detaljno da opere turbinu
+                i unutrašnju jedinicu kao profesionalno dubinsko pranje.
               </p>
             </details>
 
@@ -219,14 +234,13 @@ export default function PranjeKlime() {
                 Kada treba prati klimu?
               </summary>
               <p className="mt-2">
-                Pre početka letnje sezone i jednom godišnje radi zdravog i svežeg vazduha.
+                Pre početka letnje sezone i najmanje jednom godišnje, posebno ako klima
+                ima neprijatan miris ili slabije duva.
               </p>
             </details>
-
           </div>
         </section>
 
-        {/* JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -269,10 +283,10 @@ export default function PranjeKlime() {
                   },
                   {
                     "@type": "Question",
-                    name: "Da li je hemijsko pranje bezbedno?",
+                    name: "Da li je sprej za klimu dovoljan?",
                     acceptedAnswer: {
                       "@type": "Answer",
-                      text: "Da, koriste se profesionalna sredstva bezbedna za ljude i životinje.",
+                      text: "Sprej može kratko da ublaži miris, ali ne može detaljno da opere turbinu i unutrašnju jedinicu kao profesionalno dubinsko pranje.",
                     },
                   },
                   {
@@ -280,7 +294,7 @@ export default function PranjeKlime() {
                     name: "Kada treba prati klimu?",
                     acceptedAnswer: {
                       "@type": "Answer",
-                      text: "Pre letnje sezone i najmanje jednom godišnje.",
+                      text: "Pre letnje sezone i najmanje jednom godišnje, posebno ako klima ima neprijatan miris ili slabije duva.",
                     },
                   },
                 ],
@@ -288,7 +302,6 @@ export default function PranjeKlime() {
             ]),
           }}
         />
-
       </article>
     </>
   );
