@@ -5,6 +5,7 @@ import matter from "gray-matter";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
+import Link from "next/link";
 import BlogImage from "@/components/BlogImage";
 
 const postsDirectory = path.join(process.cwd(), "posts");
@@ -12,6 +13,9 @@ const postsDirectory = path.join(process.cwd(), "posts");
 type FrontMatter = {
   title: string;
   excerpt?: string;
+  date?: string;
+  image?: string;
+  category?: string;
 };
 
 type PostProps = {
@@ -26,8 +30,8 @@ const components = {
 export default function PostPage({ source, frontMatter }: PostProps) {
   const title = frontMatter.title || "Naslov nije dostupan";
   const excerpt =
-    frontMatter.excerpt ||
-    "Stručni saveti i rešavanje kvarova – MajstorDex.";
+    frontMatter.excerpt || "Stručni saveti i rešavanje kvarova – MajstorDex.";
+  const image = frontMatter.image;
 
   return (
     <>
@@ -38,44 +42,72 @@ export default function PostPage({ source, frontMatter }: PostProps) {
 
         <meta property="og:title" content={title} />
         <meta property="og:description" content={excerpt} />
+        {image && <meta property="og:image" content={image} />}
       </Head>
 
-      <main className="max-w-3xl mx-auto px-4 py-12">
-        {/* HEADER – NORMALAN, LEVO */}
-        <main className="max-w-3xl mx-auto px-4 pt-20 pb-12">
-  <header className="mb-12">
-    <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white leading-tight mb-6">
-      {title}
-    </h1>
+      <main className="bg-white">
+        <article className="max-w-4xl mx-auto px-4 pt-12 pb-16">
+          <Link
+            href="/blog"
+            className="mb-8 inline-block text-sm font-semibold text-blue-600 hover:text-blue-800"
+          >
+            ← Nazad na blog
+          </Link>
 
-    {excerpt && (
-      <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">
-        {excerpt}
-      </p>
-    )}
-  </header>
+          <header className="mb-10">
+            <div className="mb-4 flex flex-wrap items-center gap-2">
+              <span className="rounded-full bg-yellow-100 px-4 py-1 text-sm font-semibold text-yellow-800">
+                {frontMatter.category || "Saveti sa terena"}
+              </span>
 
-  <article className="prose prose-neutral dark:prose-invert max-w-none">
-    <MDXRemote {...source} components={components} />
-  </article>
-</main>
+              {frontMatter.date && (
+                <span className="text-sm text-gray-400">{frontMatter.date}</span>
+              )}
+            </div>
 
-        {/* ARTICLE */}
-        <article className="prose prose-neutral dark:prose-invert max-w-none prose-headings:mt-8 prose-headings:mb-3 prose-p:mb-4 prose-ul:mb-5 prose-li:mb-1">
-          <MDXRemote {...source} components={components} />
+            <h1 className="mb-6 text-3xl font-bold leading-tight text-gray-900 sm:text-5xl">
+              {title}
+            </h1>
+
+            {excerpt && (
+              <p className="max-w-3xl text-lg leading-relaxed text-gray-600 sm:text-xl">
+                {excerpt}
+              </p>
+            )}
+          </header>
+
+          {image && (
+            <img
+              src={image}
+              alt={title}
+              className="mb-10 max-h-[520px] w-full rounded-2xl object-cover shadow-sm"
+            />
+          )}
+
+          <div className="prose prose-lg prose-neutral max-w-none prose-headings:font-bold prose-h2:mt-10 prose-h2:text-3xl prose-h3:text-2xl prose-p:leading-8 prose-p:text-gray-700 prose-li:text-gray-700">
+            <MDXRemote {...source} components={components} />
+          </div>
+
+          <div className="mt-12 rounded-2xl bg-gray-100 p-6">
+            <p className="mb-4 text-lg font-semibold text-gray-900">
+              Imaš sličan problem sa bojlerom, klimom ili elektro instalacijom?
+            </p>
+
+            <a
+              href="tel:0600500063"
+              className="inline-block rounded-xl bg-yellow-400 px-6 py-3 font-bold text-black transition hover:bg-yellow-300"
+            >
+              Pozovi – 060 0 5000 63
+            </a>
+          </div>
         </article>
 
-        {/* CTA – diskretan */}
-        <div className="mt-12 p-5 rounded-lg bg-gray-100 dark:bg-gray-800">
-          <p className="mb-3 font-medium">
-            Sumnjaš da uređaj ne radi kako treba?
-          </p>
-
+        <div className="fixed bottom-0 left-0 right-0 z-50 border-t bg-white p-3 shadow-lg sm:hidden">
           <a
             href="tel:0600500063"
-            className="inline-block bg-yellow-400 text-black font-semibold px-5 py-2 rounded hover:bg-yellow-300 transition"
+            className="block w-full rounded-xl bg-yellow-400 py-3 text-center font-bold text-black"
           >
-            Pozovi – 060 0 5000 63
+            Pozovi odmah – 060 0 5000 63
           </a>
         </div>
       </main>
