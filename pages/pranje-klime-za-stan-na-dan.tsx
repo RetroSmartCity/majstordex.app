@@ -25,7 +25,7 @@ export default function PranjeKlimeStanNaDan() {
         />
       </Head>
 
-      <main className="max-w-4xl mx-auto px-4 py-10">
+      <main className="max-w-4xl mx-auto px-4 pt-36 pb-10">
         <h1 className="text-4xl font-bold mb-6">
           Pranje klime za stan na dan i Airbnb apartmane u Beogradu
         </h1>
