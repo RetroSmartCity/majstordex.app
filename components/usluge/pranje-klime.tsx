@@ -110,8 +110,7 @@ export default function PranjeKlime() {
           <div className="space-y-4 text-gray-700">
             <p>
               Ako klima ima neprijatan miris, slabije duva ili dugo nije čišćena,
-              pogledajte detaljno objašnjenje:
-              {" "}
+              pogledajte detaljno objašnjenje:{" "}
               <Link
                 href="/blog/pranje-klime"
                 className="text-blue-600 font-semibold hover:underline"
@@ -121,13 +120,34 @@ export default function PranjeKlime() {
             </p>
 
             <p>
-              Ako razmišljate o spreju, peni ili kućnom čišćenju, pročitajte:
-              {" "}
+              Ako razmišljate o spreju, peni ili kućnom čišćenju, pročitajte:{" "}
               <Link
                 href="/blog/sprej-za-klimu-vs-dubinsko-pranje"
                 className="text-blue-600 font-semibold hover:underline"
               >
                 sprej za klimu ili pravo dubinsko pranje — šta stvarno rešava problem
+              </Link>.
+            </p>
+
+            <p>
+              Ako izdajete stan na dan, Booking ili Airbnb apartman, pogledajte posebnu
+              stranicu:{" "}
+              <Link
+                href="/pranje-klime-za-stan-na-dan"
+                className="text-blue-600 font-semibold hover:underline"
+              >
+                pranje klime za stan na dan i Airbnb apartmane u Beogradu
+              </Link>.
+            </p>
+
+            <p>
+              Posle krečenja i renoviranja klima može ostati puna fine prašine čak i ako
+              je bila zaštićena folijom. Pročitajte:{" "}
+              <Link
+                href="/blog/pranje-klime-posle-krecenja"
+                className="text-blue-600 font-semibold hover:underline"
+              >
+                zašto je potrebno pranje klime posle krečenja
               </Link>.
             </p>
           </div>
@@ -136,9 +156,24 @@ export default function PranjeKlime() {
         <section className="mt-10">
           <h2 className="text-2xl font-semibold mb-4 text-center">Povezane usluge</h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Link href="/pranje-klime-za-stan-na-dan">
+              <div className="bg-gray-50 p-5 rounded-xl shadow hover:shadow-lg transition text-center cursor-pointer h-full">
+                <Image
+                  src="/images/ciscenje-klima.webp"
+                  alt="Pranje klime za stan na dan i Airbnb apartmane"
+                  width={300}
+                  height={200}
+                  className="rounded-lg mb-3"
+                />
+                <h3 className="font-semibold text-lg">
+                  Pranje klime za stan na dan
+                </h3>
+              </div>
+            </Link>
+
             <Link href="/usluge/servis-bojlera">
-              <div className="bg-gray-50 p-5 rounded-xl shadow hover:shadow-lg transition text-center cursor-pointer">
+              <div className="bg-gray-50 p-5 rounded-xl shadow hover:shadow-lg transition text-center cursor-pointer h-full">
                 <Image
                   src="/images/servis-bojlera.webp"
                   alt="Servis bojlera"
@@ -151,7 +186,7 @@ export default function PranjeKlime() {
             </Link>
 
             <Link href="/usluge/popravka-elektroinstalacija">
-              <div className="bg-gray-50 p-5 rounded-xl shadow hover:shadow-lg transition text-center cursor-pointer">
+              <div className="bg-gray-50 p-5 rounded-xl shadow hover:shadow-lg transition text-center cursor-pointer h-full">
                 <Image
                   src="/images/popravka-elektroinstalacija.webp"
                   alt="Popravka elektroinstalacija"
@@ -164,7 +199,7 @@ export default function PranjeKlime() {
             </Link>
 
             <Link href="/usluge/hitne-intervencije">
-              <div className="bg-gray-50 p-5 rounded-xl shadow hover:shadow-lg transition text-center cursor-pointer">
+              <div className="bg-gray-50 p-5 rounded-xl shadow hover:shadow-lg transition text-center cursor-pointer h-full">
                 <Image
                   src="/images/hitne-intervencije.webp"
                   alt="Hitne intervencije"
